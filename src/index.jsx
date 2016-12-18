@@ -5,13 +5,13 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Components
 import App from './components/App.jsx';
-import SampleComponent from './components/sample/sample.jsx';
+import Login from './components/login/login_main.jsx';
 
 // Router
 ReactDOM.render(
   <Router history={ browserHistory }>
     <Route path='/' component={ App }>
-      <IndexRoute component={ SampleComponent } />
+      <IndexRoute component={ Login } />
     </Route>
   </Router>,
 document.getElementById('app'));
