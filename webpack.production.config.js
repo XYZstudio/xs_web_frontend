@@ -36,19 +36,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(ROOT_PATH, 'public', 'build'),
-    publicPath: '/build/',
-    filename: 'bundle.js'
-  },
-  devServer: {
-    contentBase: path.resolve(ROOT_PATH, 'public'),
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true,
-    host: require('./config.json').host,
-    port: require('./config.json').port
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    publicPath: '/',
+    filename: '/bundle.js'
+  }
 }; 
