@@ -12,6 +12,7 @@ export default class MediaComponent extends React.Component {
   render() {
     return (
       <div style={{ margin: 100 }}>
+        <hr style={{ border: 0, height: 1, backgroundColor: '#e6e6e6' }} />
         <Media>
          <Media.Left>
             <img width={300} height={300} src={ tempImg } alt="Image"/>
@@ -21,6 +22,7 @@ export default class MediaComponent extends React.Component {
             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
           </Media.Body>
         </Media>
+        <hr style={{ border: 0, height: 1, backgroundColor: '#e6e6e6' }} />
         <Media>
           <Media.Body>
             <Media.Heading>Media Heading</Media.Heading>
@@ -30,6 +32,7 @@ export default class MediaComponent extends React.Component {
             <img width={300} height={300} src={ tempImg } alt="Image"/>
           </Media.Right>
         </Media>
+        <hr style={{ border: 0, height: 1, backgroundColor: '#e6e6e6' }} />
         <Media>
           <Media.Left>
             <img width={300} height={300} src={ tempImg } alt="Image"/>
@@ -39,6 +42,7 @@ export default class MediaComponent extends React.Component {
             <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
           </Media.Body>
         </Media>
+        <hr style={{ border: 0, height: 1, backgroundColor: '#e6e6e6' }} />
       </div>
     );
   }
