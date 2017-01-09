@@ -13,7 +13,7 @@ export default class NavbarComponent extends React.Component {
 
   render() {
     return (
-      <Navbar inverse collapseOnSelect style={{ marginBottom: 0 }}>
+      <Navbar fixedTop inverse collapseOnSelect style={{ marginBottom: 0 }}>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="#">React-Bootstrap</a>
