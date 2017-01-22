@@ -3,12 +3,18 @@ import React from 'react';
 import Row from 'react-bootstrap/lib/Row';
 import Carousel from 'react-bootstrap/lib/Carousel';
 import PartnershipStyle from 'style/partnership.scss';
-import partnerImg from 'asset/partner-img.png';
 
-const temp1Img = 'https://s-media-cache-ak0.pinimg.com/originals/b6/78/49/b6784979a4bee915ac58e014630f229c.jpg';
-const temp2Img = 'http://www.webdesignburn.com/wp-content/uploads/2015/04/Grey-Texture-Background-and-Wallpaper-12.jpg';
-const temp3Img = 'https://s-media-cache-ak0.pinimg.com/originals/17/1a/27/171a2773864905863b9a017357507110.jpg';
-const temp4Img = 'http://www.photohdx.com/images/2016/05/grey-dark-vintage-background-texture.jpg';
+import temp1Img from 'style/asset/parterner_1.png';
+import temp2Img from 'style/asset/parterner_2.png';
+import temp3Img from 'style/asset/parterner_3.png';
+import temp4Img from 'style/asset/parterner_4.png';
+import temp5Img from 'style/asset/parterner_5.png';
+
+import temp6Img from 'style/asset/parterner_6.png';
+import temp7Img from 'style/asset/parterner_7.png';
+import temp8Img from 'style/asset/parterner_8.png';
+import temp9Img from 'style/asset/parterner_3.png';
+import temp10Img from 'style/asset/parterner_2.png';
 
 export default class PartnershipComponent extends React.Component {
   constructor() {
@@ -29,18 +35,15 @@ export default class PartnershipComponent extends React.Component {
               <img src={ temp2Img }/>
               <img src={ temp3Img }/>
               <img src={ temp4Img }/>
+              <img src={ temp5Img }/>
             </Carousel.Item>
             <Carousel.Item>
-              <img src={ temp1Img }/>
-              <img src={ temp2Img }/>
-              <img src={ temp3Img }/>
-              <img src={ temp4Img }/>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img src={ temp1Img }/>
-              <img src={ temp2Img }/>
-              <img src={ temp3Img }/>
-              <img src={ temp4Img }/>
+              <img src={ temp5Img }/>
+              <img src={ temp6Img }/>
+              <img src={ temp7Img }/>
+              <img src={ temp8Img }/>
+              <img src={ temp9Img }/>
+              <img src={ temp10Img }/>
             </Carousel.Item>
           </Carousel>
         </Row>
