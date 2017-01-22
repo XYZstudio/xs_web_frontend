@@ -23,7 +23,7 @@ module.exports = {
       { 
         test: /\.(png|jpg)$/, 
         loader: 'url-loader?limit=20000',
-        include: path.resolve(ROOT_PATH, 'styles/assets') 
+        include: path.resolve(ROOT_PATH, 'src/style/asset') 
       },
       {
         test: /\.json$/,
@@ -32,11 +32,16 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      component: path.resolve(ROOT_PATH, 'src/component'),
+      style: path.resolve(ROOT_PATH, 'src/style'),
+      asset: path.resolve(ROOT_PATH, 'src/style/asset')
+    }
   },
   output: {
     path: path.resolve(ROOT_PATH, 'public', 'build'),
-    publicPath: '/',
-    filename: '/bundle.js'
+    publicPath: '/build/',
+    filename: 'bundle.js'
   }
 }; 

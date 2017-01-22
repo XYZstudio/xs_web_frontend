@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Components
-import App from './components/App.jsx';
-import Login from './components/login/login_main.jsx';
-import MainPage from './components/main/main_page.jsx';
+import App from 'component/App.jsx';
+import Login from 'component/login/login_main.jsx';
+import MainPage from 'component/main/main_page.jsx';
 
 // Router
 ReactDOM.render(

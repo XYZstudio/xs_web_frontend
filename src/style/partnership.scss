@@ -1,0 +1,27 @@
+.partnership{
+  height: 200px;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  .carousel-inner{
+    height: 200px;
+
+    .item{
+      img{
+        margin: 0px;
+        width: 25%;
+        height: 200px;
+        float: left;
+      }
+    }
+  }
+}
+
+.partnership-caption{
+  font-family: 'News Cycle', sans-serif;
+  font-size: 30px;
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
