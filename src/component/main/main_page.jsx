@@ -3,6 +3,7 @@ import React from 'react';
 import Row from 'react-bootstrap/lib/Row';
 import NavbarComponent from './navbar';
 import CarouselComponent from './carousel';
+import JoinButtonComponent from './join_button';
 import ThumbnailComponent from './thumbnail';
 import MediaComponent from './media';
 import PartnershipComponent from './partnership';
@@ -22,6 +23,7 @@ export default class MainPage extends React.Component {
       <div>
         <Row className="main-navbar"><NavbarComponent /></Row>
         <Row><CarouselComponent /></Row>
+        <Row><JoinButtonComponent /></Row>
         <Row><ThumbnailComponent /></Row>
         <Row><MediaComponent /></Row>
         <Row><PartnershipComponent /></Row>
