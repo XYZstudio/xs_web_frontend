@@ -5,9 +5,11 @@ import NavbarComponent from './navbar';
 import CarouselComponent from './carousel';
 import ThumbnailComponent from './thumbnail';
 import MediaComponent from './media';
+import PartnershipComponent from './partnership';
+import BottomNavbarComponent from './bottom_navbar';
 
 // Styles
-require('../../styles/main.scss');
+import MainPageStyle from 'style/main.scss';
 
 
 export default class MainPage extends React.Component {
@@ -18,10 +20,12 @@ export default class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <Row><NavbarComponent /></Row>
+        <Row className="main-navbar"><NavbarComponent /></Row>
         <Row><CarouselComponent /></Row>
         <Row><ThumbnailComponent /></Row>
         <Row><MediaComponent /></Row>
+        <Row><PartnershipComponent /></Row>
+        <Row><BottomNavbarComponent /></Row>
       </div>
     );
   };
