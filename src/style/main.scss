@@ -6,6 +6,10 @@
   margin: 0px;
 }
 
+.whiteBackground{
+	background-color: #ffffff;
+}
+
 #joinButton{
 	font-size: 18px;
     width: 500px;
@@ -15,3 +19,10 @@
     transition: all 0s;
     padding: 20px 0;
 }
+
+#sporitLogo{
+	position: relative;
+    top: -8px;
+    width: 163px;
+}
+

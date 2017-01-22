@@ -8,6 +8,7 @@ import MenuItem from 'react-bootstrap/lib/MenuItem';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import Loginform from './login_form';
+import LogoImage from 'style/asset/logo.png';
 
 export default class NavbarComponent extends React.Component {
   constructor() {
@@ -30,10 +31,10 @@ export default class NavbarComponent extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop collapseOnSelect style={{ marginBottom: 0 }}>
+        <Navbar fixedTop collapseOnSelect style={{ marginBottom: 0 }} className="whiteBackground">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Sporit</a>
+              <a href="#"><img id="sporitLogo" src={ LogoImage }/></a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
