@@ -18,8 +18,9 @@ export default class PartnershipComponent extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <h3 className="partnership-caption">We have helped these companies ... </h3>
+        <Row >
+          <h2 className="text-center">Who We've Helped</h2>
+          <p className="partnership-caption text-center">We've enabled the hiring of 10000 people to our clients. Our clients include:</p>
         </Row>
         <Row>
           <Carousel className="partnership" indicators={false}>

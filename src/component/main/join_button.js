@@ -31,7 +31,6 @@ export default class JoinButtonComponent extends React.Component {
     return (
         <div>
           <Button id="joinButton" bsSize="large" block onClick={this.open}>JOIN OUR NETWORK</Button>
-          
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header closeButton>
               <Modal.Title>Login</Modal.Title>
