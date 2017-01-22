@@ -5,3 +5,24 @@
 .row{
   margin: 0px;
 }
+
+.whiteBackground{
+	background-color: #ffffff;
+}
+
+#joinButton{
+	font-size: 18px;
+    width: 500px;
+    margin: auto;
+    margin-top: 25px;
+    border: #9d9d9d solid 2px;
+    transition: all 0s;
+    padding: 20px 0;
+}
+
+#sporitLogo{
+	position: relative;
+    top: -8px;
+    width: 163px;
+}
+
