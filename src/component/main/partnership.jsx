@@ -38,7 +38,6 @@ export default class PartnershipComponent extends React.Component {
               <img src={ temp5Img }/>
             </Carousel.Item>
             <Carousel.Item>
-              <img src={ temp5Img }/>
               <img src={ temp6Img }/>
               <img src={ temp7Img }/>
               <img src={ temp8Img }/>
