@@ -1,5 +1,6 @@
 // Modules
 import React from 'react';
+import { browserHistory } from 'react-router';
 import Nav from 'react-bootstrap/lib/Nav';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import NavItem from 'react-bootstrap/lib/NavItem';
@@ -18,6 +19,7 @@ export default class NavbarComponent extends React.Component {
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this.goToCourse = this.goToCourse.bind(this);
   }
 
   open() {
@@ -26,6 +28,10 @@ export default class NavbarComponent extends React.Component {
 
   close() {
     this.setState({ showModal: false }); 
+  }
+
+  goToCourse() {
+    browserHistory.push('/course');
   }
 
   render() {
@@ -46,10 +52,10 @@ export default class NavbarComponent extends React.Component {
                 <MenuItem eventKey={3.3}>团队介绍</MenuItem>
                  <MenuItem eventKey={3.4}>专家介绍</MenuItem>
               </NavDropdown>
-              <NavItem eventKey={1} href="#">在线课程</NavItem>
+              <NavItem eventKey={1} href="#" onClick={ this.goToCourse }>在线课程</NavItem>
               <NavItem eventKey={2} href="#">名人讲座</NavItem>
-              <NavItem eventKey={2} href="#">Sporit观点</NavItem>
-              <NavItem eventKey={2} href="#">人才需求</NavItem>
+              <NavItem eventKey={3} href="#">Sporit观点</NavItem>
+              <NavItem eventKey={4} href="#">人才需求</NavItem>
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} href="#">Sign Up</NavItem>
