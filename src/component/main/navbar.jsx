@@ -8,8 +8,9 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-import Loginform from './login_form';
+import LoginRegisterTabs from './login_register_tabs';
 import LogoImage from 'style/asset/logo.png';
+
 
 export default class NavbarComponent extends React.Component {
   constructor() {
@@ -68,7 +69,8 @@ export default class NavbarComponent extends React.Component {
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Loginform close={this.close} />
+            <LoginRegisterTabs/>
+            {/*<Loginform close={this.close} />*/}
           </Modal.Body>
         </Modal>
       </div>
