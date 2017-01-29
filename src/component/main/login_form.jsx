@@ -6,6 +6,7 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
+import config from '../../../config.json';
 
 import qqIcon from 'style/asset/qqI.png';
 import wechatIcon from 'style/asset/wechatI.png';
@@ -35,7 +36,7 @@ export default class Loginform extends React.Component {
 
   submitLogin() {
     request
-    .post('http://localhost:3000/api/v1/login_user')
+    .post('http://localhost:' + config.rest_port + '/api/v1/login_user')
     .send({
       email: this.state.email,
       password: this.state.password,

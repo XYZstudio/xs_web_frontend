@@ -6,6 +6,7 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
+import config from '../../../config.json';
 
 export default class Registerform extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export default class Registerform extends React.Component {
 
   submitRegister() {
     request
-    .post('http://localhost:3000/api/v1/create_user')
+    .post('http://localhost:' + config.rest_port + '/api/v1/create_user')
     .send({
       email: this.state.email,
       name: this.state.name,
