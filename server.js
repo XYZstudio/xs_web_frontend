@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+const config = require('config.json');
 
 var app = express();
 var publicPath = path.resolve(__dirname, 'public');
@@ -12,6 +13,6 @@ app.get('*', function(req, res) {
 });
 
 // And run the server
-app.listen(3000, function () {
-  console.log('Server running on port ' + 3000);
+app.listen(config.port, function () {
+  console.log('Server running on port ' + config.port);
 });
