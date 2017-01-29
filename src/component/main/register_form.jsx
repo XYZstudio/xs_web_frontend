@@ -7,22 +7,25 @@ import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
 
-import qqIcon from 'style/asset/qqI.png';
-import wechatIcon from 'style/asset/wechatI.png';
-import weiboIcon from 'style/asset/weiboI.png';
-
-export default class Loginform extends React.Component {
+export default class Registerform extends React.Component {
   constructor(props) {
     super(props);
+    this.handleNameChange = this.handleNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.submitLogin = this.submitLogin.bind(this);
+    this.submitRegister = this.submitRegister.bind(this);
+    // this.close = props.close;
     this.show2dCode = this.show2dCode.bind(this);
     this.state = {
+      name:'',
       email: '',
       password: '',
       show2dCode: { display: 'none' },
     };
+  }
+
+  handleNameChange(e) {
+    this.setState({ name: e.target.value });
   }
 
   handleEmailChange(e) {
@@ -33,18 +36,20 @@ export default class Loginform extends React.Component {
     this.setState({ password: e.target.value });
   }
 
-  submitLogin() {
+  submitRegister() {
     request
-    .post('http://localhost:3000/api/v1/login_user')
+    .post('http://localhost:3000/api/v1/create_user')
     .send({
       email: this.state.email,
+      name: this.state.name,
       password: this.state.password,
+      status: 'active'
     })
     .end((err, res) => {
       if (err) {
         console.error(err);
       } else {
-        console.log('LOGIN: ', res);
+        console.log('REGISTER: ', res);
       }
     });
   }
@@ -57,66 +62,51 @@ export default class Loginform extends React.Component {
     const firstFormGroupStyle = {
       marginTop: '15px'
     };
-    const thirdpartyLoginDiv = {
-      marginLeft: '15px',
-      marginTop: '15px'
-    }
-    const thirdpartyLoginSpan = {
-      color: '#4b8abf',
-      marginRight: '10px',
-      float: 'left'
-    }
-    const thirdpartyLoginIcon = {
-      padding: '10px'
-    }
-    const iconImageStyle = {
-      width: '22px'
-    }
+
+    const agreementStyle = {
+        textAlign: 'center',
+        marginTop: '15px',
+        fontSize: '12px'
+    };
+
     return (
       <form>
-
-        <FormGroup
-          controlId='formBasicText'
-          style={firstFormGroupStyle}
-        >
+        <FormGroup style={firstFormGroupStyle}>
+          <FormControl
+            type="text"
+            value={this.state.name}
+            placeholder="姓名"
+            onChange={this.handleNameChange}
+          />
+        </FormGroup>
+        <FormGroup>
           <FormControl
             type='text'
             value={this.state.email}
             placeholder='手机号或邮箱'
             onChange={this.handleEmailChange}
           />
+        </FormGroup>
+        <FormGroup>
           <FormControl.Feedback />
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
-        </FormGroup>
-
-        <FormGroup>
           <FormControl
             type='password'
             value={this.state.password}
-            placeholder='密码'
+            placeholder='密码(不少于6位)'
             onChange={this.handlePasswordChange}
           />
           <FormControl.Feedback />
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
 
-        <Button bsStyle="success" onClick={this.submitLogin} block>Login</Button>
+        <Button bsStyle="success" onClick={this.submitRegister} block>注册Sporit</Button>
 
-        <FormGroup>
-          <div style={ thirdpartyLoginDiv }>
-            <span style={ thirdpartyLoginSpan }>社交帐号登录</span>
-            <div>
-              <a title="微信登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ qqIcon }/></i>
-              </a>
-              <a title="微博登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ wechatIcon }/></i>
-              </a>
-              <a title="QQ 登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ weiboIcon }/></i>
-              </a>
-            </div>
-          </div>
+        <FormGroup style={agreementStyle}>
+          <p>
+            点击「注册Sporit」按钮，即代表你同意
+            <a href="" target="_blank">《Sporit协议》</a>
+          </p>
         </FormGroup>
 
         <Button onClick={this.show2dCode} block>下载Sporit</Button>
