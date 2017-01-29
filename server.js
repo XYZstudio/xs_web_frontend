@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-const config = require('config.json');
+const config = require('./config');
 
 var app = express();
 var publicPath = path.resolve(__dirname, 'public');
