@@ -6,11 +6,7 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 
-import qqIcon from 'style/asset/qqI.png';
-import wechatIcon from 'style/asset/wechatI.png';
-import weiboIcon from 'style/asset/weiboI.png';
-
-export default class Loginform extends React.Component {
+export default class Registerform extends React.Component {
   constructor(props) {
     super(props);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -18,11 +14,16 @@ export default class Loginform extends React.Component {
     this.close = this.close.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
     this.state = {
+      name:'',
       username: '',
       password: '',
       show2dCode: { display: 'none' },
       close: props.close
     };
+  }
+
+  handleNameChange(e) {
+    this.setState({ name: e.target.value });
   }
 
   handleUsernameChange(e) {
@@ -45,66 +46,51 @@ export default class Loginform extends React.Component {
     const firstFormGroupStyle = {
       marginTop: '15px'
     };
-    const thirdpartyLoginDiv = {
-      marginLeft: '15px',
-      marginTop: '15px'
-    }
-    const thirdpartyLoginSpan = {
-      color: '#4b8abf',
-      marginRight: '10px',
-      float: 'left'
-    }
-    const thirdpartyLoginIcon = {
-      padding: '10px'
-    }
-    const iconImageStyle = {
-      width: '22px'
-    }
+
+    const agreementStyle = {
+        textAlign: 'center',
+        marginTop: '15px',
+        fontSize: '12px'
+    };
+
     return (
       <form>
-
-        <FormGroup
-          controlId='formBasicText'
-          style={firstFormGroupStyle}
-        >
+        <FormGroup style={firstFormGroupStyle}>
+          <FormControl
+            type="text"
+            value={this.state.name}
+            placeholder="姓名"
+            onChange={this.handleNameChange}
+          />
+        </FormGroup>
+        <FormGroup>
           <FormControl
             type='text'
             value={this.state.username}
             placeholder='手机号或邮箱'
             onChange={this.handleUsernameChange}
           />
+        </FormGroup>
+        <FormGroup>
           <FormControl.Feedback />
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
-        </FormGroup>
-
-        <FormGroup>
           <FormControl
             type='password'
             value={this.state.password}
-            placeholder='密码'
+            placeholder='密码(不少于6位)'
             onChange={this.handlePasswordChange}
           />
           <FormControl.Feedback />
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
 
-        <Button bsStyle="success" onClick={this.close} block>Login</Button>
+        <Button bsStyle="success" onClick={this.close} block>注册Sporit</Button>
 
-        <FormGroup>
-          <div style={ thirdpartyLoginDiv }>
-            <span style={ thirdpartyLoginSpan }>社交帐号登录</span>
-            <div>
-              <a title="微信登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ qqIcon }/></i>
-              </a>
-              <a title="微博登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ wechatIcon }/></i>
-              </a>
-              <a title="QQ 登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ weiboIcon }/></i>
-              </a>
-            </div>
-          </div>
+        <FormGroup style={agreementStyle}>
+          <p>
+            点击「注册Sporit」按钮，即代表你同意
+            <a href="" target="_blank">《Sporit协议》</a>
+          </p>
         </FormGroup>
 
         <Button onClick={this.show2dCode} block>下载Sporit</Button>

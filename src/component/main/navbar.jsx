@@ -8,8 +8,9 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
-import Loginform from './login_form';
+import LoginRegisterTabs from './login_register_tabs';
 import LogoImage from 'style/asset/logo.png';
+
 
 export default class NavbarComponent extends React.Component {
   constructor() {
@@ -64,11 +65,13 @@ export default class NavbarComponent extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
+            <div className="textCenter">
+              <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>
+            </div>
+            <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
           <Modal.Body>
-            <Loginform close={this.close} />
+            <LoginRegisterTabs/>
+            {/*<Loginform close={this.close} />*/}
           </Modal.Body>
         </Modal>
       </div>
