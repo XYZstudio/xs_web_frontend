@@ -65,9 +65,10 @@ export default class NavbarComponent extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
+            <div className="textCenter">
+              <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>
+            </div>
+            <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
           <Modal.Body>
             <LoginRegisterTabs/>
             {/*<Loginform close={this.close} />*/}
