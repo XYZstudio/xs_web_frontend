@@ -5,6 +5,7 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
+import * as request from 'superagent';
 
 import qqIcon from 'style/asset/qqI.png';
 import wechatIcon from 'style/asset/wechatI.png';
@@ -13,28 +14,39 @@ import weiboIcon from 'style/asset/weiboI.png';
 export default class Loginform extends React.Component {
   constructor(props) {
     super(props);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.close = this.close.bind(this);
+    this.submitLogin = this.submitLogin.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
     this.state = {
-      username: '',
+      email: '',
       password: '',
       show2dCode: { display: 'none' },
-      close: props.close
     };
   }
 
-  handleUsernameChange(e) {
-    this.setState({ username: e.target.value });
+  handleEmailChange(e) {
+    this.setState({ email: e.target.value });
   }
 
   handlePasswordChange(e) {
     this.setState({ password: e.target.value });
   }
 
-  close() {
-    this.state.close();
+  submitLogin() {
+    request
+    .post('http://localhost:3000/api/v1/login_user')
+    .send({
+      email: this.state.email,
+      password: this.state.password,
+    })
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log('LOGIN: ', res);
+      }
+    });
   }
 
   show2dCode() {
@@ -69,9 +81,9 @@ export default class Loginform extends React.Component {
         >
           <FormControl
             type='text'
-            value={this.state.username}
+            value={this.state.email}
             placeholder='手机号或邮箱'
-            onChange={this.handleUsernameChange}
+            onChange={this.handleEmailChange}
           />
           <FormControl.Feedback />
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
@@ -88,7 +100,7 @@ export default class Loginform extends React.Component {
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
 
-        <Button bsStyle="success" onClick={this.close} block>Login</Button>
+        <Button bsStyle="success" onClick={this.submitLogin} block>Login</Button>
 
         <FormGroup>
           <div style={ thirdpartyLoginDiv }>

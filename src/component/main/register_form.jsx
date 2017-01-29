@@ -5,20 +5,22 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
+import * as request from 'superagent';
 
 export default class Registerform extends React.Component {
   constructor(props) {
     super(props);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.close = this.close.bind(this);
+    this.submitRegister = this.submitRegister.bind(this);
+    // this.close = props.close;
     this.show2dCode = this.show2dCode.bind(this);
     this.state = {
       name:'',
-      username: '',
+      email: '',
       password: '',
       show2dCode: { display: 'none' },
-      close: props.close
     };
   }
 
@@ -26,16 +28,30 @@ export default class Registerform extends React.Component {
     this.setState({ name: e.target.value });
   }
 
-  handleUsernameChange(e) {
-    this.setState({ username: e.target.value });
+  handleEmailChange(e) {
+    this.setState({ email: e.target.value });
   }
 
   handlePasswordChange(e) {
     this.setState({ password: e.target.value });
   }
 
-  close() {
-    this.state.close();
+  submitRegister() {
+    request
+    .post('http://localhost:3000/api/v1/create_user')
+    .send({
+      email: this.state.email,
+      name: this.state.name,
+      password: this.state.password,
+      status: 'active'
+    })
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log('REGISTER: ', res);
+      }
+    });
   }
 
   show2dCode() {
@@ -66,9 +82,9 @@ export default class Registerform extends React.Component {
         <FormGroup>
           <FormControl
             type='text'
-            value={this.state.username}
+            value={this.state.email}
             placeholder='手机号或邮箱'
-            onChange={this.handleUsernameChange}
+            onChange={this.handleEmailChange}
           />
         </FormGroup>
         <FormGroup>
@@ -84,7 +100,7 @@ export default class Registerform extends React.Component {
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
 
-        <Button bsStyle="success" onClick={this.close} block>注册Sporit</Button>
+        <Button bsStyle="success" onClick={this.submitRegister} block>注册Sporit</Button>
 
         <FormGroup style={agreementStyle}>
           <p>
