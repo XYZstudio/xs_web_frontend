@@ -19,10 +19,17 @@ export default class Loginform extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.submitLogin = this.submitLogin.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
+    this.showErrorMesg = this.showErrorMesg.bind(this);
     this.state = {
       email: '',
       password: '',
       show2dCode: { display: 'none' },
+      showErrorMesg: {
+        display: 'none',
+        color: 'red',
+        paddingTop: '5px',
+        paddingLeft: '10px'
+      }
     };
   }
 
@@ -44,14 +51,26 @@ export default class Loginform extends React.Component {
     .end((err, res) => {
       if (err) {
         console.error(err);
+        this.showErrorMesg();
       } else {
         console.log('LOGIN: ', res);
+        this.props.closeModalWindow();
       }
     });
   }
 
   show2dCode() {
     this.setState({ show2dCode: {} });
+  }
+
+  showErrorMesg() {
+    this.setState({
+      showErrorMesg: {
+        color: 'red',
+        paddingTop: '5px',
+        paddingLeft: '10px'
+      }
+    });
   }
 
   render() {
@@ -102,7 +121,7 @@ export default class Loginform extends React.Component {
         </FormGroup>
 
         <Button bsStyle="success" onClick={this.submitLogin} block>Login</Button>
-
+        <p style={this.state.showErrorMesg}>用户名或密码错误</p>
         <FormGroup>
           <div style={ thirdpartyLoginDiv }>
             <span style={ thirdpartyLoginSpan }>社交帐号登录</span>
