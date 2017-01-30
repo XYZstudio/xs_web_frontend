@@ -17,11 +17,18 @@ export default class Registerform extends React.Component {
     this.submitRegister = this.submitRegister.bind(this);
     // this.close = props.close;
     this.show2dCode = this.show2dCode.bind(this);
+    this.showErrorMesg = this.showErrorMesg.bind(this);
     this.state = {
       name:'',
       email: '',
       password: '',
       show2dCode: { display: 'none' },
+      showErrorMessage: {
+        display: 'none',
+        color: 'red',
+        paddingTop: '5px',
+        paddingLeft: '10px'
+      }
     };
   }
 
@@ -49,14 +56,26 @@ export default class Registerform extends React.Component {
     .end((err, res) => {
       if (err) {
         console.error(err);
+        this.showErrorMesg();
       } else {
         console.log('REGISTER: ', res);
+        this.props.closeModalWindow();
       }
     });
   }
 
   show2dCode() {
     this.setState({ show2dCode: {} });
+  }
+
+  showErrorMesg() {
+    this.setState({
+      showErrorMessage: {
+        color: 'red',
+        paddingTop: '5px',
+        paddingLeft: '10px'
+      }
+    });
   }
 
   render() {
@@ -102,7 +121,7 @@ export default class Registerform extends React.Component {
         </FormGroup>
 
         <Button bsStyle="success" onClick={this.submitRegister} block>注册Sporit</Button>
-
+        <p style={ this.state.showErrorMessage }>该邮箱已注册</p>
         <FormGroup style={agreementStyle}>
           <p>
             点击「注册Sporit」按钮，即代表你同意

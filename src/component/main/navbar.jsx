@@ -51,7 +51,7 @@ export default class NavbarComponent extends React.Component {
                 <MenuItem eventKey={3.1}>公司故事</MenuItem>
                 <MenuItem eventKey={3.2}>Sporit社区</MenuItem>
                 <MenuItem eventKey={3.3}>团队介绍</MenuItem>
-                 <MenuItem eventKey={3.4}>专家介绍</MenuItem>
+                <MenuItem eventKey={3.4}>专家介绍</MenuItem>
               </NavDropdown>
               <NavItem eventKey={1} href="#" onClick={ this.goToCourse }>在线课程</NavItem>
               <NavItem eventKey={2} href="#">名人讲座</NavItem>
@@ -59,8 +59,9 @@ export default class NavbarComponent extends React.Component {
               <NavItem eventKey={4} href="#">人才需求</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#">Sign Up</NavItem>
-              <NavItem eventKey={2} onClick={this.open} href="#">Login</NavItem>
+              <NavItem eventKey={2} onClick={this.open} href="#">
+                <Button bsStyle="primary" bsSize="small">Login</Button>
+              </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -70,7 +71,7 @@ export default class NavbarComponent extends React.Component {
             </div>
             <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
           <Modal.Body>
-            <LoginRegisterTabs/>
+            <LoginRegisterTabs closeModalWindow={this.close}/>
             {/*<Loginform close={this.close} />*/}
           </Modal.Body>
         </Modal>
