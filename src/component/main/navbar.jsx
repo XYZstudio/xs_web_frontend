@@ -81,7 +81,7 @@ export default class NavbarComponent extends React.Component {
         <Navbar fixedTop collapseOnSelect style={{ marginBottom: 0 }} className="whiteBackground">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#"><img id="sporitLogo" src={ LogoImage }/></a>
+              <a href="/"><img id="sporitLogo" src={ LogoImage }/></a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
