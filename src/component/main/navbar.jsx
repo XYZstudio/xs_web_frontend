@@ -9,6 +9,7 @@ import MenuItem from 'react-bootstrap/lib/MenuItem';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
 import LoginRegisterTabs from './login_register_tabs';
+import LoginStore from 'store/login';
 import LogoImage from 'style/asset/logo.png';
 
 
@@ -16,11 +17,29 @@ export default class NavbarComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      user: null,
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.goToCourse = this.goToCourse.bind(this);
+    this.loginOrUserDropdown = this.loginOrUserDropdown.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  componentWillMount() {
+    const user = LoginStore.getState();
+    if (user.email) {
+      this.setState({ user: user });
+    } else {
+      this.setState({ user: null });
+    }
+  }
+
+  componentDidMount() {
+    LoginStore.subscribe(() => {
+      this.setState({ user: LoginStore.getState() });
+    });
   }
 
   open() {
@@ -33,6 +52,27 @@ export default class NavbarComponent extends React.Component {
 
   goToCourse() {
     browserHistory.push('/course');
+  }
+
+  logout() {
+    LoginStore.dispatch({ type: 'LOGOUT' });
+    this.setState({ user: null });
+  }
+
+  loginOrUserDropdown() {
+    if (this.state.user) {
+      return (
+        <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown">
+          <MenuItem eventKey={1.1}>我的Dashboard</MenuItem>
+          <MenuItem eventKey={1.2}>我的课程表</MenuItem>
+          <MenuItem eventKey={1.3} onClick={ this.logout }>退出</MenuItem>
+        </NavDropdown>
+      );
+    } else {
+      return (
+        <Button bsSize="small" onClick={this.open}>Login</Button>
+      );
+    }
   }
 
   render() {
@@ -59,8 +99,8 @@ export default class NavbarComponent extends React.Component {
               <NavItem eventKey={4} href="#">人才需求</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={2} onClick={this.open} href="#">
-                <Button bsStyle="primary" bsSize="small">Login</Button>
+              <NavItem eventKey={2} href="#">
+                { this.loginOrUserDropdown() }
               </NavItem>
             </Nav>
           </Navbar.Collapse>
@@ -72,7 +112,6 @@ export default class NavbarComponent extends React.Component {
             <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
           <Modal.Body>
             <LoginRegisterTabs closeModalWindow={this.close}/>
-            {/*<Loginform close={this.close} />*/}
           </Modal.Body>
         </Modal>
       </div>
