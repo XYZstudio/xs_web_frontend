@@ -7,6 +7,8 @@ import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
 import config from '../../../config.json';
+import { browserHistory } from 'react-router';
+import LoginStore from 'store/login';
 
 import qqIcon from 'style/asset/qqI.png';
 import wechatIcon from 'style/asset/wechatI.png';
@@ -20,6 +22,7 @@ export default class Loginform extends React.Component {
     this.submitLogin = this.submitLogin.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
     this.showErrorMesg = this.showErrorMesg.bind(this);
+    this.goToResetPwd = this.goToResetPwd.bind(this);
     this.state = {
       email: '',
       password: '',
@@ -54,6 +57,10 @@ export default class Loginform extends React.Component {
         this.showErrorMesg();
       } else {
         console.log('LOGIN: ', res);
+        LoginStore.dispatch({
+          type: 'LOGIN',
+          user: res.body,
+        });
         this.props.closeModalWindow();
       }
     });
@@ -71,6 +78,11 @@ export default class Loginform extends React.Component {
         paddingLeft: '10px'
       }
     });
+  }
+
+  goToResetPwd(e) {
+    e.preventDefault();
+    browserHistory.push('/reset_password');
   }
 
   render() {
@@ -106,7 +118,6 @@ export default class Loginform extends React.Component {
             onChange={this.handleEmailChange}
           />
           <FormControl.Feedback />
-          {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
 
         <FormGroup>
@@ -117,8 +128,8 @@ export default class Loginform extends React.Component {
             onChange={this.handlePasswordChange}
           />
           <FormControl.Feedback />
-          {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
+        <FormGroup><a href="#" onClick={ this.goToResetPwd }>忘记密码？</a></FormGroup>
 
         <Button bsStyle="success" onClick={this.submitLogin} block>Login</Button>
         <p style={this.state.showErrorMesg}>用户名或密码错误</p>
@@ -138,14 +149,6 @@ export default class Loginform extends React.Component {
             </div>
           </div>
         </FormGroup>
-
-        <Button onClick={this.show2dCode} block>下载Sporit</Button>
-        <Row style={this.state.show2dCode}>
-          <img
-            src='http://optional.is/required/wp-content/uploads/2009/06/barcode-qr.png'
-            style={{ display: 'block',margin: 'auto' }}
-          />
-        </Row>
       </form>
     );
   }
