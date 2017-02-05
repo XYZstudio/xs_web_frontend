@@ -1,3 +1,13 @@
+html,body{
+    height:100%;
+    width:100%;
+}
+
+#app{
+    height:100%;
+    width:100%;
+}
+
 .main-navbar{
   height: 51px;
 }
@@ -20,10 +30,11 @@
     padding: 20px 0;
 }
 
-#sporitLogo{
+.sporitLogo{
 	position: relative;
     top: -8px;
     width: 163px;
+    display:inline-block;
 }
 
 #loginSporitLogo{
@@ -42,4 +53,103 @@
     right: 10px;
     border: none;
     background: transparent;
+}
+
+.navbar-default.sidebar {
+    height: 1000px;
+    width: 250px;
+    float: left;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#dashboardContent{
+    float: left;
+}
+
+.dashboardCourseCellWrap{
+    margin: 10px auto;
+    width: 700px;
+    height: 250px;
+}
+
+.dashboardContentHeader{
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+.dashboardContentMarginDiv{
+    margin:50px;
+}
+
+.dashboardContentLargePanelMargin{
+    padding: 45px 60px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+
+.dashboardContentSmallPanelMargin{
+    padding: 45px 60px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+
+.dashboardContentPanelBorder{
+    border-color: #ddd;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.dashboardContentFloatSamllPanel{
+    width: 45%;
+    float: left;
+    margin-left: 4%;
+}
+
+.dashboardContentLargePanel{
+    min-width: 1000px;
+}
+
+.dashboardContentHeaderInPanel{
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+.panelButton{
+    position: relative;
+    top: 25px;
+    left: 38px;
+    color:white;
+    float: right;
+    background-color: #02b3e4 !important;
+    border-color: #02b3e4 !important;
+    border-radius: 4px;
+    padding: 12px 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.coursePanelIcon{
+    width: 50px;
+    position: relative;
+    top: -20px;
+    left: -68px;   
+}
+
+.dashboardContentMargin{
+    margin-left: 50px;
 }

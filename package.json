@@ -19,6 +19,7 @@
     "file-loader": "^0.9.0",
     "history": "^4.0.1",
     "html-webpack-plugin": "^2.22.0",
+    "isomorphic-style-loader": "1.0.0",
     "json-loader": "^0.5.4",
     "node-sass": "^4.2.0",
     "react": "^15.3.1",
@@ -34,5 +35,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
+  },
+  "devDependencies": {
+    "isomorphic-style-loader": "^1.1.0"
   }
 }
