@@ -9,7 +9,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.(jsx|js)$/,
         exclude: /node_modules/,
         loader: ['babel'],
         query: {
@@ -36,7 +36,8 @@ module.exports = {
     alias: {
       component: path.resolve(ROOT_PATH, 'src/component'),
       style: path.resolve(ROOT_PATH, 'src/style'),
-      asset: path.resolve(ROOT_PATH, 'src/style/asset')
+      asset: path.resolve(ROOT_PATH, 'src/style/asset'),
+      store: path.resolve(ROOT_PATH, 'src/redux'),
     }
   },
   output: {

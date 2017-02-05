@@ -8,6 +8,7 @@ import App from 'component/App.jsx';
 import Login from 'component/login/login_main.jsx';
 import MainPage from 'component/main/main_page.jsx';
 import Course from 'component/course/Course.jsx';
+import FindMyPassword from 'component/password/find_password.jsx';
 
 // Router
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
       <IndexRoute component={ MainPage } />
       <Route path='/course' component={ Course } />
       <Route path='/login' component={ Login } />
+      <Route path='/reset_password' component={ FindMyPassword } />
     </Route>
   </Router>,
 document.getElementById('app'));
