@@ -29,7 +29,7 @@ export default class NavbarComponent extends React.Component {
 
   componentWillMount() {
     const user = LoginStore.getState();
-    if (user.email) {
+    if (user && user.email) {
       this.setState({ user: user });
     } else {
       this.setState({ user: null });
@@ -63,7 +63,7 @@ export default class NavbarComponent extends React.Component {
     if (this.state.user) {
       return (
         <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown">
-          <MenuItem eventKey={1.1}>我的Dashboard</MenuItem>
+          <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的Dashboard</MenuItem>
           <MenuItem eventKey={1.2}>我的课程表</MenuItem>
           <MenuItem eventKey={1.3} onClick={ this.logout }>退出</MenuItem>
         </NavDropdown>
