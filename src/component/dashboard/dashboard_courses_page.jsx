@@ -9,7 +9,7 @@ import MainPageStyle from 'style/main.scss';
 
 const tempImg = 'https://sandbergwallpaper.com/wp-content/uploads/2014/09/515-61_image2-300x300.jpg';
 
-export default class Course extends React.Component {
+export default class DashboardCoursesPage extends React.Component {
   constructor() {
     super();
   }
@@ -17,9 +17,10 @@ export default class Course extends React.Component {
   render() {
     var courses = [];
     for (var i = 0; i < 10; i++) {
+      const courseCellId = 'course_cell_' + i;
       courses.push(
         <Row>
-          <Well className="courseCellWrap">
+          <Well id={ courseCellId } className="dashboardCourseCellWrap">
             <Media>
               <Media.Left>
                 <img width={200} height={200} src={ tempImg } alt="Image"/>
@@ -35,10 +36,8 @@ export default class Course extends React.Component {
     }
 
     return (
-      <div>
-        <Row className="main-navbar"><NavbarComponent /></Row>
+      <div className="dashboardContentMargin">
         { courses }
-        <Row><BottomNavbarComponent /></Row>
       </div>
     );
   }
