@@ -16,7 +16,6 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <DashboardHeader/>
         <div>
           <Sidebar/>
           <div id="dashboardContent">{ this.props.children }</div>

@@ -31,7 +31,7 @@ export default class JoinButtonComponent extends React.Component {
   render() {
     return (
         <div>
-          <Button className="blockCenter" id="joinButton" bsSize="large" block onClick={this.open}>JOIN OUR NETWORK</Button>
+          <Button className="centerBlockEle" id="joinButton" bsSize="large" block onClick={this.open}>JOIN OUR NETWORK</Button>
           <Modal show={this.state.showModal} onHide={this.close}>
               <div className="textCenter">
                 <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>

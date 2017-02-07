@@ -27,14 +27,6 @@ function DashboardHeader() {
                 </button>
             </span>
           </Brand>
-
-          <Nav className="nav navbar-top-links navbar-right">
-            <NavDropdown title={<i className="fa fa-user fa-fw"></i> } id = 'navDropdown4'>
-                  <MenuItem>
-                    <span> <i className = "fa fa-sign-out fa-fw" /> Logout </span>
-                  </MenuItem>
-            </NavDropdown>
-          </Nav>
     </Navbar>
     </div>
   );
