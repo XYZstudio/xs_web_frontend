@@ -20,14 +20,22 @@ html,body{
 	background-color: #ffffff;
 }
 
+.centerBlockEle{
+    margin: auto;
+}
+
 #joinButton{
 	font-size: 18px;
     width: 500px;
-    margin: auto;
     margin-top: 25px;
     border: #9d9d9d solid 2px;
     transition: all 0s;
     padding: 20px 0;
+}
+
+.loginRegisterFormButton{
+    width: 300px;
+    height: 50px;
 }
 
 .sporitLogo{

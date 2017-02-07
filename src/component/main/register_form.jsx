@@ -130,7 +130,7 @@ export default class Registerform extends React.Component {
           {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
         </FormGroup>
 
-        <Button bsStyle="success" onClick={this.submitRegister} block>注册Sporit</Button>
+        <Button className="centerBlockEle loginRegisterFormButton" bsStyle="success" onClick={this.submitRegister} block>注册Sporit</Button>
         <p style={ this.state.showErrorMessage }>该邮箱已注册</p>
         <FormGroup style={agreementStyle}>
           <p>
@@ -139,7 +139,7 @@ export default class Registerform extends React.Component {
           </p>
         </FormGroup>
 
-        <Button onClick={this.toggle2dCode} block>关注Sporit公众号</Button>
+        <Button className="centerBlockEle loginRegisterFormButton" onClick={this.toggle2dCode} block>关注Sporit公众号</Button>
         <Row style={this.state.show2dCode}>
           <img
             src='http://optional.is/required/wp-content/uploads/2009/06/barcode-qr.png'

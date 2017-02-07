@@ -90,7 +90,7 @@ export default class Loginform extends React.Component {
       marginTop: '15px'
     };
     const thirdpartyLoginDiv = {
-      marginLeft: '15px',
+      marginLeft: '30%',
       marginTop: '15px'
     }
     const thirdpartyLoginSpan = {
@@ -131,7 +131,7 @@ export default class Loginform extends React.Component {
         </FormGroup>
         <FormGroup><a href="#" onClick={ this.goToResetPwd }>忘记密码？</a></FormGroup>
 
-        <Button bsStyle="success" onClick={this.submitLogin} block>Login</Button>
+        <Button className="centerBlockEle loginRegisterFormButton" bsStyle="success" onClick={this.submitLogin} block>登录Sporit</Button>
         <p style={this.state.showErrorMesg}>用户名或密码错误</p>
         <FormGroup>
           <div style={ thirdpartyLoginDiv }>
