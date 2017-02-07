@@ -19,8 +19,10 @@ export default class NavbarComponent extends React.Component {
     this.state = {
       showModal: false,
       user: null,
+      loginTab: true
     };
-    this.open = this.open.bind(this);
+    this.openRegister = this.openRegister.bind(this);
+    this.openLogin = this.openLogin.bind(this);
     this.close = this.close.bind(this);
     this.goToCourse = this.goToCourse.bind(this);
     this.loginOrUserDropdown = this.loginOrUserDropdown.bind(this);
@@ -42,8 +44,12 @@ export default class NavbarComponent extends React.Component {
     });
   }
 
-  open() {
+  openLogin() {
     this.setState({ showModal: true });
+  }
+
+  openRegister() {
+    this.setState({ showModal: true, loginTab: false });
   }
 
   close() {
@@ -63,14 +69,16 @@ export default class NavbarComponent extends React.Component {
     if (this.state.user) {
       return (
         <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown">
-          <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的Dashboard</MenuItem>
-          <MenuItem eventKey={1.2}>我的课程表</MenuItem>
-          <MenuItem eventKey={1.3} onClick={ this.logout }>退出</MenuItem>
+          <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
+          <MenuItem eventKey={1.2} onClick={ this.logout }>退出</MenuItem>
         </NavDropdown>
       );
     } else {
       return (
-        <Button bsSize="small" onClick={this.open}>Login</Button>
+        <div>
+          <Button className="loginRegisterButton registerButton" bsSize="small" onClick={this.openRegister}>注册</Button>
+          <Button className="loginRegisterButton loginButton" bsSize="small" onClick={this.openLogin}>登录</Button>
+        </div>
       );
     }
   }
@@ -93,8 +101,8 @@ export default class NavbarComponent extends React.Component {
                 <MenuItem eventKey={3.3}>团队介绍</MenuItem>
                 <MenuItem eventKey={3.4}>专家介绍</MenuItem>
               </NavDropdown>
-              <NavItem eventKey={1} href="#" onClick={ this.goToCourse }>在线课程</NavItem>
-              <NavItem eventKey={2} href="#">名人讲座</NavItem>
+              <NavItem eventKey={1} href="#" onClick={ this.goToCourse }>Sporit学位</NavItem>
+              <NavItem eventKey={2} href="#">所有课程</NavItem>
               <NavItem eventKey={3} href="#">Sporit观点</NavItem>
               <NavItem eventKey={4} href="#">人才需求</NavItem>
             </Nav>
@@ -111,7 +119,7 @@ export default class NavbarComponent extends React.Component {
             </div>
             <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
           <Modal.Body>
-            <LoginRegisterTabs closeModalWindow={this.close}/>
+            <LoginRegisterTabs closeModalWindow={this.close} showLoginTab={this.state.loginTab}/>
           </Modal.Body>
         </Modal>
       </div>

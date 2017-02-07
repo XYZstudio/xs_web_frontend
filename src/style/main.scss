@@ -153,3 +153,22 @@ html,body{
 .dashboardContentMargin{
     margin-left: 50px;
 }
+
+.loginRegisterButton{
+    width: 10em;
+    font-size: 12px;
+    border: .125rem solid transparent;
+    clear: none;
+    font-weight: 900;
+    cursor: auto;
+    color: white;
+    margin-left: .75rem;
+}
+
+.loginButton{
+    background: #02b3e4;
+}
+
+.registerButton{
+    background-color: #607e97;
+}

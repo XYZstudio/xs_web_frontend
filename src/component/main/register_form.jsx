@@ -16,6 +16,7 @@ export default class Registerform extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.submitRegister = this.submitRegister.bind(this);
     // this.close = props.close;
+    this.toggle2dCode = this.toggle2dCode.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
     this.showErrorMesg = this.showErrorMesg.bind(this);
     this.state = {
@@ -66,6 +67,15 @@ export default class Registerform extends React.Component {
 
   show2dCode() {
     this.setState({ show2dCode: {} });
+  }
+
+  toggle2dCode(){
+    if (this.state.show2dCode.display == 'none') {
+      this.setState({ show2dCode: { display: '' } });
+    } else {
+      this.setState({ show2dCode: { display: 'none' } });
+    }
+    
   }
 
   showErrorMesg() {
@@ -129,12 +139,13 @@ export default class Registerform extends React.Component {
           </p>
         </FormGroup>
 
-        <Button onClick={this.show2dCode} block>下载Sporit</Button>
+        <Button onClick={this.toggle2dCode} block>关注Sporit公众号</Button>
         <Row style={this.state.show2dCode}>
           <img
             src='http://optional.is/required/wp-content/uploads/2009/06/barcode-qr.png'
             style={{ display: 'block',margin: 'auto' }}
           />
+          <div className="textCenter">扫描二维码关注Sporit微信公众号</div>
         </Row>
       </form>
     );

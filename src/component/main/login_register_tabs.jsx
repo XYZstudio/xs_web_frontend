@@ -12,13 +12,17 @@ export default class LoginRegisterTabs extends React.Component {
   }
 
   render() {
-    console.log();
+    console.log(this.props.showLoginTab);
+    let activeTabKey = 1;
+    if (!this.props.showLoginTab) {
+      activeTabKey = 2;
+    }
     return (
-        <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-          <Tab eventKey={1} title="Login">
+        <Tabs defaultActiveKey={ activeTabKey } id="uncontrolled-tab-example">
+          <Tab eventKey={1} title="登录">
             <Loginform closeModalWindow={this.props.closeModalWindow}/>
           </Tab>
-          <Tab eventKey={2} title="Register"> 
+          <Tab eventKey={2} title="注册"> 
             <Registerform closeModalWindow={this.props.closeModalWindow}/>
           </Tab>
         </Tabs>
