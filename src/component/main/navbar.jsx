@@ -45,7 +45,7 @@ export default class NavbarComponent extends React.Component {
   }
 
   openLogin() {
-    this.setState({ showModal: true });
+    this.setState({ showModal: true , loginTab: true });
   }
 
   openRegister() {
