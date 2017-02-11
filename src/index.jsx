@@ -15,7 +15,11 @@ import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
 import DashboardCoursesPage from 'component/dashboard/dashboard_courses_page.jsx';
 import DashboardLecturesPage from 'component/dashboard/dashboard_lecture_page.jsx';
-import DashboardProfilePage from 'component/dashboard/dashboard_profile_page.jsx';
+
+import DashboardCareerOpporPage from 'component/dashboard/dashboard_careerOppor_page.jsx';
+import DashboardCareerInfoPage from 'component/dashboard/dashboard_careerInfo_page.jsx';
+import DashboardChartPage from 'component/dashboard/dashboard_chart_page.jsx';
+import DashboardSettingPage from 'component/dashboard/dashboard_setting_page.jsx';
 
 // Router
 ReactDOM.render(
@@ -30,7 +34,10 @@ ReactDOM.render(
         <IndexRoute component={ DashboardHomePage } />
         <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
         <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
-        <Route path='/dashboard/profile' component={ DashboardProfilePage } />
+        <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
+        <Route path='/dashboard/careerInfo' component={ DashboardCareerInfoPage } />
+        <Route path='/dashboard/chart' component={ DashboardChartPage } />
+        <Route path='/dashboard/setting' component={ DashboardSettingPage } />
       </Route>
       
   		{/* This match-all route below must be defined as the last one.*/}
