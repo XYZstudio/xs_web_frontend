@@ -85,35 +85,35 @@ class Sidebar extends Component {
               <ul style={ this.state.collapseCreerInfo }>
                 <li>
                   <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Summary'); }} >
-                    个人简介
+                    &nbsp;个人简介
                   </a>
                 </li>
                 <li>
                   <a
                     href=""
                     onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/ContactInfo');}} >
-                    联系方式
+                    &nbsp;联系方式
                   </a>
                 </li>
                 <li>
                   <a 
                     href="" 
                     onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Experience');}} >
-                    工作经历
+                    &nbsp;工作经历
                   </a>
                 </li>
                 <li>
                   <a 
                     href="" 
                     onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Education');}} >
-                    教育背景
+                    &nbsp;教育背景
                   </a>
                 </li>
                 <li>
                   <a 
                     href="" 
                     onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Resume');}} >
-                    简历上传
+                    &nbsp;简历上传
                   </a>
                 </li>
               </ul>

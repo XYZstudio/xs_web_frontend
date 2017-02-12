@@ -20,80 +20,87 @@ export default class DashboardEducationPage extends React.Component {
   render() {
     return (
       <div>
-        <div>之前教育经历list</div>
-        <div>************** 分割线 ****************</div>
-        <Form horizontal>
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              学校
-            </Col>
-            <Col sm={10}>
-              <FormControl />
-            </Col>
-          </FormGroup>
+        <div>
+        <h3 className="dashboardContentChineseHead">教育背景:</h3>
+        <div>内容为空</div>
+        </div>
+        <div>
+          <h3 className="dashboardContentChineseHead">添加教育经历:</h3>
+          <div>
+            <Form horizontal>
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                  学校
+                </Col>
+                <Col sm={10}>
+                  <FormControl />
+                </Col>
+              </FormGroup>
 
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              地址
-            </Col>
-            <Col sm={10}>
-              <FormControl />
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                  地址
+                </Col>
+                <Col sm={10}>
+                  <FormControl />
+                </Col>
+              </FormGroup>
 
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              开始时间
-            </Col>
-            <Col sm={10}>
-              <FormControl />
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                  开始时间
+                </Col>
+                <Col sm={10}>
+                  <FormControl />
+                </Col>
+              </FormGroup>
 
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              结束时间
-            </Col>
-            <Col sm={10}>
-              <FormControl />
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                  结束时间
+                </Col>
+                <Col sm={10}>
+                  <FormControl />
+                </Col>
+              </FormGroup>
 
-          <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ControlLabel} sm={2}>
-              学位
-            </Col>
-            <Col sm={10}>
-              <FormControl />
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalPassword">
+                <Col componentClass={ControlLabel} sm={2}>
+                  学位
+                </Col>
+                <Col sm={10}>
+                  <FormControl />
+                </Col>
+              </FormGroup>
 
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              专业
-            </Col>
-            <Col sm={10}>
-              <FormControl componentClass="textarea"/>
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                  专业
+                </Col>
+                <Col sm={10}>
+                  <FormControl componentClass="textarea"/>
+                </Col>
+              </FormGroup>
 
-          <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-            描述
-            </Col>
-            <Col sm={10}>
-              <FormControl componentClass="textarea"/>
-            </Col>
-          </FormGroup>
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                描述
+                </Col>
+                <Col sm={10}>
+                  <FormControl componentClass="textarea"/>
+                </Col>
+              </FormGroup>
 
-          <FormGroup>
-            <Col smOffset={2} sm={10}>
-              <Button type="submit">
-                添加教育经历
-              </Button>
-            </Col>
-          </FormGroup>
-        </Form>     
+              <FormGroup>
+                <Col smOffset={2} sm={10}>
+                  <Button type="submit">
+                    添加教育经历
+                  </Button>
+                </Col>
+              </FormGroup>
+            </Form>     
+          </div>
+        </div>
       </div>
     );
   };

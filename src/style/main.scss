@@ -90,10 +90,6 @@ html,body{
     padding: 50px;
 }
 
-.sidebar ul li {
-    border-bottom: 1px solid #e7e7e7;
-}
-
 .collapseExpandArrow {
     float: right;
     margin-top: 6px;
@@ -127,7 +123,7 @@ html,body{
 }
 
 .dashboardContentCoursePanel{
-    width: 35%;
+    width: 45%;
     float: left;
     margin-left: 4%;
 }
@@ -200,4 +196,29 @@ html,body{
 
 .sidebar{
     height: 100%;
+}
+
+#dashboardSidebarContainer li {
+    list-style-type: none;
+}
+
+.nav > li > ul > li > a {
+    display: block;
+    padding: 10px 0px;
+}
+
+.nav>li>ul>li>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+
+.dashboardContentChineseHead{
+    font-size: 18px;
+    font-family: "Open Sans",sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboardAvatar{
+    width: 200px;
+    margin: 10px;
 }
