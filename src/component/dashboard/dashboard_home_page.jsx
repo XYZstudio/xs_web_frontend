@@ -28,14 +28,31 @@ export default class DashboardHomePage extends React.Component {
 
   render() {
     console.log(this.state.user);
-    var lastActivity = this.state.user.lastActivity;
-    var enrolledCourseInfo =  this.state.user.course;
-    console.log("*********");
-    console.log(enrolledCourseInfo);
-    console.log("*********");
-    var enrolledCourses = [];
-    for (var i = 0;i < enrolledCourseInfo.length;i++) {
-      enrolledCourses.push(
+    if (this.state.user != null) {
+      var lastActivity = this.state.user.lastActivity;
+      var enrolledCourseInfo =  this.state.user.course;
+      var lastActivityElem = [];
+      var enrolledCourses = [];
+
+      if (lastActivity != null) {
+        lastActivityElem.push(
+            <div className="dashboardContentPanel dashboardContentPanelBorder">
+              <h1 className="dashboardContentPanelHeader">
+                <span>
+                  <strong>
+                    { this.state.user.lastActivity.courseName }
+                  </strong>
+                </span>
+              </h1>
+              <a className="panelButton" href="">继续学习</a>
+              <p >You are on { this.state.user.lastActivity.videoName }</p>
+            </div>
+        );
+      }
+
+      if (enrolledCourseInfo != null) {
+        for (var i = 0;i < enrolledCourseInfo.length;i++) {
+          enrolledCourses.push(
             <div className="dashboardContentPanel dashboardContentPanelBorder dashboardContentCoursePanel">
               <div><img className="coursePanelIcon" src={ courseIcon }/></div>
               <div>
@@ -43,35 +60,26 @@ export default class DashboardHomePage extends React.Component {
                 <p >Course Description { i }</p>
               </div>
               <div>
-                <a className="panelButton" href="">View Course</a>
+                <a className="panelButton" href="">查看课程</a>
               </div>
             </div>
-      );
+          );
+        }
+      }
     }
 
     return (
       <div className="container">
         <div id="dashboardContentLastActivity">
-          <h3 className="dashboardContentHeader">Latest Activity</h3>
-          <div className="dashboardContentPanel dashboardContentPanelBorder">
-            <h1 className="dashboardContentPanelHeader">
-              <span>
-                <strong>
-                  { this.state.user.lastActivity.courseName }
-                </strong>
-              </span>
-            </h1>
-            <a className="panelButton" href="">Resume Learning</a>
-            <p >You are on { this.state.user.lastActivity.videoName }</p>
+          <h3 className="dashboardContentHeader">最近动态</h3>
+          <div>
+            { lastActivityElem }
           </div>
         </div>
-
         <div>
-          <h3 className="dashboardContentHeader">Enrolled Courses</h3>
+          <h3 className="dashboardContentHeader">我的课程</h3>
           <div>
-
             { enrolledCourses }
-
           </div>
         </div>
       </div>
