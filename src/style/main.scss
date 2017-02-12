@@ -8,6 +8,16 @@ html,body{
     width:100%;
 }
 
+#appContainer{
+    height:100%;
+    width:100%;
+}
+
+.container{
+    height:100%;
+    width:100%;
+}
+
 .main-navbar{
   height: 51px;
 }
@@ -63,18 +73,30 @@ html,body{
     background: transparent;
 }
 
-.navbar-default.sidebar {
-    height: 1000px;
-    width: 250px;
+#dashboardSidebarContainer{
+    height:100%;
+    width:15%;
+    float:left;
+}
+
+#dashboardContentContainer{
+    height: 100%;
+    width: calc(85% - 100px);
     float: left;
+    padding: 50px;
+}
+
+#dashboardContent{
+    padding: 50px;
 }
 
 .sidebar ul li {
     border-bottom: 1px solid #e7e7e7;
 }
 
-#dashboardContent{
-    float: left;
+.collapseExpandArrow {
+    float: right;
+    margin-top: 6px;
 }
 
 .dashboardCourseCellWrap{
@@ -91,17 +113,7 @@ html,body{
     font-weight: 600;
 }
 
-.dashboardContentMarginDiv{
-    margin:50px;
-}
-
-.dashboardContentLargePanelMargin{
-    padding: 45px 60px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-}
-
-.dashboardContentSmallPanelMargin{
+.dashboardContentPanel{
     padding: 45px 60px;
     margin-bottom: 50px;
     margin-left: 20px;
@@ -114,17 +126,13 @@ html,body{
     border-radius: 4px;
 }
 
-.dashboardContentFloatSamllPanel{
-    width: 45%;
+.dashboardContentCoursePanel{
+    width: 35%;
     float: left;
     margin-left: 4%;
 }
 
-.dashboardContentLargePanel{
-    min-width: 1000px;
-}
-
-.dashboardContentHeaderInPanel{
+.dashboardContentPanelHeader{
     font-size: 18px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -156,10 +164,6 @@ html,body{
     position: relative;
     top: -20px;
     left: -68px;   
-}
-
-.dashboardContentMargin{
-    margin-left: 50px;
 }
 
 .loginRegisterButton{

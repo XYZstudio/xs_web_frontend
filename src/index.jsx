@@ -21,6 +21,12 @@ import DashboardCareerInfoPage from 'component/dashboard/dashboard_careerInfo_pa
 import DashboardChartPage from 'component/dashboard/dashboard_chart_page.jsx';
 import DashboardSettingPage from 'component/dashboard/dashboard_setting_page.jsx';
 
+import DashboardSummaryPage from 'component/dashboard/dashboard_summary_page.jsx';
+import DashboardContactInfoPage from 'component/dashboard/dashboard_contactInfo_page.jsx';
+import DashboardExperiencePage from 'component/dashboard/dashboard_experience_page.jsx';
+import DashboardEducationPage from 'component/dashboard/dashboard_education_page.jsx';
+import DashboardResumePage from 'component/dashboard/dashboard_resume_page.jsx';
+
 // Router
 ReactDOM.render(
   <Router history={ browserHistory }>
@@ -35,9 +41,13 @@ ReactDOM.render(
         <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
         <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
         <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
-        <Route path='/dashboard/careerInfo' component={ DashboardCareerInfoPage } />
         <Route path='/dashboard/chart' component={ DashboardChartPage } />
         <Route path='/dashboard/setting' component={ DashboardSettingPage } />
+        <Route path='/dashboard/careerInfo/Resume' component={ DashboardResumePage } />
+        <Route path='/dashboard/careerInfo/Education' component={ DashboardEducationPage } />
+        <Route path='/dashboard/careerInfo/Experience' component={ DashboardExperiencePage } />
+        <Route path='/dashboard/careerInfo/ContactInfo' component={ DashboardContactInfoPage } />
+        <Route path='/dashboard/careerInfo/Summary' component={ DashboardSummaryPage } />
       </Route>
       
   		{/* This match-all route below must be defined as the last one.*/}
