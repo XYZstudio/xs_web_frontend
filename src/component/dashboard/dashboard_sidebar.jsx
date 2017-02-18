@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import LogoImage from 'style/asset/logo.png';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
 import FaBook from 'react-icons/lib/fa/book';

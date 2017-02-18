@@ -26,6 +26,7 @@ import DashboardContactInfoPage from 'component/dashboard/dashboard_contactInfo_
 import DashboardExperiencePage from 'component/dashboard/dashboard_experience_page.jsx';
 import DashboardEducationPage from 'component/dashboard/dashboard_education_page.jsx';
 import DashboardResumePage from 'component/dashboard/dashboard_resume_page.jsx';
+import DashboardCourseDetail from 'component/dashboard/dashboard_course_detail.jsx';
 
 // Router
 ReactDOM.render(
@@ -35,10 +36,17 @@ ReactDOM.render(
       <Route path='/course' component={ Course } />
       <Route path='/login' component={ Login } />
       <Route path='/reset_password' component={ FindMyPassword } />
-
       <Route path='/dashboard' component={ Dashboard } >
         <IndexRoute component={ DashboardHomePage } />
         <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
+        <Route
+          path='/dashboard/courses/:courseName'
+          getComponent={
+            (nextState, cb) => {
+              cb(null, DashboardCourseDetail);
+            } 
+          }
+        />
         <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
         <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
         <Route path='/dashboard/chart' component={ DashboardChartPage } />
