@@ -8,6 +8,8 @@ import Well from 'react-bootstrap/lib/Well';
 import Media from 'react-bootstrap/lib/Media';
 import NavbarComponent from 'component/main/navbar';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
+import { Icon } from 'react-fa';
+import faker from 'faker';
 import MainPageStyle from 'style/main.scss';
 
 export default class DashboardCoursesPage extends React.Component {
@@ -47,6 +49,10 @@ export default class DashboardCoursesPage extends React.Component {
               </Media.Left>
               <Media.Body>
                 <Media.Heading>{ c.name }</Media.Heading>
+                <p>
+                  <Icon name="clock-o" style={{ marginLeft: 10, marginRight: 5 }} />{ parseInt(faker.random.number() / 1000) }hrs
+                  <Icon name="heart" style={{ marginLeft: 10, marginRight: 5 }} />{ parseInt(faker.random.number() / 100) }
+                </p>
                 <p>{ c.description }</p>
               </Media.Body>
             </Media>
