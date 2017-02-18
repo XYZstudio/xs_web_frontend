@@ -1,21 +1,23 @@
 html,body{
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 #app{
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 #appContainer{
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 .container{
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .main-navbar{
@@ -73,69 +75,6 @@ html,body{
     background: transparent;
 }
 
-#dashboardSidebarContainer{
-    height:100%;
-    width:15%;
-    float:left;
-}
-
-#dashboardContentContainer{
-    height: 100%;
-    width: calc(85% - 100px);
-    float: left;
-    padding: 50px;
-}
-
-#dashboardContent{
-    padding: 50px;
-}
-
-.collapseExpandArrow {
-    float: right;
-    margin-top: 6px;
-}
-
-.dashboardCourseCellWrap{
-    margin: 10px auto;
-    width: 700px;
-    height: 250px;
-}
-
-.dashboardContentHeader{
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0 0 20px 0;
-    font-weight: 600;
-}
-
-.dashboardContentPanel{
-    padding: 45px 60px;
-    margin-bottom: 50px;
-    margin-left: 20px;
-}
-
-.dashboardContentPanelBorder{
-    border-color: #ddd;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-}
-
-.dashboardContentCoursePanel{
-    width: 45%;
-    float: left;
-    margin-left: 4%;
-}
-
-.dashboardContentPanelHeader{
-    font-size: 18px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0 0 20px 0;
-    font-weight: 600;
-}
-
 .panelButton{
     position: relative;
     top: 25px;
@@ -179,46 +118,4 @@ html,body{
 
 .registerButton{
     background-color: #607e97;
-}
-
-#dashboardLogoDiv {
-    padding-left: 5px;
-    background: white;
-    padding-bottom: 15px;
-    border: solid 2px #f8f8f8;
-}
-
-.dashboardSideBarIcon{
-    width: 25px;
-    height: 25px; 
-    margin: 5px 13px;
-}
-
-.sidebar{
-    height: 100%;
-}
-
-#dashboardSidebarContainer li {
-    list-style-type: none;
-}
-
-.nav > li > ul > li > a {
-    display: block;
-    padding: 10px 0px;
-}
-
-.nav>li>ul>li>a:hover {
-    text-decoration: none;
-    background-color: #eee;
-}
-
-.dashboardContentChineseHead{
-    font-size: 18px;
-    font-family: "Open Sans",sans-serif;
-    -webkit-font-smoothing: antialiased;
-}
-
-.dashboardAvatar{
-    width: 200px;
-    margin: 10px;
 }

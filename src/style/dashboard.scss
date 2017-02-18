@@ -1,0 +1,113 @@
+#dashboardSidebarContainer{
+    height:100%;
+    width:15%;
+    float:left;
+}
+
+#dashboardContentContainer{
+    height: 100%;
+    width: 85%;
+    float: left;
+    padding: 50px;
+    overflow-y: scroll;
+}
+
+#dashboardContent{
+    padding: 50px;
+}
+
+.collapseExpandArrow {
+    float: right;
+    margin-top: 6px;
+}
+
+.dashboardCourseCellWrap{
+    width: 500px;
+    height: 270px;
+    float: left;
+    margin: 10px;
+    border-radius: 0px;
+}
+
+.dashboardContentHeader{
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+.dashboardContentPanel{
+    padding: 45px 60px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+}
+
+.dashboardContentPanelBorder{
+    border-color: #ddd;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.dashboardContentCoursePanel{
+    width: 45%;
+    float: left;
+    margin-left: 4%;
+}
+
+.dashboardContentPanelHeader{
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    font-weight: 600;
+}
+
+#dashboardLogoDiv {
+    padding-left: 5px;
+    background: white;
+    padding-bottom: 15px;
+    border: solid 2px #f8f8f8;
+}
+
+.dashboardSideBarIcon{
+    width: 25px;
+    height: 25px; 
+    margin: 5px 13px;
+}
+
+#dashboardSidebarContainer li {
+    list-style-type: none;
+}
+
+.sidebar{
+    height: 100%;
+}
+
+.nav > li > ul > li > a {
+    display: block;
+    padding: 10px 0px;
+}
+
+.nav>li>ul>li>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+}
+
+.dashboardContentChineseHead{
+    font-size: 18px;
+    font-family: "Open Sans",sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dashboardAvatar{
+    width: 200px;
+    margin: 10px;
+}
+
+.course-detail-btn{
+  bottom: 0;
+  right: 0;
+  float: right;
+}
