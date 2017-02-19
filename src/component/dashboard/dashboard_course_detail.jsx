@@ -43,6 +43,26 @@ export default class DashboardCourseDetail extends React.Component {
     });
   }
 
+  addCourse(courseName) {
+    request
+    .post('http://localhost:3000/api/v1/add_course_to_user')
+    .withCredentials()
+    .send({
+      email: this.state.user.email,
+      courseNames: [courseName]
+    })
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        LoginStore.dispatch({
+          type: 'LOGIN',
+          user: res.body,
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <div>
@@ -50,7 +70,9 @@ export default class DashboardCourseDetail extends React.Component {
           <Jumbotron>
             <h3>{ this.state.courseName }</h3>
             <p>{ this.state.course && this.state.course.description }</p>
-            <p><Button bsStyle="primary">收藏课程</Button></p>
+            <p>
+              <Button bsStyle="primary" onClick={ () => { this.addCourse(this.state.courseName); } }>收藏课程</Button>
+            </p>
           </Jumbotron>
         </Row>
         <Row>
@@ -60,8 +82,8 @@ export default class DashboardCourseDetail extends React.Component {
                 <Thumbnail key={ video._id } src={ videoImg } alt="242x200" className="video-container">
                   <h4>{ video.name }</h4>
                   <p>
-                    <Icon name="clock-o" style={{ marginLeft: 10, marginRight: 5 }} />{ parseInt(faker.random.number() / 1000) }min
-                    <Icon name="heart" style={{ marginLeft: 10, marginRight: 5 }} />{ parseInt(faker.random.number() / 100) }
+                    <Icon className="video-sub-icon" name="clock-o" />{ parseInt(faker.random.number() / 1000) }min
+                    <Icon className="video-sub-icon" name="heart" />{ parseInt(faker.random.number() / 100) }
                   </p>
                   <p>{ video.description }</p>
                 </Thumbnail>
