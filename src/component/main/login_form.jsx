@@ -56,7 +56,6 @@ export default class Loginform extends React.Component {
         console.error(err);
         this.showErrorMesg();
       } else {
-        console.log('LOGIN: ', res);
         LoginStore.dispatch({
           type: 'LOGIN',
           user: res.body,

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import {
   MenuItem,
@@ -26,6 +27,10 @@ export default class DashboardHomePage extends React.Component {
     }
   }
 
+  goToDetail(courseName) {
+    browserHistory.push(`/dashboard/courses/${courseName}`);
+  }
+
   showLastActivity() {
     var lastActivity = this.state.user.lastActivity;
     if (lastActivity != null) {
@@ -34,12 +39,12 @@ export default class DashboardHomePage extends React.Component {
           <h1 className="dashboardContentPanelHeader">
             <span>
               <strong>
-                { this.state.user.lastActivity.courseName }
+                { lastActivity.courseName }
               </strong>
             </span>
           </h1>
-          <a className="panelButton" href="">继续学习</a>
-          <p >You are on { this.state.user.lastActivity.videoName }</p>
+          <a className="panelButton" href="" onClick={ () => { this.goToDetail(lastActivity.courseName) } }>继续学习</a>
+          <p>You are on { lastActivity.videoName }</p>
         </div>
       );
     }
@@ -48,8 +53,8 @@ export default class DashboardHomePage extends React.Component {
   showEnrolledCourses() {
     var user = this.state.user;
     if (user != null) {
-      var enrolledCourseInfo =  this.state.user.course;
-      enrolledCourseInfo = enrolledCourseInfo.map((c, i) => {
+      var enrolledCourseInfo =  user.course;
+      return enrolledCourseInfo = enrolledCourseInfo.map((c, i) => {
         return (
           <div
             key={ c.courseName }
@@ -61,7 +66,7 @@ export default class DashboardHomePage extends React.Component {
               <p>Course Description { i }</p>
             </div>
             <div>
-              <a className="panelButton" href="">查看课程</a>
+              <a className="panelButton" href="" onClick={ () => { this.goToDetail(c.courseName) } }>查看课程</a>
             </div>
           </div>
         );
@@ -70,7 +75,6 @@ export default class DashboardHomePage extends React.Component {
   }
 
   render() {
-    console.log(this.state.user);
     return (
       <div className="container">
         <div id="dashboardContentLastActivity">
