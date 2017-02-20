@@ -12,7 +12,6 @@ export default class LoginRegisterTabs extends React.Component {
   }
 
   render() {
-    console.log(this.props.showLoginTab);
     let activeTabKey = 1;
     if (!this.props.showLoginTab) {
       activeTabKey = 2;
