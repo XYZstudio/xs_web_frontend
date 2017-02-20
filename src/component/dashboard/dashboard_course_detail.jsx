@@ -6,6 +6,7 @@ import videoImg from 'asset/video.png';
 import courseStyle from 'style/course.scss';
 import { Icon } from 'react-fa';
 import faker from 'faker';
+import { browserHistory } from 'react-router';
 
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class DashboardCourseDetail extends React.Component {
       if (err) {
         console.error(err);
       } else {
+        console.log(res.body);
         this.setState({
           course: res.body.course,
           videos: res.body.videos
@@ -69,6 +71,28 @@ export default class DashboardCourseDetail extends React.Component {
     this.setState({ alertVisible: bool });
   }
 
+  playVideo(videoName) {
+    browserHistory.push(`/dashboard/video/${videoName}`);
+  }
+
+  addCourseButton() {
+    var user = this.state.user;
+    if (user != null) {
+      var enrolledCourseInfo =  user.course;
+      if (enrolledCourseInfo != null) {
+        for (var i = 0;i < enrolledCourseInfo.length;i++) {
+          var enrolledCourseName = enrolledCourseInfo[i].courseName;
+          if (enrolledCourseName == this.state.courseName) {
+            return (<div></div>);
+          }
+        }
+      }
+    }
+    return (
+      <Button bsStyle="primary" onClick={ () => { this.addCourse(this.state.courseName); } }>加入课程</Button>
+    );
+  }
+
   render() {
     var alert = '';
     if (this.state.alertVisible) {
@@ -86,20 +110,22 @@ export default class DashboardCourseDetail extends React.Component {
           <Jumbotron>
             <h3>{ this.state.courseName }</h3>
             <p>{ this.state.course && this.state.course.description }</p>
-            <p>
-              <Button bsStyle="primary" onClick={ () => { this.addCourse(this.state.courseName); } }>收藏课程</Button>
-            </p>
+            { this.addCourseButton() }
           </Jumbotron>
         </Row>
         <Row>
           {
             this.state.videos.map(video => {
               return (
-                <Thumbnail key={ video._id } src={ videoImg } alt="242x200" className="video-container">
+                <Thumbnail 
+                  key={ video._id } 
+                  src={ videoImg } 
+                  alt="242x200" 
+                  className="video-container"
+                  onClick={ () => { this.playVideo(video.name) } }>
                   <h4>{ video.name }</h4>
                   <p>
                     <Icon className="video-sub-icon" name="clock-o" />{ parseInt(faker.random.number() / 1000) }min
-                    <Icon className="video-sub-icon" name="heart" />{ parseInt(faker.random.number() / 100) }
                   </p>
                   <p>{ video.description }</p>
                 </Thumbnail>

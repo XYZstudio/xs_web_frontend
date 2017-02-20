@@ -27,6 +27,7 @@ import DashboardExperiencePage from 'component/dashboard/dashboard_experience_pa
 import DashboardEducationPage from 'component/dashboard/dashboard_education_page.jsx';
 import DashboardResumePage from 'component/dashboard/dashboard_resume_page.jsx';
 import DashboardCourseDetail from 'component/dashboard/dashboard_course_detail.jsx';
+import DashboardPlayVideo from 'component/dashboard/dashboard_play_video.jsx';
 
 // Router
 ReactDOM.render(
@@ -44,6 +45,14 @@ ReactDOM.render(
           getComponent={
             (nextState, cb) => {
               cb(null, DashboardCourseDetail);
+            } 
+          }
+        />
+        <Route
+          path='/dashboard/video/:videoName'
+          getComponent={
+            (nextState, cb) => {
+              cb(null, DashboardPlayVideo);
             } 
           }
         />
