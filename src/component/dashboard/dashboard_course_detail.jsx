@@ -1,6 +1,6 @@
 import React from 'react';
 import * as request from 'superagent';
-import { Col, Row, Jumbotron, Button, Thumbnail } from 'react-bootstrap';
+import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
 import LoginStore from 'store/login';
 import videoImg from 'asset/video.png';
 import courseStyle from 'style/course.scss';
@@ -16,6 +16,7 @@ export default class DashboardCourseDetail extends React.Component {
       course: null,
       videos: [],
       open: false,
+      alertVisible: false,
     };
   }
 
@@ -46,7 +47,7 @@ export default class DashboardCourseDetail extends React.Component {
   addCourse(courseName) {
     request
     .post('http://localhost:3000/api/v1/add_course_to_user')
-    .withCredentials()
+    // .withCredentials()
     .send({
       email: this.state.user.email,
       courseNames: [courseName]
@@ -59,13 +60,28 @@ export default class DashboardCourseDetail extends React.Component {
           type: 'LOGIN',
           user: res.body,
         });
+        this.handleAlert(true);
       }
     });
   }
 
+  handleAlert(bool) {
+    this.setState({ alertVisible: bool });
+  }
+
   render() {
+    var alert = '';
+    if (this.state.alertVisible) {
+      alert =  (
+        <Alert bsStyle="info" onDismiss={ () => { this.handleAlert(false); } }>
+          <h4>You have successfully added course: { this.courseName }</h4>
+        </Alert>
+      );
+    }
+
     return (
       <div>
+        { alert }
         <Row>
           <Jumbotron>
             <h3>{ this.state.courseName }</h3>
