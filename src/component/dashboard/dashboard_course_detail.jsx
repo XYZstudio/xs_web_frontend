@@ -47,7 +47,7 @@ export default class DashboardCourseDetail extends React.Component {
   addCourse(courseName) {
     request
     .post('http://localhost:3000/api/v1/add_course_to_user')
-    // .withCredentials()
+    .withCredentials()
     .send({
       email: this.state.user.email,
       courseNames: [courseName]
