@@ -17,7 +17,7 @@ export default class DashboardCourseDetail extends React.Component {
       course: null,
       videos: [],
       open: false,
-      alertVisible: false,
+      alertVisible: false
     };
   }
 
@@ -93,12 +93,59 @@ export default class DashboardCourseDetail extends React.Component {
     );
   }
 
+  playButton(video) {
+    var user = this.state.user;
+    if (user != null) {
+      var enrolledCourseInfo =  user.course;
+      if (enrolledCourseInfo != null) {
+        for (var i = 0;i < enrolledCourseInfo.length;i++) {
+          var enrolledCourseName = enrolledCourseInfo[i].courseName;
+          if (enrolledCourseName == this.state.courseName) {
+            return (
+              <div>
+                <Button 
+                  bsStyle="primary" 
+                  className="videoThumbnailPlayButton"
+                  onClick={ () => { this.playVideo(video.name) } }>
+                  开始学习</Button>
+              </div>
+            );
+          }
+        }
+      }
+    }
+    return (
+      <div></div>
+    );
+  }
+
+  videoThumbnail() {
+    return this.state.videos.map(video => {
+      return (
+        <Thumbnail 
+          key={ video._id } 
+          src={ videoImg } 
+          alt="242x200" 
+          className="video-container">
+          <h4>{ video.name }</h4>
+          <p>
+            <Icon className="video-sub-icon" name="clock-o" />{ parseInt(faker.random.number() / 1000) }min
+          </p>
+          <div className="videoThumbnailContent">
+            <p>{ video.description }</p>
+          </div>
+          { this.playButton(video) }
+        </Thumbnail>
+      );
+    })
+  }
+
   render() {
     var alert = '';
     if (this.state.alertVisible) {
       alert =  (
         <Alert bsStyle="info" onDismiss={ () => { this.handleAlert(false); } }>
-          <h4>You have successfully added course: { this.courseName }</h4>
+          <h4>您已成功添加该课程！</h4>
         </Alert>
       );
     }
@@ -114,24 +161,7 @@ export default class DashboardCourseDetail extends React.Component {
           </Jumbotron>
         </Row>
         <Row>
-          {
-            this.state.videos.map(video => {
-              return (
-                <Thumbnail 
-                  key={ video._id } 
-                  src={ videoImg } 
-                  alt="242x200" 
-                  className="video-container"
-                  onClick={ () => { this.playVideo(video.name) } }>
-                  <h4>{ video.name }</h4>
-                  <p>
-                    <Icon className="video-sub-icon" name="clock-o" />{ parseInt(faker.random.number() / 1000) }min
-                  </p>
-                  <p>{ video.description }</p>
-                </Thumbnail>
-              );
-            })
-          }
+          { this.videoThumbnail() }
         </Row>
       </div>
     );
