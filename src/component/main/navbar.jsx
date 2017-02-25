@@ -68,7 +68,7 @@ export default class NavbarComponent extends React.Component {
   loginOrUserDropdown() {
     if (this.state.user) {
       return (
-        <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown">
+        <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown" className="navbarElement">
           <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
           <MenuItem eventKey={1.2} onClick={ this.logout }>退出</MenuItem>
         </NavDropdown>
@@ -95,16 +95,16 @@ export default class NavbarComponent extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavDropdown eventKey={3} title="关于Sporit" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>公司故事</MenuItem>
-                <MenuItem eventKey={3.2}>Sporit社区</MenuItem>
-                <MenuItem eventKey={3.3}>团队介绍</MenuItem>
-                <MenuItem eventKey={3.4}>专家介绍</MenuItem>
+              <NavDropdown eventKey={3} title="关于Sporit" id="basic-nav-dropdown" className="navbarElement">
+                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem">公司故事</MenuItem>
+                <MenuItem eventKey={3.2} className="menuNavbarDropdownItem">Sporit社区</MenuItem>
+                <MenuItem eventKey={3.3} className="menuNavbarDropdownItem">团队介绍</MenuItem>
+                <MenuItem eventKey={3.4} className="menuNavbarDropdownItem">专家介绍</MenuItem>
               </NavDropdown>
-              <NavItem eventKey={1} href="#" onClick={ this.goToCourse }>Sporit学位</NavItem>
-              <NavItem eventKey={2} href="#">所有课程</NavItem>
-              <NavItem eventKey={3} href="#">Sporit观点</NavItem>
-              <NavItem eventKey={4} href="#">人才需求</NavItem>
+              <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>Sporit学位</NavItem>
+              <NavItem className="navbarElement" eventKey={2} href="#">所有课程</NavItem>
+              <NavItem className="navbarElement" eventKey={3} href="#">Sporit观点</NavItem>
+              <NavItem className="navbarElement" eventKey={4} href="#">人才需求</NavItem>
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={2} href="#">

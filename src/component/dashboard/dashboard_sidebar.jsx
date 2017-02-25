@@ -72,7 +72,7 @@ class Sidebar extends Component {
 
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerOppor'); }} >
-                <FaGlobe className="dashboardSideBarIcon"/> &nbsp;人才需求
+                <FaGlobe className="dashboardSideBarIcon"/> &nbsp;职业中心
               </a>
             </li>
 
@@ -133,7 +133,7 @@ class Sidebar extends Component {
 
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/'); }} >
-                <FaSignOut className="dashboardSideBarIcon"/> &nbsp;退出
+                <FaSignOut className="dashboardSideBarIcon"/> &nbsp;返回主页
               </a>
             </li>
           </ul>

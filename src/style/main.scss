@@ -51,10 +51,11 @@ html,body{
 }
 
 .sporitLogo{
-	position: relative;
-    top: -8px;
-    width: 163px;
-    display:inline-block;
+    position: relative;
+    top: -13px;
+    left: 9px;
+    margin: 5px;
+    width: 120px;
 }
 
 #loginSporitLogo{
@@ -132,4 +133,11 @@ html,body{
 .videoThumbnailContent {
     height: 80px;
     overflow: auto;
+}
+.navbarElement{
+    margin:5px 0px; 
+    padding-right: 10px;
+}
+.menuNavbarDropdownItem{
+    padding-left:10px;
 }

@@ -37,7 +37,9 @@ export default class DashboardCourseDetail extends React.Component {
       if (err) {
         console.error(err);
       } else {
+        console.log('****** course detail ******');
         console.log(res.body);
+        console.log('***************************');
         this.setState({
           course: res.body.course,
           videos: res.body.videos
@@ -155,9 +157,20 @@ export default class DashboardCourseDetail extends React.Component {
         { alert }
         <Row>
           <Jumbotron>
-            <h3>{ this.state.courseName }</h3>
-            <p>{ this.state.course && this.state.course.description }</p>
-            { this.addCourseButton() }
+            <Row className="show-grid">
+              <Col xs={12} md={4}>
+                <h3>{ this.state.courseName }</h3>
+                <p>{ this.state.course && this.state.course.description }</p>
+                { this.addCourseButton() }
+              </Col>
+              <Col xs={12} md={8} className="textCenter">
+                <video 
+                  className="videoPlayer" 
+                  src="http://localhost:3000/api/v1/display/movie.mp4" 
+                  controls>
+                </video>
+              </Col>
+            </Row>
           </Jumbotron>
         </Row>
         <Row>
