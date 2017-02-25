@@ -6,93 +6,92 @@ import Col from 'react-bootstrap/lib/Col';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Image from 'react-bootstrap/lib/Image';
+import touxiang from 'style/asset/touxiang.png';
+import LoginStore from 'store/login';
 
-export default class DashboardExperiencePage extends React.Component {
+export default class DashboardSummaryPage extends React.Component {
   constructor() {
     super();
 
     this.state = {
-
+      user : null
     };
+  }
 
+  componentWillMount() {
+    const user = LoginStore.getState();
+    if (user && user.email) {
+      this.setState({ user: user });
+    } else {
+      this.setState({ user: null });
+    }
   }
 
   render() {
     return (
-      <div>
         <div>
-          <h3 className="dashboardContentChineseHead">工作经验:</h3>
-          <div>内容为空</div>
-        </div>
-        <div>
-          <h3 className="dashboardContentChineseHead">添加工作经验:</h3>
+          <div className="textCenter">
+            <Image className="dashboardAvatar" src= {touxiang} circle />
+            <h3 className="profileSettingUserName">{ this.state.user.name }</h3>
+          </div>
           <div>
             <Form horizontal>
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel} sm={2}>
-                  公司
+                  个人网站
                 </Col>
                 <Col sm={10}>
-                  <FormControl />
+                  <FormControl placeholder="www.YourWebsite.com" />
                 </Col>
               </FormGroup>
 
               <FormGroup controlId="formHorizontalPassword">
                 <Col componentClass={ControlLabel} sm={2}>
-                  职位名称
+                  推特
                 </Col>
                 <Col sm={10}>
-                  <FormControl />
+                  <FormControl placeholder="twitter.com/YourTwitterName" />
                 </Col>
               </FormGroup>
 
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel} sm={2}>
-                  地址
+                  脸书
                 </Col>
                 <Col sm={10}>
-                  <FormControl />
+                  <FormControl placeholder="facebook.com/YourFaceBookName" />
                 </Col>
               </FormGroup>
 
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel} sm={2}>
-                  开始时间
+                  领英
                 </Col>
                 <Col sm={10}>
-                  <FormControl />
+                  <FormControl placeholder="YourLinkinUrl" />
                 </Col>
               </FormGroup>
 
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel} sm={2}>
-                  结束时间
+                  人人
                 </Col>
                 <Col sm={10}>
-                  <FormControl />
-                </Col>
-              </FormGroup>
-
-              <FormGroup controlId="formHorizontalEmail">
-                <Col componentClass={ControlLabel} sm={2}>
-                  职能描述
-                </Col>
-                <Col sm={10}>
-                  <FormControl componentClass="textarea"/>
+                  <FormControl placeholder="YourRenrenUrl" />
                 </Col>
               </FormGroup>
 
               <FormGroup>
                 <Col smOffset={2} sm={10}>
                   <Button type="submit">
-                    添加工作经历
+                    保存
                   </Button>
                 </Col>
               </FormGroup>
-            </Form>     
+            </Form>
           </div>
         </div>
-      </div>
     );
   };
 }

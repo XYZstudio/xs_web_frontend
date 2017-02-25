@@ -21,11 +21,12 @@ import DashboardCareerInfoPage from 'component/dashboard/dashboard_careerInfo_pa
 import DashboardChartPage from 'component/dashboard/dashboard_chart_page.jsx';
 import DashboardSettingPage from 'component/dashboard/dashboard_setting_page.jsx';
 
-import DashboardSummaryPage from 'component/dashboard/dashboard_summary_page.jsx';
-import DashboardContactInfoPage from 'component/dashboard/dashboard_contactInfo_page.jsx';
-import DashboardExperiencePage from 'component/dashboard/dashboard_experience_page.jsx';
-import DashboardEducationPage from 'component/dashboard/dashboard_education_page.jsx';
-import DashboardResumePage from 'component/dashboard/dashboard_resume_page.jsx';
+import DashboardSummaryPage from 'component/dashboard/careerProf/dashboard_summary_page.jsx';
+import DashboardContactInfoPage from 'component/dashboard/careerProf/dashboard_contactInfo_page.jsx';
+import DashboardExperiencePage from 'component/dashboard/careerProf/dashboard_experience_page.jsx';
+import DashboardEducationPage from 'component/dashboard/careerProf/dashboard_education_page.jsx';
+import DashboardResumePage from 'component/dashboard/careerProf/dashboard_resume_page.jsx';
+
 import DashboardCourseDetail from 'component/dashboard/dashboard_course_detail.jsx';
 import DashboardPlayVideo from 'component/dashboard/dashboard_play_video.jsx';
 
