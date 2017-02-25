@@ -1,5 +1,6 @@
 // Modules
 import React from 'react';
+import LoginStore from 'store/login';
 import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import Col from 'react-bootstrap/lib/Col';
@@ -12,9 +13,18 @@ export default class DashboardContactInfoPage extends React.Component {
     super();
 
     this.state = {
-
+      user: null
     };
 
+  }
+
+  componentWillMount() {
+    const user = LoginStore.getState();
+    if (user && user.email) {
+      this.setState({ user: user });
+    } else {
+      this.setState({ user: null });
+    }
   }
 
   render() {

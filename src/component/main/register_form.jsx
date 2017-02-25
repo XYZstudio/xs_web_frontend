@@ -7,6 +7,7 @@ import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
 import config from '../../../config.json';
+import QRCCodeImage from 'style/asset/qrcode.jpg';
 
 export default class Registerform extends React.Component {
   constructor(props) {
@@ -142,7 +143,7 @@ export default class Registerform extends React.Component {
         <Button className="centerBlockEle loginRegisterFormButton" onClick={this.toggle2dCode} block>关注Sporit公众号</Button>
         <Row style={this.state.show2dCode}>
           <img
-            src='http://optional.is/required/wp-content/uploads/2009/06/barcode-qr.png'
+            src={ QRCCodeImage }
             style={{ display: 'block',margin: 'auto' }}
           />
           <div className="textCenter">扫描二维码关注Sporit微信公众号</div>
