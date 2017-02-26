@@ -1,3 +1,4 @@
+import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
 import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
@@ -16,6 +17,7 @@ export default class DashboardCourseDetail extends React.Component {
       courseName: props.params.courseName,
       course: null,
       videos: [],
+      preview: null,
       open: false,
       alertVisible: false
     };
@@ -32,7 +34,7 @@ export default class DashboardCourseDetail extends React.Component {
 
   componentDidMount() {
     request
-    .get(`http://localhost:3000/api/v1/get_course/${this.state.courseName}`)
+    .get(`http://${config.host}:${config.rest_port}/api/v1/get_course/${this.state.courseName}`)
     .end((err, res) => {
       if (err) {
         console.error(err);
@@ -42,7 +44,8 @@ export default class DashboardCourseDetail extends React.Component {
         console.log('***************************');
         this.setState({
           course: res.body.course,
-          videos: res.body.videos
+          videos: res.body.videos,
+          preview: res.body.preview,
         });
       }
     });
@@ -50,7 +53,7 @@ export default class DashboardCourseDetail extends React.Component {
 
   addCourse(courseName) {
     request
-    .post('http://localhost:3000/api/v1/add_course_to_user')
+    .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
     .withCredentials()
     .send({
       email: this.state.user.email,
@@ -152,7 +155,7 @@ export default class DashboardCourseDetail extends React.Component {
       );
     }
 
-    if (this.state.videos.length === 0) { return null; }
+    if (!this.state.preview) { return null; }
 
     return (
       <div>
@@ -166,10 +169,13 @@ export default class DashboardCourseDetail extends React.Component {
                 { this.addCourseButton() }
               </Col>
               <Col xs={12} md={8} className="textCenter">
-                <video 
+                <video
+                  id="preview-video"
                   className="videoPlayer" 
-                  src={ `http://localhost:3000/api/v1/display/${this.state.videos[0].name}` }
-                  controls>
+                  src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.preview.name}` }
+                  controls
+                  autoPlay
+                >
                 </video>
               </Col>
             </Row>

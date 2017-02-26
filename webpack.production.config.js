@@ -52,6 +52,7 @@ module.exports = {
       style: path.resolve(ROOT_PATH, 'src/style'),
       asset: path.resolve(ROOT_PATH, 'src/style/asset'),
       store: path.resolve(ROOT_PATH, 'src/redux'),
+      root: path.resolve(ROOT_PATH),
     }
   },
   output: {
