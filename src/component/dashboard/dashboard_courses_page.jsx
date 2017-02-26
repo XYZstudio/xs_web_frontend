@@ -1,3 +1,4 @@
+import config from 'root/config.json';
 import React from 'react';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
@@ -22,7 +23,7 @@ export default class DashboardCoursesPage extends React.Component {
 
   componentDidMount() {
     request
-    .get('http://localhost:3000/api/v1/get_all_courses')
+    .get(`http://${config.host}:${config.rest_port}/api/v1/get_all_courses`)
     .end((err, res) => {
       if (err) {
         console.error(err);

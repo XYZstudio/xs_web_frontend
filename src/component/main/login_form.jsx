@@ -46,7 +46,7 @@ export default class Loginform extends React.Component {
 
   submitLogin() {
     request
-    .post('http://localhost:' + config.rest_port + '/api/v1/login_user')
+    .post(`http://${config.host}:${config.rest_port}/api/v1/login_user`)
     .withCredentials()
     .send({
       email: this.state.email,
