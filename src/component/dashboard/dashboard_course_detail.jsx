@@ -152,6 +152,8 @@ export default class DashboardCourseDetail extends React.Component {
       );
     }
 
+    if (this.state.videos.length === 0) { return null; }
+
     return (
       <div>
         { alert }
@@ -166,7 +168,7 @@ export default class DashboardCourseDetail extends React.Component {
               <Col xs={12} md={8} className="textCenter">
                 <video 
                   className="videoPlayer" 
-                  src="http://localhost:3000/api/v1/display/movie.mp4" 
+                  src={ `http://localhost:3000/api/v1/display/${this.state.videos[0].name}` }
                   controls>
                 </video>
               </Col>
