@@ -1,5 +1,5 @@
 {
   "port": 3333,
-  "host": "localhost",
+  "host": "54.202.129.30",
   "rest_port": 3000
 }

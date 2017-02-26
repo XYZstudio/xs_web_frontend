@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
 import config from '../../../config.json';
 import QRCCodeImage from 'style/asset/qrcode.jpg';
+import { browserHistory } from 'react-router';
 
 export default class Registerform extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ export default class Registerform extends React.Component {
         this.showErrorMesg();
       } else {
         console.log('REGISTER: ', res);
-        this.props.closeModalWindow();
+        browserHistory.push('/verifyEmail');
       }
     });
   }

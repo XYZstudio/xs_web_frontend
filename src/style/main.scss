@@ -70,7 +70,7 @@ html,body{
 .modalCloseButton{
     float: right;
     position: relative;
-    top: -60px;
+    top: -100px;
     right: 10px;
     border: none;
     background: transparent;
@@ -124,6 +124,8 @@ html,body{
 .videoPlayer {
     width: 85%;
     background-color: #ddd;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0.375em;
 }
 
 .videoThumbnailPlayButton {
@@ -134,10 +136,46 @@ html,body{
     height: 80px;
     overflow: auto;
 }
+
 .navbarElement{
     margin:5px 0px; 
     padding-right: 10px;
 }
+
 .menuNavbarDropdownItem{
     padding-left:10px;
 }
+
+.systemMessageIcon{
+    height: 55px;
+    width: 55px;
+    margin: 15px;
+}
+
+.systemMessageHeader{
+    display: inline-block;
+    color: #73a11b;
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+.systemMessageContainer{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding: 10%;
+    color: #8ed728;
+}
+
+.btn-default{
+    color: #2b9ed5;
+    background-color: #fff;
+    border-color: #2b9ed5;
+}
+
+.videoDescribtion{
+    width: 93%;
+    padding-left: 7.5%;
+    margin-top: 20px;  
+}
+
