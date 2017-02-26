@@ -33,7 +33,7 @@ export default class DashboardPlayVideo extends React.Component {
           <Button onClick={ browserHistory.goBack }><FaAngleLeft />返回目录</Button>
         </Row>
         <Row className="textCenter">
-          <h3>{ this.state.vedioName }</h3>
+          <h3>{ this.state.videoName }</h3>
         </Row>
         <Row className="textCenter">
           <video 
@@ -42,7 +42,7 @@ export default class DashboardPlayVideo extends React.Component {
             controls autoplay>
           </video>
         </Row>
-        <Row>
+        <Row className="videoDescribtion">
           <h3>相关介绍</h3>
           <p>相关介绍为帮助你快速实现目标，我们根据你的报名时间为你的每个实战项目设置了截止日期。此时间线的设计标准为每周大约投入 10 小时。请在任何可能的时候回到教室继续学习，即使只是 5 分钟，也能确保不断取得进步。</p>
         </Row>

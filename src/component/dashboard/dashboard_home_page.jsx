@@ -47,6 +47,19 @@ export default class DashboardHomePage extends React.Component {
           <p>You are on { lastActivity.videoName }</p>
         </div>
       );
+    } else {
+      return (
+        <div className="dashboardContentPanel dashboardContentPanelBorder">
+          <h1 className="dashboardContentPanelHeader">
+            <span>
+              <strong>
+                目前没有最新动态。
+              </strong>
+            </span>
+          </h1>
+          <p>好好学习，天天向上!</p>
+        </div>
+      );
     }
   }
 
@@ -71,6 +84,17 @@ export default class DashboardHomePage extends React.Component {
           </div>
         );
       });
+    } else {
+        <div className="dashboardContentPanel dashboardContentPanelBorder">
+          <h1 className="dashboardContentPanelHeader">
+            <span>
+              <strong>
+                没有课程。
+              </strong>
+            </span>
+          </h1>
+          <p>好好学习，天天向上!</p>
+        </div>
     }
   }
 

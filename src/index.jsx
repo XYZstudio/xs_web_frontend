@@ -9,7 +9,8 @@ import Login from 'component/login/login_main.jsx';
 import MainPage from 'component/main/main_page.jsx';
 import Course from 'component/course/Course.jsx';
 import FindMyPassword from 'component/password/find_password.jsx';
-import NotFoundPage from 'component/main/not_found_page';
+import NotFoundPage from 'component/main/not_found_page.jsx';
+import VerifyEmail from 'component/main/verify_email.jsx';
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
@@ -37,7 +38,9 @@ ReactDOM.render(
       <IndexRoute component={ MainPage } />
       <Route path='/course' component={ Course } />
       <Route path='/login' component={ Login } />
+      <Route path='/verifyEmail' component={ VerifyEmail } />
       <Route path='/reset_password' component={ FindMyPassword } />
+
       <Route path='/dashboard' component={ Dashboard } >
         <IndexRoute component={ DashboardHomePage } />
         <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
