@@ -1,4 +1,5 @@
 import React from 'react';
+import * as request from 'superagent';
 import LoginStore from 'store/login';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
@@ -10,7 +11,7 @@ export default class DashboardPlayVideo extends React.Component {
     super(props);
     this.state = {
       user: null,
-      vedioName: props.params.videoName,
+      videoName: props.params.videoName,
       vedioPath: null
     };
   }
@@ -22,42 +23,6 @@ export default class DashboardPlayVideo extends React.Component {
     } else {
       this.setState({ user: null });
     }
-  }
-
-  componentDidMount() {
-    request
-    .get(`http://localhost:3000/api/v1/get_video/${this.state.videoName}`)
-    .end((err, res) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(res.body);
-        this.setState({
-
-        });
-      }
-    });
-  }
-
-  addCourse(courseName) {
-    request
-    .post('http://localhost:3000/api/v1/add_course_to_user')
-    .withCredentials()
-    .send({
-      email: this.state.user.email,
-      courseNames: [courseName]
-    })
-    .end((err, res) => {
-      if (err) {
-        console.error(err);
-      } else {
-        LoginStore.dispatch({
-          type: 'LOGIN',
-          user: res.body,
-        });
-        this.handleAlert(true);
-      }
-    });
   }
 
   render() {
@@ -72,7 +37,7 @@ export default class DashboardPlayVideo extends React.Component {
         <Row className="textCenter">
           <video 
             className="videoPlayer" 
-            src="http://localhost:3000/api/v1/display/movie.mp4" 
+            src={ `http://localhost:3000/api/v1/display/${this.state.videoName}` }
             controls>
           </video>
         </Row>
