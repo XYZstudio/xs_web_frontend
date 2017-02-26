@@ -29,7 +29,7 @@ module.exports = {
       {
         test: /\.json$/,
         loaders: ['json']
-      }
+      },
       // font-awesome
       {
         test: /\.css$/,
