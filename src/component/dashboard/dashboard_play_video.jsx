@@ -1,3 +1,4 @@
+import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
 import LoginStore from 'store/login';
@@ -37,7 +38,7 @@ export default class DashboardPlayVideo extends React.Component {
         <Row className="textCenter">
           <video 
             className="videoPlayer" 
-            src={ `http://localhost:3000/api/v1/display/${this.state.videoName}` }
+            src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.videoName}` }
             controls autoplay>
           </video>
         </Row>

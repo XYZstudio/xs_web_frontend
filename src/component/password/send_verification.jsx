@@ -1,3 +1,4 @@
+import config from 'root/config.json';
 import React from 'react';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -9,7 +10,6 @@ import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
 import ResetPasswordStore from 'store/reset_password';
-import config from '../../../config.json';
 
 export default class SendVerification extends React.Component {
   constructor(props) {
@@ -40,7 +40,7 @@ export default class SendVerification extends React.Component {
     const email = this.state.email;
 
     request
-    .get(`http://localhost:${config.rest_port}/api/v1/verify/${email}/email`)
+    .get(`http://${config.host}:${config.rest_port}/api/v1/verify/${email}/email`)
     .end((err, res) => {
       if (err) {
         console.error(err);

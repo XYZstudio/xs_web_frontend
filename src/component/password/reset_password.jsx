@@ -1,3 +1,4 @@
+import config from 'root/config.json';
 import React from 'react';
 import { browserHistory } from 'react-router';
 import Row from 'react-bootstrap/lib/Row';
@@ -11,7 +12,6 @@ import Button from 'react-bootstrap/lib/Button';
 import ResetPasswordStore from 'store/reset_password';
 import LoginStore from 'store/login';
 import * as request from 'superagent';
-import config from '../../../config.json';
 
 export default class ResetPassword extends React.Component {
   constructor() {
@@ -59,7 +59,7 @@ export default class ResetPassword extends React.Component {
       this.setState({ message: '上下密码一致', error: false });
       const email = ResetPasswordStore.getState().email;
       request
-      .post(`http://localhost:${config.rest_port}/api/v1/reset_password`)
+      .post(`http://${config.host}:${config.rest_port}/api/v1/reset_password`)
       .send({
         email: email,
         password: this.state.password,

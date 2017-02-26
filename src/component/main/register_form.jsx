@@ -1,3 +1,4 @@
+import config from 'root/config.json';
 import React from 'react';
 import Row from 'react-bootstrap/lib/Row';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
@@ -6,7 +7,6 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import Button from 'react-bootstrap/lib/Button';
 import * as request from 'superagent';
-import config from '../../../config.json';
 import QRCCodeImage from 'style/asset/qrcode.jpg';
 
 export default class Registerform extends React.Component {
@@ -16,7 +16,6 @@ export default class Registerform extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.submitRegister = this.submitRegister.bind(this);
-    // this.close = props.close;
     this.toggle2dCode = this.toggle2dCode.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
     this.showErrorMesg = this.showErrorMesg.bind(this);
@@ -48,7 +47,7 @@ export default class Registerform extends React.Component {
 
   submitRegister() {
     request
-    .post('http://localhost:' + config.rest_port + '/api/v1/create_user')
+    .post(`http://${config.host}:${config.rest_port}/api/v1/create_user`)
     .send({
       email: this.state.email,
       name: this.state.name,

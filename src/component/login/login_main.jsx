@@ -1,4 +1,4 @@
-// Modules
+import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
 
@@ -27,7 +27,7 @@ export default class Login extends React.Component {
   handleLogin(event) {
     event.preventDefault();
     request
-    .post('http://localhost:3000/api/v1/login')
+    .post(`http://${config.host}:${config.rest_port}/api/v1/login`)
     .withCredentials()
     .send(this.state)
     .end((err, res) => {
