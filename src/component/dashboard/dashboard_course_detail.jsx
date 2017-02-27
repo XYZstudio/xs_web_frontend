@@ -77,6 +77,25 @@ export default class DashboardCourseDetail extends React.Component {
   }
 
   playVideo(videoName) {
+    request
+    .post(`http://${config.host}:${config.rest_port}/api/v1/update_last_activity`)
+    .withCredentials()
+    .send({
+      email: this.state.user.email,
+      courseName: this.state.courseName,
+      videoName: videoName,
+      time: 0
+    })
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        LoginStore.dispatch({
+          type: 'LOGIN',
+          user: res.body,
+        });
+      }
+    });
     browserHistory.push(`/dashboard/video/${videoName}`);
   }
 
