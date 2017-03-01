@@ -3,6 +3,8 @@ import React from 'react';
 import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
+import Grid from 'react-bootstrap/lib/Grid';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
@@ -30,25 +32,26 @@ export default class DashboardSummaryPage extends React.Component {
 
   render() {
     return (
-        <div>
-          <div className="textCenter">
+        <Grid>
+        <Col xs={3} md={2}></Col>
+        <Col xs={12} md={8}>
+          <Row className="textCenter dashboradContent">
             <Image className="dashboardAvatar" src= {touxiang} circle />
             <h3 className="profileSettingUserName">{ this.state.user.name }</h3>
-          </div>
-          <div>
+          </Row>
+          <Row>
             <Form horizontal>
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel} sm={2}>
-                  个人网站
+                  个人签名
                 </Col>
                 <Col sm={10}>
                   <FormControl placeholder="www.YourWebsite.com" />
                 </Col>
               </FormGroup>
-
               <FormGroup controlId="formHorizontalPassword">
                 <Col componentClass={ControlLabel} sm={2}>
-                  推特
+                  微信
                 </Col>
                 <Col sm={10}>
                   <FormControl placeholder="twitter.com/YourTwitterName" />
@@ -57,10 +60,19 @@ export default class DashboardSummaryPage extends React.Component {
 
               <FormGroup controlId="formHorizontalEmail">
                 <Col componentClass={ControlLabel} sm={2}>
-                  脸书
+                  QQ
                 </Col>
                 <Col sm={10}>
                   <FormControl placeholder="facebook.com/YourFaceBookName" />
+                </Col>
+              </FormGroup>
+
+              <FormGroup controlId="formHorizontalEmail">
+                <Col componentClass={ControlLabel} sm={2}>
+                  微博
+                </Col>
+                <Col sm={10}>
+                  <FormControl placeholder="YourLinkinUrl" />
                 </Col>
               </FormGroup>
 
@@ -90,8 +102,11 @@ export default class DashboardSummaryPage extends React.Component {
                 </Col>
               </FormGroup>
             </Form>
-          </div>
-        </div>
+          </Row>
+        </Col>
+        <Col xs={3} md={2}></Col>
+          
+        </Grid>
     );
   };
 }

@@ -104,7 +104,7 @@ export default class NavbarComponent extends React.Component {
               <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>Sporit学位</NavItem>
               <NavItem className="navbarElement" eventKey={2} href="#">所有课程</NavItem>
               <NavItem className="navbarElement" eventKey={3} href="#">Sporit观点</NavItem>
-              <NavItem className="navbarElement" eventKey={4} href="#">人才需求</NavItem>
+              <NavItem className="navbarElement" eventKey={4} href="#">职业中心</NavItem>
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={2} href="#">
