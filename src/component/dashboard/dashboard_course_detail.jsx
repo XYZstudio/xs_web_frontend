@@ -39,9 +39,6 @@ export default class DashboardCourseDetail extends React.Component {
       if (err) {
         console.error(err);
       } else {
-        console.log('****** course detail ******');
-        console.log(res.body);
-        console.log('***************************');
         this.setState({
           course: res.body.course,
           videos: res.body.videos,
@@ -49,27 +46,33 @@ export default class DashboardCourseDetail extends React.Component {
         });
       }
     });
+
+    LoginStore.subscribe(() => {
+      this.setState({ user: LoginStore.getState() });
+    });
   }
 
   addCourse(courseName) {
-    request
-    .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
-    .withCredentials()
-    .send({
-      email: this.state.user.email,
-      courseNames: [courseName]
-    })
-    .end((err, res) => {
-      if (err) {
-        console.error(err);
-      } else {
-        LoginStore.dispatch({
-          type: 'LOGIN',
-          user: res.body,
-        });
-        this.handleAlert(true);
-      }
-    });
+    if (this.state.user) {
+      request
+      .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
+      .withCredentials()
+      .send({
+        email: this.state.user.email,
+        courseNames: [courseName]
+      })
+      .end((err, res) => {
+        if (err) {
+          console.error(err);
+        } else {
+          LoginStore.dispatch({
+            type: 'LOGIN',
+            user: res.body,
+          });
+          this.handleAlert(true);
+        }
+      });
+    }
   }
 
   handleAlert(bool) {
@@ -101,27 +104,32 @@ export default class DashboardCourseDetail extends React.Component {
 
   addCourseButton() {
     var user = this.state.user;
-    if (user != null) {
+    if (user && user.email) {
       var enrolledCourseInfo =  user.course;
-      if (enrolledCourseInfo != null) {
+      if (enrolledCourseInfo) {
         for (var i = 0;i < enrolledCourseInfo.length;i++) {
           var enrolledCourseName = enrolledCourseInfo[i].courseName;
-          if (enrolledCourseName == this.state.courseName) {
+          if (enrolledCourseName === this.state.courseName) {
             return (<div></div>);
           }
         }
       }
+
+      return (
+        <Button bsStyle="primary" onClick={ () => { this.addCourse(this.state.courseName); } }>加入课程</Button>
+      );
+    } else {
+      return (
+        <Button bsStyle="primary" disabled>加入课程（请先登录）</Button>
+      );
     }
-    return (
-      <Button bsStyle="primary" onClick={ () => { this.addCourse(this.state.courseName); } }>加入课程</Button>
-    );
   }
 
   playButton(video) {
     var user = this.state.user;
-    if (user != null) {
+    if (user && user.email) {
       var enrolledCourseInfo =  user.course;
-      if (enrolledCourseInfo != null) {
+      if (enrolledCourseInfo) {
         for (var i = 0;i < enrolledCourseInfo.length;i++) {
           var enrolledCourseName = enrolledCourseInfo[i].courseName;
           if (enrolledCourseName == this.state.courseName) {
