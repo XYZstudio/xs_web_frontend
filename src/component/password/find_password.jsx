@@ -33,13 +33,7 @@ export default class FindMyPassword extends React.Component {
 
   render() {
     return (
-      <div>
-        <Row className="main-navbar"><NavbarComponent /></Row>
-        <Row>
-          { this.showView() }
-        </Row>
-        <Row><BottomNavbarComponent /></Row>
-      </div>
+      <Row>{ this.showView() }</Row>
     );
   }
 }

@@ -5,12 +5,12 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Components
 import App from 'component/App.jsx';
-import Login from 'component/login/login_main.jsx';
 import MainPage from 'component/main/main_page.jsx';
 import Course from 'component/course/Course.jsx';
 import FindMyPassword from 'component/password/find_password.jsx';
 import NotFoundPage from 'component/main/not_found_page.jsx';
 import VerifyEmail from 'component/main/verify_email.jsx';
+import NavbarComponent from 'component/main/navbar.jsx';
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
@@ -35,44 +35,51 @@ import DashboardPlayVideo from 'component/dashboard/dashboard_play_video.jsx';
 ReactDOM.render(
   <Router history={ browserHistory }>
     <Route path='/' component={ App }>
-      <IndexRoute component={ MainPage } />
-      <Route path='/course' component={ Course } />
-      <Route path='/login' component={ Login } />
-      <Route path='/verifyEmail' component={ VerifyEmail } />
-      <Route path='/reset_password' component={ FindMyPassword } />
-
-      <Route path='/dashboard' component={ Dashboard } >
-        <IndexRoute component={ DashboardHomePage } />
-        <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
-        <Route
-          path='/dashboard/courses/:courseName'
-          getComponent={
-            (nextState, cb) => {
-              cb(null, DashboardCourseDetail);
-            } 
-          }
-        />
-        <Route
-          path='/dashboard/video/:videoName'
-          getComponent={
-            (nextState, cb) => {
-              cb(null, DashboardPlayVideo);
-            } 
-          }
-        />
-        <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
-        <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
-        <Route path='/dashboard/chart' component={ DashboardChartPage } />
-        <Route path='/dashboard/setting' component={ DashboardSettingPage } />
-        <Route path='/dashboard/careerInfo/Resume' component={ DashboardResumePage } />
-        <Route path='/dashboard/careerInfo/Education' component={ DashboardEducationPage } />
-        <Route path='/dashboard/careerInfo/Experience' component={ DashboardExperiencePage } />
-        <Route path='/dashboard/careerInfo/ContactInfo' component={ DashboardContactInfoPage } />
-        <Route path='/dashboard/careerInfo/Summary' component={ DashboardSummaryPage } />
-      </Route>
-      
-  		{/* This match-all route below must be defined as the last one.*/}
-      <Route path="*" component={ NotFoundPage }/>
+      <IndexRoute components={{ navbar: NavbarComponent, body: MainPage }} />
+      <Route path='/course' components={{ navbar: NavbarComponent, body: Course }} />
+      <Route
+        path='/courses/:courseName'
+        getComponents={
+          (nextState, cb) => {
+            cb(null, { navbar: NavbarComponent, body: DashboardCourseDetail });
+          } 
+        }
+      />
+      <Route path='/verifyEmail' components={{ navbar: NavbarComponent, body: VerifyEmail }} />
+      <Route path='/reset_password' components={{ navbar: NavbarComponent, body: FindMyPassword }} />
     </Route>
+
+    <Route path='/dashboard' component={ Dashboard } >
+      <IndexRoute component={ DashboardHomePage } />
+      <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
+      <Route
+        path='/dashboard/courses/:courseName'
+        getComponent={
+          (nextState, cb) => {
+            cb(null, DashboardCourseDetail);
+          } 
+        }
+      />
+      <Route
+        path='/dashboard/video/:videoName'
+        getComponent={
+          (nextState, cb) => {
+            cb(null, DashboardPlayVideo);
+          } 
+        }
+      />
+      <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
+      <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
+      <Route path='/dashboard/chart' component={ DashboardChartPage } />
+      <Route path='/dashboard/setting' component={ DashboardSettingPage } />
+      <Route path='/dashboard/careerInfo/Resume' component={ DashboardResumePage } />
+      <Route path='/dashboard/careerInfo/Education' component={ DashboardEducationPage } />
+      <Route path='/dashboard/careerInfo/Experience' component={ DashboardExperiencePage } />
+      <Route path='/dashboard/careerInfo/ContactInfo' component={ DashboardContactInfoPage } />
+      <Route path='/dashboard/careerInfo/Summary' component={ DashboardSummaryPage } />
+    </Route>
+      
+  	{/* This match-all route below must be defined as the last one.*/}
+    <Route path="*" component={ NotFoundPage }/>
   </Router>,
 document.getElementById('app'));
