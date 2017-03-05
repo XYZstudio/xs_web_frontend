@@ -30,7 +30,8 @@ export default class Registerform extends React.Component {
         color: 'red',
         paddingTop: '5px',
         paddingLeft: '10px'
-      }
+      },
+      errorMessage:''
     };
   }
 
@@ -56,9 +57,11 @@ export default class Registerform extends React.Component {
       status: 'active'
     })
     .end((err, res) => {
+      console.log(res);
       if (err) {
         console.error(err);
-        this.showErrorMesg();
+        console.log(res.body.code);
+        this.showErrorMesg(res.body.warning);
       } else {
         console.log('REGISTER: ', res);
         browserHistory.push('/verifyEmail');
@@ -79,13 +82,14 @@ export default class Registerform extends React.Component {
     
   }
 
-  showErrorMesg() {
+  showErrorMesg(errMes) {
     this.setState({
       showErrorMessage: {
         color: 'red',
         paddingTop: '5px',
         paddingLeft: '10px'
-      }
+      },
+      errorMessage: errMes
     });
   }
 
@@ -132,7 +136,7 @@ export default class Registerform extends React.Component {
         </FormGroup>
 
         <Button className="centerBlockEle loginRegisterFormButton" bsStyle="success" onClick={this.submitRegister} block>注册Sporit</Button>
-        <p style={ this.state.showErrorMessage }>该邮箱已注册</p>
+        <p style={ this.state.showErrorMessage }>{ this.state.errorMessage }</p>
         <FormGroup style={agreementStyle}>
           <p>
             点击「注册Sporit」按钮，即代表你同意
