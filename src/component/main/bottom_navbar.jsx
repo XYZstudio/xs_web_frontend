@@ -14,13 +14,12 @@ export default class BottomNavbarComponent extends React.Component {
       <div>
         <Navbar collapseOnSelect style={{ marginBottom: 0 }}>
           <Nav>
-            <NavItem eventKey={1} href="#">About us</NavItem>
-            <NavItem eventKey={2} href="#">Contact</NavItem>
-            <NavItem eventKey={3} href="#">Career</NavItem>
-            <NavItem eventKey={4} href="#">Support</NavItem>
+            <NavItem eventKey={1} href="#">加入我们</NavItem>
+            <NavItem eventKey={2} href="#">联系我们</NavItem>
+            <NavItem eventKey={3} href="#">法律条款</NavItem>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Copyright <b>SPORIT</b> 2017</NavItem>
+            <NavItem eventKey={1} href="#">Copyright <b>思博锐</b> 2017</NavItem>
           </Nav>
         </Navbar>
       </div>

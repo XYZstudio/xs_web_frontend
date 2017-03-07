@@ -54,7 +54,7 @@ class Sidebar extends Component {
     return (
       <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
         <div className="textCenter" id="dashboardLogoDiv">
-          <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>
+          <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
         </div>
         <div className="sidebar-nav navbar-collapse collapse">
           <ul className="nav in" id="side-menu">
@@ -117,12 +117,6 @@ class Sidebar extends Component {
                   </a>
                 </li>
               </ul>
-            </li>
-
-            <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/chart'); }} >
-                <FaCartPlus className="dashboardSideBarIcon"/> &nbsp;充值
-              </a>
             </li>
 
             <li>
