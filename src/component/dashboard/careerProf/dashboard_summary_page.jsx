@@ -32,6 +32,7 @@ import LoginStore from 'store/login';
 export default class DashboardSummaryPage extends React.Component {
   constructor() {
     super();
+    
     this.handleQQChange = this.handleQQChange.bind(this);
     this.handleSelfIntroductionChange = this.handleSelfIntroductionChange.bind(this);
     this.handleRenrenChange = this.handleRenrenChange.bind(this);
@@ -67,7 +68,6 @@ export default class DashboardSummaryPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.user.email);
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_introduction/${this.state.user.email}`)
     .end((err, res) => {
@@ -78,8 +78,7 @@ export default class DashboardSummaryPage extends React.Component {
         console.log('******** user summary info**********');
         console.log(summaryInfo);
         console.log('******************');
-        this.setState({      
-          userName : summaryInfo.userName,
+        this.setState({
           avatarPath : summaryInfo.avatarPath,
           myWebsite : summaryInfo.myWebsite,
           weibo : summaryInfo.weibo,
@@ -120,8 +119,8 @@ export default class DashboardSummaryPage extends React.Component {
   }
 
   updateUserSummary(){
-    console.log({
-      userName : this.state.userName,
+    var requestJson = {
+      userName : this.state.user.email,
       avatarPath : this.state.avatarPath,
       myWebsite : this.state.myWebsite,
       weibo : this.state.weibo,
@@ -132,23 +131,14 @@ export default class DashboardSummaryPage extends React.Component {
       linkedin : this.state.linkedin,
       renren : this.state.renren,
       selfIntroduction : this.state.selfIntroduction
-    });
+    };
+    console.log('******** requestJson ********');
+    console.log(requestJson);
+    console.log('***************************');
     request
     .post(`http://${config.host}:${config.rest_port}/api/v1/update_user_introduction`)
     .withCredentials()
-    .send({
-      userName : this.state.userName,
-      avatarPath : this.state.avatarPath,
-      myWebsite : this.state.myWebsite,
-      weibo : this.state.weibo,
-      qq : this.state.qq,
-      Wechat : this.state.Wechat,
-      tweeter : this.state.tweeter,
-      facebook : this.state.facobook,
-      linkedin : this.state.linkedin,
-      renren : this.state.renren,
-      selfIntroduction : this.state.selfIntroduction
-    })
+    .send(requestJson)
     .end((err, res) => {
       if (err) {
         console.error(err);

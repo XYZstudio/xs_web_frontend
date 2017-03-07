@@ -64,6 +64,7 @@ export default class Registerform extends React.Component {
         this.showErrorMesg(res.body.warning);
       } else {
         console.log('REGISTER: ', res);
+        this.props.closeModalWindow();
         browserHistory.push('/verifyEmail');
       }
     });

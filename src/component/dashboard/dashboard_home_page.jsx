@@ -13,6 +13,9 @@ import LoginStore from 'store/login';
 export default class DashboardHomePage extends React.Component {
   constructor() {
     super();
+    this.showLastActivity = this.showLastActivity.bind(this);
+    this.showEnrolledCourses = this.showEnrolledCourses.bind(this);
+
     this.state = {
       user: null
     };
@@ -32,8 +35,11 @@ export default class DashboardHomePage extends React.Component {
   }
 
   showLastActivity() {
+    console.log("********* User **********");
+    console.log(this.state.user);
+    console.log("*************************");
     var lastActivity = this.state.user.lastActivity;
-    if (lastActivity != null) {
+    if (lastActivity && lastActivity.courseName && lastActivity.videoName) {
       return (
         <div className="dashboardContentPanel dashboardContentPanelBorder">
           <h1 className="dashboardContentPanelHeader">
@@ -57,7 +63,6 @@ export default class DashboardHomePage extends React.Component {
               </strong>
             </span>
           </h1>
-          <p>好好学习，天天向上!</p>
         </div>
       );
     }
@@ -65,7 +70,7 @@ export default class DashboardHomePage extends React.Component {
 
   showEnrolledCourses() {
     var user = this.state.user;
-    if (user != null) {
+    if (user && user.course.length != 0) {
       var enrolledCourseInfo =  user.course;
       return enrolledCourseInfo = enrolledCourseInfo.map((c, i) => {
         return (
@@ -85,16 +90,18 @@ export default class DashboardHomePage extends React.Component {
         );
       });
     } else {
+      return (
         <div className="dashboardContentPanel dashboardContentPanelBorder">
           <h1 className="dashboardContentPanelHeader">
             <span>
               <strong>
-                没有课程。
+                目前没有加入课程。
               </strong>
             </span>
           </h1>
-          <p>好好学习，天天向上!</p>
+          <p>请去“所有课程”中查看我们提供的课程!</p>
         </div>
+      );
     }
   }
 

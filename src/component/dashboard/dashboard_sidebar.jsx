@@ -54,7 +54,7 @@ class Sidebar extends Component {
     return (
       <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
         <div className="textCenter" id="dashboardLogoDiv">
-          <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>
+          <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
         </div>
         <div className="sidebar-nav navbar-collapse collapse">
           <ul className="nav in" id="side-menu">
