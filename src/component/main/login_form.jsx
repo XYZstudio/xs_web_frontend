@@ -82,6 +82,7 @@ export default class Loginform extends React.Component {
 
   goToResetPwd(e) {
     e.preventDefault();
+    this.props.closeModalWindow();
     browserHistory.push('/reset_password');
   }
 

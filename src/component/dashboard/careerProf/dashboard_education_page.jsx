@@ -16,6 +16,17 @@ export default class DashboardEducationPage extends React.Component {
 
     this.state = {
       user: null,
+
+      userName : '',
+      schoolName : '', 
+      location : '',
+      startYear : '', 
+      startMonth : '', 
+      endYear : '',
+      endMonth : '',
+      degree : '',
+      major : '',
+      description : ''
     };
 
   }

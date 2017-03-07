@@ -120,12 +120,6 @@ class Sidebar extends Component {
             </li>
 
             <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/chart'); }} >
-                <FaCartPlus className="dashboardSideBarIcon"/> &nbsp;充值
-              </a>
-            </li>
-
-            <li>
               <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/setting'); }} >
                 <FaCog className="dashboardSideBarIcon"/> &nbsp;设置
               </a>

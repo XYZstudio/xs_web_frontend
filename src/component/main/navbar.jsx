@@ -95,14 +95,13 @@ export default class NavbarComponent extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavDropdown eventKey={3} title="关于Sporit" id="basic-nav-dropdown" className="navbarElement">
+              <NavDropdown eventKey={3} title="关于思博锐" id="basic-nav-dropdown" className="navbarElement">
                 <MenuItem eventKey={3.1} className="menuNavbarDropdownItem">公司故事</MenuItem>
-                <MenuItem eventKey={3.2} className="menuNavbarDropdownItem">Sporit社区</MenuItem>
                 <MenuItem eventKey={3.3} className="menuNavbarDropdownItem">团队介绍</MenuItem>
                 <MenuItem eventKey={3.4} className="menuNavbarDropdownItem">专家介绍</MenuItem>
               </NavDropdown>
-              <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>Sporit学位</NavItem>
-              <NavItem className="navbarElement" eventKey={3} href="#">Sporit观点</NavItem>
+              <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>思博锐学位</NavItem>
+              <NavItem className="navbarElement" eventKey={3} href="#">思博锐观点</NavItem>
               <NavItem className="navbarElement" eventKey={4} href="#">职业中心</NavItem>
             </Nav>
             <Nav pullRight>
