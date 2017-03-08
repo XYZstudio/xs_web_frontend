@@ -96,7 +96,8 @@
 }
 
 .dashboardContentChineseHead{
-    font-size: 18px;
+    font-size: 20px;
+    color: #30a0d6;
     font-family: "Open Sans",sans-serif;
     -webkit-font-smoothing: antialiased;
 }
@@ -115,4 +116,20 @@
 .dashboardContentOneLineControlRow{
     margin-left: -60px;
     width: 107%;
+}
+
+.leftMargin{
+    margin-left: 30px;
+}
+
+.buttonMargin{
+    margin-left:10px;
+    margin-top: 10px;
+}
+
+.workExperienceHolder{
+    margin-top:10px;
+    border-top: solid 2px #ccc;
+    padding-top: 10px;
+    padding-left: 10px;
 }
