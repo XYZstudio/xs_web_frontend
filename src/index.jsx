@@ -27,6 +27,7 @@ import DashboardContactInfoPage from 'component/dashboard/careerProf/dashboard_c
 import DashboardExperiencePage from 'component/dashboard/careerProf/dashboard_experience_page.jsx';
 import DashboardEducationPage from 'component/dashboard/careerProf/dashboard_education_page.jsx';
 import DashboardResumePage from 'component/dashboard/careerProf/dashboard_resume_page.jsx';
+import DashboardBasicInfoPage from 'component/dashboard/careerProf/dashboard_basic_info_page.jsx';
 
 import DashboardCourseDetail from 'component/dashboard/dashboard_course_detail.jsx';
 import DashboardPlayVideo from 'component/dashboard/dashboard_play_video.jsx';
@@ -77,6 +78,7 @@ ReactDOM.render(
       <Route path='/dashboard/careerInfo/Experience' component={ DashboardExperiencePage } />
       <Route path='/dashboard/careerInfo/ContactInfo' component={ DashboardContactInfoPage } />
       <Route path='/dashboard/careerInfo/Summary' component={ DashboardSummaryPage } />
+      <Route path='/dashboard/careerInfo/BasicInfo' component={ DashboardBasicInfoPage } />
     </Route>
       
   	{/* This match-all route below must be defined as the last one.*/}
