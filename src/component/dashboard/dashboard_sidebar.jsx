@@ -116,6 +116,13 @@ class Sidebar extends Component {
                     &nbsp;简历上传
                   </a>
                 </li>
+                <li>
+                  <a
+                    href=""
+                    onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/BasicInfo');}} >
+                    &nbsp;注册信息
+                  </a>
+                </li>
               </ul>
             </li>
 
