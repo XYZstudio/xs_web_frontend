@@ -60,9 +60,10 @@ export default class DashboardResumePage extends React.Component {
     });
   }
   downloadResume(){
-    request
+    const stream = fs.createWriteStream('testing.pdf');
+    var req = request
     .get(`http://${config.host}:${config.rest_port}/api/v1/download_user_resume/${this.state.user.email}`)
-    .set('Content-Type', 'binary')
+    .type('png')
     .end((err, res) => {
       if (err) {
         console.error(err);
@@ -72,6 +73,8 @@ export default class DashboardResumePage extends React.Component {
         console.log('******************');
       }
     });
+    console.log('pipe file');
+    req.pipe(stream);
   }
   changeFile(event){
     console.log('**** selected resume file ****');
@@ -113,7 +116,7 @@ export default class DashboardResumePage extends React.Component {
                 已上传简历：
                 </Col>
                 <Col sm={10}>
-                  {this.state.resumeFilePath ? <a download href="http://localhost:3333/Users/bin/learnspace/sporit/xs_backend_service/resumes/3.ttl">{ this.state.resumeFileName }</a> : null}
+                  {this.state.resumeFilePath ? <a onClick={this.downloadResume}>{ this.state.resumeFileName }</a> : null}
                 </Col>
               </FormGroup>
 

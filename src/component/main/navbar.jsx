@@ -100,9 +100,8 @@ export default class NavbarComponent extends React.Component {
                 <MenuItem eventKey={3.3} className="menuNavbarDropdownItem">团队介绍</MenuItem>
                 <MenuItem eventKey={3.4} className="menuNavbarDropdownItem">专家介绍</MenuItem>
               </NavDropdown>
-              <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>思博锐学位</NavItem>
-              <NavItem className="navbarElement" eventKey={3} href="#">热门课程</NavItem>
-              <NavItem className="navbarElement" eventKey={3} href="#">思博锐活动</NavItem>
+              <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>精品课程</NavItem>
+              <NavItem className="navbarElement" eventKey={3} href="#">精彩活动</NavItem>
               <NavItem className="navbarElement" eventKey={4} href="#">职业中心</NavItem>
             </Nav>
             <Nav pullRight>
