@@ -65,7 +65,7 @@ export default class DashboardResumePage extends React.Component {
     var req = request
     .get(`http://${config.host}:${config.rest_port}/api/v1/download_user_resume/${this.state.user.email}`)
     .withCredentials()
-    .type('png')
+    .set('Content-Type', 'binary')
     .end((err, res) => {
       if (err) {
         console.error(err);
