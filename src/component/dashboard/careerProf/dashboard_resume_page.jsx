@@ -44,6 +44,7 @@ export default class DashboardResumePage extends React.Component {
   getExistingFileName(){
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_resume_name/${this.state.user.email}`)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         console.error(err);
@@ -62,6 +63,7 @@ export default class DashboardResumePage extends React.Component {
   downloadResume(){
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/download_user_resume/${this.state.user.email}`)
+    .withCredentials()
     .set('Content-Type', 'binary')
     .end((err, res) => {
       if (err) {
@@ -89,6 +91,7 @@ export default class DashboardResumePage extends React.Component {
     } else {
       request
       .post(`http://${config.host}:${config.rest_port}/api/v1/update_user_resume`)
+      .withCredentials()
       .field('userName', this.state.user.email)
       .attach('file', this.state.selectedFile)
       .end((err, res) => {
