@@ -19,23 +19,6 @@ import moment from 'moment';
 import 'react-select/dist/react-select.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
-//import Calendar from 'react-input-calendar';
-//localhost:3000/api/v1/get_user_basic_info_by_id/589fb50140a8d520c8f73a10
-//localhost:3000/api/v1/update_user_basic_info_by_id
-// {
-//   "userId": "589fb50140a8d520c8f73a10",
-//   "userName":         "zhangkakashi@gmail.com",
-//         "firstName":        "body.firstName",
-//         "lastName":         "body.lastName", 
-//         "gender":           "male",
-//         "careerDomain":     ["搬砖", "挑粪","捡屎"],
-//         "hobbies":          ["嘿嘿嘿",  "嘿嘿","嘿"],
-//     "birthYear":        1,
-//     "birthMonth":       2,
-//     "birthDate":        3,
-//     "highestDegree":    "蓝翔"
-//   }
-
 export default class DashboardBasicInfoPage extends React.Component {
   constructor() {
     super();
@@ -152,9 +135,6 @@ export default class DashboardBasicInfoPage extends React.Component {
   handleGenderChange(e) {
     this.setState({gender : e.target.value });
   }
-  handleHighestDegreeChange(e) {
-    this.setState({highestDegree : e.target.value });
-  }
   handleInputDateChange(date) {
     console.log(date.format('YYYY'));
     console.log(date.format('M'));
@@ -169,25 +149,33 @@ export default class DashboardBasicInfoPage extends React.Component {
   handleCurrentStatueChange(val) {
       console.log("Selected: " + val);
       this.setState({
-        currentStatus : val
+        currentStatus : val.value
       });
   }
   handleHighestDegreeChange(val){
       console.log("Selected: " + val);
       this.setState({
-        highestDegree : val
+        highestDegree : val.value
       });
   }
   handleCareerDomainChange(val){
       console.log("Selected: " + val);
+      var careerDomainArr = [];
+      for (var i = 0;i < val.length;i++) {
+        careerDomainArr.push(val[i].value);
+      }
       this.setState({
-        careerDomain : val
+        careerDomain : careerDomainArr
       });
   }
   handleHobbiesChange(val){
       console.log("Selected: " + val);
+      var hobbiesArr = [];
+      for (var i = 0;i < val.length;i++) {
+        hobbiesArr.push(val[i].value);
+      }
       this.setState({
-        hobbies : val
+        hobbies : hobbiesArr
       });
   }
 

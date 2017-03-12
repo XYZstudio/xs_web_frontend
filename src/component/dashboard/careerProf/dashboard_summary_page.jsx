@@ -141,7 +141,6 @@ export default class DashboardSummaryPage extends React.Component {
         <Col xs={12} md={8}>
           <Row className="textCenter dashboradContent">
             <Image className="dashboardAvatar" src= {touxiang} circle />
-            <h3 className="profileSettingUserName">{ this.state.user.name }</h3>
           </Row>
           <Row>
             <Form horizontal>
