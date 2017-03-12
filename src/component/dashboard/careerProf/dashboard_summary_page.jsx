@@ -14,21 +14,6 @@ import Image from 'react-bootstrap/lib/Image';
 import touxiang from 'style/asset/touxiang.png';
 import LoginStore from 'store/login';
 
-// {
-//   "_id": "58bc8b65804e0c553b368439",
-//   "userName": "binqi0830@gmail.com",
-//   "avatarPath": "",
-//   "myWebsite": "wwww.webs.com",
-//   "weibo": "wwww.weibote.com",
-//   "qq": "wwww.qqq.com",
-//   "Wechat": "wwww.wechat.com",
-//   "tweeter": "wwww.tweeter.com",
-//   "facobook": "wwww.fa.com",
-//   "linkedin": "wwww.link.com",
-//   "renren": "wwww.renren.com",
-//   "__v": 0
-// }
-
 export default class DashboardSummaryPage extends React.Component {
   constructor() {
     super();

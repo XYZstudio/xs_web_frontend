@@ -25,7 +25,6 @@ export default class DashboardResumePage extends React.Component {
       resuleFilePath : '',
       selectedFile : null
     };
-
   }
 
   componentWillMount() {

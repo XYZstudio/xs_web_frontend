@@ -49,10 +49,10 @@ export default class DashboardBasicInfoPage extends React.Component {
     this.handleHighestDegreeChange = this.handleHighestDegreeChange.bind(this);
     this.handleCareerDomainChange = this.handleCareerDomainChange.bind(this);
     this.handleHobbiesChange = this.handleHobbiesChange.bind(this);
-
+    this.updateBasicInfo = this.updateBasicInfo.bind(this);
     this.state = {
       user: null,
-      inputDate : moment(),
+      inputDate : '',
       firstName : '',
       lastName : '',
       gender : '',
@@ -83,21 +83,63 @@ export default class DashboardBasicInfoPage extends React.Component {
       if(err) {
         console.error(err);
       } else {
-        var basicInfo = JSON.parse(res.text);
+        console.log(res);
+        var basicInfo = res.body;
+        var momentObj;
+        if (basicInfo.birthDate && basicInfo.birthMonth && basicInfo.birthYear) {
+            var dateString = basicInfo.birthDate + '/' + basicInfo.birthMonth + '/' + basicInfo.birthYear;
+            momentObj = moment(dateString, 'M/D/YYYY');
+        } else {
+            momentObj = moment();
+        }
+
         console.log('******** user basic info**********');
         console.log(basicInfo);
         console.log('******************');
         this.setState({
           firstName : basicInfo.firstName,
           lastName : basicInfo.lastName,
+          currentStatus : basicInfo.currentStatus,
           gender : basicInfo.gender,
           careerDomain : basicInfo.careerDomain,
           hobbies : basicInfo.hobbies,
+          inputDate : momentObj,
           birthYear : basicInfo.birthYear,
           birthMonth : basicInfo.birthMonth,
           birthDate : basicInfo.birthDate,
           highestDegree : basicInfo.highestDegree
         });
+      }
+    });
+  }
+
+  updateBasicInfo(){
+    var requestJson = {
+      userName : this.state.user.email,
+      userId : this.state.user._id,
+      firstName : this.state.firstName,
+      lastName : this.state.lastName,
+      currentStatus : this.state.currentStatus,
+      gender : this.state.gender,
+      careerDomain : this.state.careerDomain,
+      hobbies : this.state.hobbies,
+      birthYear : this.state.birthYear,
+      birthMonth : this.state.birthMonth,
+      birthDate : this.state.birthDate,
+      highestDegree : this.state.highestDegree
+    };
+    console.log('******** requestJson ********');
+    console.log(requestJson);
+    console.log('***************************');
+    request
+    .post(`http://${config.host}:${config.rest_port}/api/v1/update_user_basic_info_by_id`)
+    .send(requestJson)
+    .withCredentials()
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        alert('注册信息已修改');
       }
     });
   }
@@ -147,35 +189,6 @@ export default class DashboardBasicInfoPage extends React.Component {
       this.setState({
         hobbies : val
       });
-  }
-  updateBasicInfo(){
-    var requestJson = {
-      userName : this.state.user.email,
-      userId : this.state.user._id,
-      firstName : this.state.firstName,
-      lastName : this.state.lastName,
-      gender : this.state.gender,
-      careerDomain : this.state.careerDomain,
-      hobbies : this.state.hobbies,
-      birthYear : this.state.birthYear,
-      birthMonth : this.state.birthMonth,
-      birthDate : this.state.birthDate,
-      highestDegree : this.state.highestDegree
-    };
-    console.log('******** requestJson ********');
-    console.log(requestJson);
-    console.log('***************************');
-    request
-    .post(`http://${config.host}:${config.rest_port}/api/v1/update_user_basic_info_by_id`)
-    .send(requestJson)
-    .withCredentials()
-    .end((err, res) => {
-      if (err) {
-        console.error(err);
-      } else {
-        alert('注册信息已修改');
-      }
-    });
   }
 
   render() {
@@ -279,7 +292,7 @@ export default class DashboardBasicInfoPage extends React.Component {
                 性别
               </Col>
               <Col md={4}>
-                <FormControl placeholder={ this.state.lastName } onChange={this.handleLastNameChange}/>
+                <FormControl placeholder={ this.state.lastName } onChange={this.handleGenderChange}/>
               </Col>
               <Col md={2} componentClass={ControlLabel} className="inputRowLabel">
                 出生年月
@@ -344,7 +357,7 @@ export default class DashboardBasicInfoPage extends React.Component {
           </Row>
 
           <Row>
-              <Button id="basicInfoSaveButton" onClick={this.updateContactInfoChange}>
+              <Button id="basicInfoSaveButton" onClick={this.updateBasicInfo}>
                 保存
               </Button>
           </Row>
