@@ -76,6 +76,7 @@ export default class DashboardEducationPage extends React.Component {
   getEducationBackground(){
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_education/${this.state.user.email}`)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         console.error(err);

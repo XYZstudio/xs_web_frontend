@@ -74,6 +74,7 @@ export default class DashboardExperiencePage extends React.Component {
   getWorkingExperience(){
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_work_experience/${this.state.user.email}`)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         console.error(err);

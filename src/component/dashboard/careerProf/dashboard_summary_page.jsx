@@ -70,6 +70,7 @@ export default class DashboardSummaryPage extends React.Component {
   componentDidMount() {
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_introduction/${this.state.user.email}`)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         console.error(err);
