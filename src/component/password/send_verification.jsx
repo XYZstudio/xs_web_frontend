@@ -36,9 +36,17 @@ export default class SendVerification extends React.Component {
     }
   }
 
+  validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+  }
+
   sendVerificationCode() {
     const email = this.state.email;
-
+    if (!this.validateEmail(email)) {
+      this.setState({ error: true, message: "请输入有效邮箱地址" });
+      return;
+    }
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/verify/${email}/email`)
     .end((err, res) => {

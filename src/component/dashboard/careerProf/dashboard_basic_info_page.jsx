@@ -33,6 +33,7 @@ export default class DashboardBasicInfoPage extends React.Component {
     this.handleCareerDomainChange = this.handleCareerDomainChange.bind(this);
     this.handleHobbiesChange = this.handleHobbiesChange.bind(this);
     this.updateBasicInfo = this.updateBasicInfo.bind(this);
+   
     this.state = {
       user: null,
       inputDate : '',
@@ -71,7 +72,7 @@ export default class DashboardBasicInfoPage extends React.Component {
         var momentObj;
         if (basicInfo.birthDate && basicInfo.birthMonth && basicInfo.birthYear) {
             var dateString = basicInfo.birthDate + '/' + basicInfo.birthMonth + '/' + basicInfo.birthYear;
-            momentObj = moment(dateString, 'M/D/YYYY');
+            momentObj = moment(dateString, 'D/M/YYYY');
         } else {
             momentObj = moment();
         }

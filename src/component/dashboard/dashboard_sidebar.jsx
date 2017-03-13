@@ -126,11 +126,11 @@ class Sidebar extends Component {
               </ul>
             </li>
 
-            <li>
+            {/*<li>
               <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/setting'); }} >
                 <FaCog className="dashboardSideBarIcon"/> &nbsp;设置
               </a>
-            </li>
+            </li>*/}
 
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/'); }} >

@@ -12,6 +12,8 @@ import Grid from 'react-bootstrap/lib/Grid';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 export default class DashboardExperiencePage extends React.Component {
   constructor() {
@@ -100,20 +102,16 @@ export default class DashboardExperiencePage extends React.Component {
     this.setState({location : e.target.value });
   }
   handleStartYearChange(e) {
-    //TODO:check number?
-    this.setState({startYear : e.target.value });
+    this.setState({startYear : e.value });
   }
   handleStartMonthChange(e) {
-    //TODO:check number?
-    this.setState({startMonth : e.target.value });
+    this.setState({startMonth : e.value });
   }
   handleEndYearChange(e) {
-    //TODO:check number?
-    this.setState({endYear : e.target.value });
+    this.setState({endYear : e.value });
   }
   handleEndMonthChange(e) {
-    //TODO:check number?
-    this.setState({endMonth : e.target.value });
+    this.setState({endMonth : e.value });
   }
   handleDescriptionChange(e) {
     this.setState({description : e.target.value });
@@ -266,6 +264,14 @@ export default class DashboardExperiencePage extends React.Component {
   }
 
   render() {
+    var monthsOptions = [];
+    for (var i = 1;i <= 12;i++) {
+      monthsOptions.push({value: i, label:  i});
+    }
+    var yearsOptions = [];
+    for (var i = 1917;i <= 2017;i++) {
+      yearsOptions.push({value: i, label:  i});
+    }
     return (
         <Grid>
           <Col xs={1} md={1}></Col>
@@ -317,7 +323,10 @@ export default class DashboardExperiencePage extends React.Component {
                       开始年份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.startYear} onChange={this.handleStartYearChange}/>
+                      <Select 
+                      options={yearsOptions}
+                      value={this.state.startYear}
+                      onChange={this.handleStartYearChange}/>
                     </Col>
                   </FormGroup>
 
@@ -326,7 +335,10 @@ export default class DashboardExperiencePage extends React.Component {
                       开始月份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.startMonth} onChange={this.handleStartMonthChange}/>
+                      <Select 
+                      options={monthsOptions}
+                      value={this.state.startMonth}
+                      onChange={this.handleStartMonthChange}/>
                     </Col>
                   </FormGroup>
 
@@ -335,7 +347,10 @@ export default class DashboardExperiencePage extends React.Component {
                       结束年份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.endYear} onChange={this.handleEndYearChange}/>
+                      <Select 
+                      options={yearsOptions}
+                      value={this.state.endYear}
+                      onChange={this.handleEndYearChange}/>
                     </Col>
                   </FormGroup>
 
@@ -344,7 +359,10 @@ export default class DashboardExperiencePage extends React.Component {
                       结束月份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.endMonth} onChange={this.handleEndMonthChange}/>
+                      <Select 
+                      options={monthsOptions}
+                      value={this.state.endMonth}
+                      onChange={this.handleEndMonthChange}/>
                     </Col>
                   </FormGroup>
 
