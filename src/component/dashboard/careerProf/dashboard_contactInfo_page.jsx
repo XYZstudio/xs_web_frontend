@@ -12,26 +12,10 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 
-// {
-//   "userName":         "zhangkakashi@gmail.com",
-//   "firstName":        "嘿", 
-//   "lastName":         "嘿嘿嘿",
-//   "email":            "zhangkakashi@gmail.com",
-//   "address":          "1131 conpass ln", 
-//   "city":             "foster city",
-//   "province":         "ca",
-//   "zipcode":          "94404",
-//   "cellPhone":        "123456",
-//   "mobile":           "123456789"
-// }
-
 export default class DashboardContactInfoPage extends React.Component {
   constructor() {
     super();
 
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleCityChange = this.handleCityChange.bind(this);
@@ -46,8 +30,6 @@ export default class DashboardContactInfoPage extends React.Component {
       user: null,
 
       userName : '',
-      firstName : '', 
-      lastName : '',
       email : '',
       address : '', 
       city : '',
@@ -71,6 +53,7 @@ export default class DashboardContactInfoPage extends React.Component {
     console.log(this.state.user.email);
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_contact/${this.state.user.email}`)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         console.error(err);
@@ -81,8 +64,6 @@ export default class DashboardContactInfoPage extends React.Component {
         console.log('******************');
         this.setState({      
           userName : contactInfo.userName,
-          firstName : contactInfo.firstName, 
-          lastName : contactInfo.lastName,
           email : contactInfo.email,
           address : contactInfo.address, 
           city : contactInfo.city,
@@ -93,14 +74,6 @@ export default class DashboardContactInfoPage extends React.Component {
         });
       }
     });
-  }
-
-  handleFirstNameChange(e){
-    this.setState({firstName : e.target.value });
-  }
-
-  handleLastNameChange(e){
-    this.setState({lastName : e.target.value });
   }
 
   handleEmailChange(e){
@@ -126,10 +99,9 @@ export default class DashboardContactInfoPage extends React.Component {
   }
 
   updateContactInfoChange(){
+    console.log(this.state.user);
     console.log({
-      userName : this.state.userName,
-      firstName : this.state.firstName, 
-      lastName : this.state.lastName,
+      userName : this.state.user.email,
       email : this.state.email,
       address : this.state.address, 
       city : this.state.city,
@@ -142,9 +114,8 @@ export default class DashboardContactInfoPage extends React.Component {
     .post(`http://${config.host}:${config.rest_port}/api/v1/update_user_contact`)
     .withCredentials()
     .send({
-      userName : this.state.userName,
-      firstName : this.state.firstName, 
-      lastName : this.state.lastName,
+      userId : this.state.user._id,
+      userName : this.state.user.email,
       email : this.state.email,
       address : this.state.address, 
       city : this.state.city,
@@ -169,29 +140,6 @@ export default class DashboardContactInfoPage extends React.Component {
           <Col xs={1} md={1}></Col>
           <Col xs={12} md={8}>
             <Form horizontal>
-              <Row>
-                <Col xs={9} md={6}>
-                  <FormGroup controlId="formHorizontalEmail">
-                    <Col componentClass={ControlLabel} sm={2}>
-                      名
-                    </Col>
-                    <Col sm={10}>
-                      <FormControl placeholder={ this.state.firstName } onChange={this.handleFirstNameChange}/>
-                    </Col>
-                  </FormGroup>
-                </Col>
-                <Col xs={9} md={6}>
-                  <FormGroup controlId="formHorizontalPassword">
-                    <Col componentClass={ControlLabel} sm={2}>
-                      姓
-                    </Col>
-                    <Col sm={10}>
-                      <FormControl placeholder={ this.state.lastName } onChange={this.handleLastNameChange}/>
-                    </Col>
-                  </FormGroup>
-                </Col>
-              </Row>
-
               <Row className="dashboardContentOneLineControlRow">
                 <FormGroup controlId="formHorizontalEmail">
                   <Col componentClass={ControlLabel} sm={2}>

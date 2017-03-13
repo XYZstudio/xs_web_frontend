@@ -56,6 +56,10 @@ export default class ResetPassword extends React.Component {
     if (this.state.password !== this.state.passwordConfirm) {
       this.setState({ message: '上下密码不一致，请检查', error: true });
     } else {
+      if (!this.state.password || this.state.password.length < 6) {
+        this.setState({ message: '请使用长度大于6位的密码', error: true });
+        return;
+      }
       this.setState({ message: '上下密码一致', error: false });
       const email = ResetPasswordStore.getState().email;
       request
@@ -98,14 +102,14 @@ export default class ResetPassword extends React.Component {
                   <FormControl
                     type="password"
                     value={ this.state.password }
-                    placeholder="设置你的新密码"
+                    placeholder="设置你的新密码(长度大于6位)"
                     onChange={ this.handlePasswordChange }
                   />
                   <FormControl.Feedback />
                   <FormControl
                     type="password"
                     value={ this.state.passwordConfirm }
-                    placeholder="确认密码"
+                    placeholder="确认密码(长度大于6位)"
                     onChange={ this.handlePasswordConfirmChange }
                   />
                   <FormControl.Feedback />

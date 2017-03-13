@@ -12,6 +12,8 @@ import Grid from 'react-bootstrap/lib/Grid';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 export default class DashboardEducationPage extends React.Component {
   constructor() {
@@ -76,6 +78,7 @@ export default class DashboardEducationPage extends React.Component {
   getEducationBackground(){
     request
     .get(`http://${config.host}:${config.rest_port}/api/v1/get_user_education/${this.state.user.email}`)
+    .withCredentials()
     .end((err, res) => {
       if (err) {
         console.error(err);
@@ -103,20 +106,24 @@ export default class DashboardEducationPage extends React.Component {
     this.setState({major : e.target.value });
   }
   handleStartYearChange(e) {
-    //TODO:check number?
-    this.setState({startYear : e.target.value });
+    console.log(e);
+    var year = e.value;
+    this.setState({startYear : year });
   }
   handleStartMonthChange(e) {
-    //TODO:check number?
-    this.setState({startMonth : e.target.value });
+    console.log(e);
+    var month = e.value;
+    this.setState({startMonth : month });
   }
   handleEndYearChange(e) {
-    //TODO:check number?
-    this.setState({endYear : e.target.value });
+    console.log(e);
+    var year = e.value;
+    this.setState({endYear : year });
   }
   handleEndMonthChange(e) {
-    //TODO:check number?
-    this.setState({endMonth : e.target.value });
+    console.log(e);
+    var month = e.value;
+    this.setState({endMonth : month });
   }
   handleDescriptionChange(e) {
     this.setState({description : e.target.value });
@@ -275,6 +282,14 @@ export default class DashboardEducationPage extends React.Component {
   }
 
   render() {
+    var monthsOptions = [];
+    for (var i = 1;i <= 12;i++) {
+      monthsOptions.push({value: i, label:  i});
+    }
+    var yearsOptions = [];
+    for (var i = 1917;i <= 2017;i++) {
+      yearsOptions.push({value: i, label:  i});
+    }
     return (
         <Grid>
           <Col xs={1} md={1}></Col>
@@ -335,7 +350,10 @@ export default class DashboardEducationPage extends React.Component {
                       开始年份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.startYear} onChange={this.handleStartYearChange}/>
+                      <Select 
+                      options={yearsOptions}
+                      value={this.state.startYear}
+                      onChange={this.handleStartYearChange}/>
                     </Col>
                   </FormGroup>
 
@@ -344,7 +362,10 @@ export default class DashboardEducationPage extends React.Component {
                       开始月份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.startMonth} onChange={this.handleStartMonthChange}/>
+                      <Select 
+                      options={monthsOptions}
+                      value={this.state.startMonth}
+                      onChange={this.handleStartMonthChange}/>
                     </Col>
                   </FormGroup>
 
@@ -353,7 +374,10 @@ export default class DashboardEducationPage extends React.Component {
                       结束年份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.endYear} onChange={this.handleEndYearChange}/>
+                      <Select 
+                      options={yearsOptions}
+                      value={this.state.endYear}
+                      onChange={this.handleEndYearChange}/>
                     </Col>
                   </FormGroup>
 
@@ -362,7 +386,10 @@ export default class DashboardEducationPage extends React.Component {
                       结束月份
                     </Col>
                     <Col sm={10}>
-                      <FormControl placeholder={this.state.endMonth} onChange={this.handleEndMonthChange}/>
+                      <Select 
+                      options={monthsOptions}
+                      value={this.state.endMonth}
+                      onChange={this.handleEndMonthChange}/>
                     </Col>
                   </FormGroup>
 
