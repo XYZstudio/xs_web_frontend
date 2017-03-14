@@ -1,13 +1,18 @@
 import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
-import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
+import { Col, Row, Jumbotron, Button, Thumbnail, Alert, Tab, Tabs} from 'react-bootstrap';
 import LoginStore from 'store/login';
 import videoImg from 'asset/video.png';
 import courseStyle from 'style/course.scss';
 import { Icon } from 'react-fa';
 import faker from 'faker';
+import Modal from 'react-bootstrap/lib/Modal';
 import { browserHistory } from 'react-router';
+import LogoImage from 'style/asset/logo.png';
+import PromoCodeForm from '../payment/promoCode.jsx';
+import WechatPayForm from '../payment/alipayForm.jsx';
+import AlipayForm from '../payment/wechatPayForm.jsx';
 
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
@@ -19,8 +24,11 @@ export default class DashboardCourseDetail extends React.Component {
       videos: [],
       preview: null,
       open: false,
-      alertVisible: false
+      alertVisible: false,
+      showModal: false
     };
+    this.close = this.close.bind(this);
+    this.show = this.show.bind(this);
   }
 
   componentWillMount() {
@@ -53,26 +61,35 @@ export default class DashboardCourseDetail extends React.Component {
   }
 
   addCourse(courseName) {
-    if (this.state.user) {
-      request
-      .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
-      .withCredentials()
-      .send({
-        email: this.state.user.email,
-        courseNames: [courseName]
-      })
-      .end((err, res) => {
-        if (err) {
-          console.error(err);
-        } else {
-          LoginStore.dispatch({
-            type: 'LOGIN',
-            user: res.body,
-          });
-          this.handleAlert(true);
-        }
-      });
-    }
+    // if (this.state.user) {
+    //   request
+    //   .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
+    //   .withCredentials()
+    //   .send({
+    //     email: this.state.user.email,
+    //     courseNames: [courseName]
+    //   })
+    //   .end((err, res) => {
+    //     if (err) {
+    //       console.error(err);
+    //     } else {
+    //       LoginStore.dispatch({
+    //         type: 'LOGIN',
+    //         user: res.body,
+    //       });
+    //       this.handleAlert(true);
+    //     }
+    //   });
+    // }
+    this.show();
+  }
+
+  close() {
+    this.setState({ showModal: false }); 
+  }
+
+  show() {
+    this.setState({showModal:true});
   }
 
   handleAlert(bool) {
@@ -173,6 +190,7 @@ export default class DashboardCourseDetail extends React.Component {
   }
 
   render() {
+    let activeTabKey = 1;
     var alert = '';
     if (this.state.alertVisible) {
       alert =  (
@@ -211,6 +229,27 @@ export default class DashboardCourseDetail extends React.Component {
         <Row>
           { this.videoThumbnail() }
         </Row>
+        <Modal backdrop="static" show={this.state.showModal} onHide={this.close}>
+            <div className="textCenter">
+              <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>
+            </div>
+            <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
+          <Modal.Body>
+            <div>
+              <Tabs defaultActiveKey={ activeTabKey } id="uncontrolled-tab-example">
+                <Tab eventKey={1} title="微信支付">
+                  <AlipayForm />
+                </Tab>
+                <Tab eventKey={2} title="支付宝支付"> 
+                  <WechatPayForm />
+                </Tab>
+                <Tab eventKey={3} title="课程券支付"> 
+                  <PromoCodeForm />
+                </Tab>
+              </Tabs>
+            </div>
+          </Modal.Body>
+        </Modal>
       </div>
     );
   };
