@@ -145,7 +145,14 @@ export default class DashboardSummaryPage extends React.Component {
       if (err) {
         console.error(err);
       } else {
-        this.setState({ icon: res.body.icon, icon_type: res.body.icon_type });
+        this.setState({ icon: res.body.icon, icon_type: res.body.icon_type }, () => {
+          user.icon = res.body.icon;
+          user.icon_type = res.body.icon_type;
+          LoginStore.dispatch({
+            type: 'LOGIN',
+            user: user,
+          });
+        });
       }
     });
   }
@@ -178,9 +185,9 @@ export default class DashboardSummaryPage extends React.Component {
             <Col xs={4} md={4}>
               <DropZone className="dashboardAvatar-container" onDrop={ this.handleFileUpload } multiple={ false } accept={ 'image/*' }>
                 {
-                  this.state.icon === '' ? 
-                  <Image className="dashboardAvatar" src={ defaultAvatar } /> :
-                  <Image className="dashboardAvatar" src={ `data:${ this.state.icon_type };base64,${ this.state.icon }` } />
+                  this.state.icon ? 
+                  <Image className="dashboardAvatar" src={ `data:${ this.state.icon_type };base64,${ this.state.icon }` } /> :
+                  <Image className="dashboardAvatar" src={ defaultAvatar } />
                 }
               </DropZone>
             </Col>
