@@ -157,7 +157,6 @@ export default class Registerform extends React.Component {
   }
 
   updateBasicInfo(res){
-    debugger;
     var requestJson = {
       userName : res.body[0].email,
       userId : res.body[0]._id,
