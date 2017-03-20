@@ -102,9 +102,19 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.dashboardAvatar{
+.dashboardAvatar-container{
     width: 200px;
     margin: 10px;
+    border-radius: 50%;
+    &:hover{
+        cursor: pointer;
+        opacity: 0.7;
+    };
+}
+
+.dashboardAvatar{
+    width: 200px;
+    border-radius: 50%;
 }
 
 .course-detail-btn{

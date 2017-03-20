@@ -11,8 +11,9 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Image from 'react-bootstrap/lib/Image';
-import touxiang from 'style/asset/touxiang.png';
+import defaultAvatar from 'style/asset/default_avatar.png';
 import LoginStore from 'store/login';
+import DropZone from 'react-dropzone';
 
 export default class DashboardSummaryPage extends React.Component {
   constructor() {
@@ -25,11 +26,13 @@ export default class DashboardSummaryPage extends React.Component {
     this.handleWeiboChange = this.handleWeiboChange.bind(this);
     this.handleLinkedinChange = this.handleLinkedinChange.bind(this);
     this.updateUserSummary = this.updateUserSummary.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
 
     this.state = {
       user : null,
       userName : '',
-      avatarPath : '',
+      icon : '',
+      icon_type: '',
       myWebsite : '',
       weibo : '',
       qq : '',
@@ -65,7 +68,6 @@ export default class DashboardSummaryPage extends React.Component {
         console.log(summaryInfo);
         console.log('******************');
         this.setState({
-          avatarPath : summaryInfo.avatarPath,
           myWebsite : summaryInfo.myWebsite,
           weibo : summaryInfo.weibo,
           qq : summaryInfo.qq,
@@ -78,6 +80,7 @@ export default class DashboardSummaryPage extends React.Component {
         });
       }
     });
+    this.getIcon();
   }
 
   handleQQChange(e) {
@@ -104,10 +107,9 @@ export default class DashboardSummaryPage extends React.Component {
     this.setState({linkedin : e.target.value });
   }
 
-  updateUserSummary(){
+  updateUserSummary() {
     var requestJson = {
       userName : this.state.user.email,
-      avatarPath : this.state.avatarPath,
       myWebsite : this.state.myWebsite,
       weibo : this.state.weibo,
       qq : this.state.qq,
@@ -134,13 +136,55 @@ export default class DashboardSummaryPage extends React.Component {
     });
   }
 
+  getIcon() {
+    let user = this.state.user;
+    request
+    .get(`http://${config.host}:${config.rest_port}/api/v1/get_icon/${user.email}`)
+    .withCredentials()
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        this.setState({ icon: res.body.icon, icon_type: res.body.icon_type });
+      }
+    });
+  }
+
+  handleFileUpload(files) {
+    let user = this.state.user;
+    let icon = files[0];
+    request
+    .post(`http://${config.host}:${config.rest_port}/api/v1/save_icon`)
+    .withCredentials()
+    .field('userName', user.email)
+    .attach('file', icon)
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        this.getIcon();
+        alert('用户信息已修改');
+      }
+    });
+  }
+
   render() {
     return (
         <Grid>
         <Col xs={3} md={2}></Col>
         <Col xs={12} md={8}>
           <Row className="textCenter dashboradContent">
-            <Image className="dashboardAvatar" src= {touxiang} circle />
+            <Col xs={4} md={4}></Col>
+            <Col xs={4} md={4}>
+              <DropZone className="dashboardAvatar-container" onDrop={ this.handleFileUpload } multiple={ false } accept={ 'image/*' }>
+                {
+                  this.state.icon === '' ? 
+                  <Image className="dashboardAvatar" src={ defaultAvatar } /> :
+                  <Image className="dashboardAvatar" src={ `data:${ this.state.icon_type };base64,${ this.state.icon }` } />
+                }
+              </DropZone>
+            </Col>
+            <Col xs={4} md={4}></Col>
           </Row>
           <Row>
             <Form horizontal>
