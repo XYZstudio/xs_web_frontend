@@ -8,9 +8,11 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import Modal from 'react-bootstrap/lib/Modal';
 import Button from 'react-bootstrap/lib/Button';
+import Image from 'react-bootstrap/lib/Image';
 import LoginRegisterTabs from './login_register_tabs';
 import LoginStore from 'store/login';
 import LogoImage from 'style/asset/logo.png';
+import defaultAvatar from 'style/asset/default_avatar.png';
 
 
 export default class NavbarComponent extends React.Component {
@@ -76,8 +78,16 @@ export default class NavbarComponent extends React.Component {
     if (this.state.user) {
       return (
         <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown" className="navbarElement">
-          <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
-          <MenuItem eventKey={1.2} onClick={ this.logout }>退出</MenuItem>
+          <MenuItem eventKey={1.1}>
+            {
+              this.state.user.icon ?
+              <Image className="navbar-avatar" src={ `data:${ this.state.user.icon_type };base64,${ this.state.user.icon }` } /> :
+              <Image className="navbar-avatar" src={ defaultAvatar } />
+            }
+            { this.state.user.name }
+          </MenuItem>
+          <MenuItem eventKey={1.2} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
+          <MenuItem eventKey={1.3} onClick={ this.logout }>退出</MenuItem>
         </NavDropdown>
       );
     } else {
