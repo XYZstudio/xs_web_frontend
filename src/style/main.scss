@@ -20,6 +20,23 @@ html,body{
     margin: 0;
 }
 
+.body-container{
+    marginTop: 60;
+    height: calc(100% - 110px);
+    position: absolute;
+    right: 0;
+    top: 60;
+    left: 0;
+    overflow: auto;
+}
+
+.footer-container{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .main-navbar{
   height: 51px;
 }
@@ -203,11 +220,6 @@ html,body{
     margin: 5px 0;
 }
 
-.joinUsBlock{
-    margin: 10px;
-    padding: 15px;
-    border-bottom: 2px solid #2b9ed5;
-}
 
 .joinUsBlockTitle{
     font-size: 25px;
