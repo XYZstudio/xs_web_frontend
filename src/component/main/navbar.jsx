@@ -66,7 +66,14 @@ export default class NavbarComponent extends React.Component {
     LoginStore.dispatch({ type: 'LOGOUT' });
     this.setState({ user: null });
   }
+  
+  gotoCompanyInto(){
+    browserHistory.push('/companyIntro');
+  }
 
+  gotoProfessorsIntro(){
+    browserHistory.push('/professorsIntro');
+  }
   loginOrUserDropdown() {
     if (this.state.user) {
       return (
@@ -106,9 +113,8 @@ export default class NavbarComponent extends React.Component {
           <Navbar.Collapse>
             <Nav>
               <NavDropdown eventKey={3} title="关于思博锐" id="basic-nav-dropdown" className="navbarElement">
-                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem">公司故事</MenuItem>
-                <MenuItem eventKey={3.3} className="menuNavbarDropdownItem">团队介绍</MenuItem>
-                <MenuItem eventKey={3.4} className="menuNavbarDropdownItem">专家介绍</MenuItem>
+                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem" onClick={this.gotoCompanyInto}>公司故事</MenuItem>
+                <MenuItem eventKey={3.4} className="menuNavbarDropdownItem" onClick={this.gotoProfessorsIntro}>专家介绍</MenuItem>
               </NavDropdown>
               <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>精品课程</NavItem>
               <NavItem className="navbarElement" eventKey={3} href="#">精彩活动</NavItem>

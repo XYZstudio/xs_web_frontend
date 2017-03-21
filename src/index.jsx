@@ -7,10 +7,16 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from 'component/App.jsx';
 import MainPage from 'component/main/main_page.jsx';
 import Course from 'component/course/Course.jsx';
+import ContactMethod from 'component/main/contactMethod.jsx';
+import JoinUs from 'component/main/joinUs.jsx';
+import ProfessorsIntro from 'component/main/professorsIntro.jsx';
+import CompanyIntro from 'component/main/companyIntro.jsx';
 import FindMyPassword from 'component/password/find_password.jsx';
 import NotFoundPage from 'component/main/not_found_page.jsx';
 import VerifyEmail from 'component/main/verify_email.jsx';
 import NavbarComponent from 'component/main/navbar.jsx';
+import BottomNavbarComponent from 'component/main/bottom_navbar';
+
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
@@ -36,13 +42,17 @@ import DashboardPlayVideo from 'component/dashboard/dashboard_play_video.jsx';
 ReactDOM.render(
   <Router history={ browserHistory }>
     <Route path='/' component={ App }>
-      <IndexRoute components={{ navbar: NavbarComponent, body: MainPage }} />
-      <Route path='/course' components={{ navbar: NavbarComponent, body: Course }} />
+      <IndexRoute components={{ navbar: NavbarComponent, body: MainPage, footer: BottomNavbarComponent }} />
+      <Route path='/course' components={{ navbar: NavbarComponent, body: Course, footer: BottomNavbarComponent  }} />
+      <Route path='/contactus' components={{ navbar: NavbarComponent, body: ContactMethod, footer: BottomNavbarComponent  }} />
+      <Route path='/joinus' components={{ navbar: NavbarComponent, body: JoinUs, footer: BottomNavbarComponent  }} />
+      <Route path='/professorsIntro' components={{ navbar: NavbarComponent, body: ProfessorsIntro, footer: BottomNavbarComponent  }} />
+      <Route path='/companyIntro' components={{ navbar: NavbarComponent, body: CompanyIntro, footer: BottomNavbarComponent  }} />
       <Route
         path='/courses/:courseName'
         getComponents={
           (nextState, cb) => {
-            cb(null, { navbar: NavbarComponent, body: DashboardCourseDetail });
+            cb(null, { navbar: NavbarComponent, body: DashboardCourseDetail, footer: BottomNavbarComponent  });
           } 
         }
       />

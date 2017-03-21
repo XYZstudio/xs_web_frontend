@@ -20,6 +20,23 @@ html,body{
     margin: 0;
 }
 
+.body-container{
+    marginTop: 60;
+    height: calc(100% - 110px);
+    position: absolute;
+    right: 0;
+    top: 60;
+    left: 0;
+    overflow: auto;
+}
+
+.footer-container{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .main-navbar{
   height: 51px;
 }
@@ -190,4 +207,58 @@ html,body{
     display: inline-block;
     margin-right: 2px;
     color: red;
+}
+
+.contactUsTitle{
+    color: #30a0d6;
+    font-size: 45px;
+    margin: 15px 0;
+}
+
+.contactMethod{
+    font-size: 17px;
+    margin: 5px 0;
+}
+
+
+.joinUsBlockTitle{
+    font-size: 25px;
+    color: #30a0d6;
+    margin-bottom: 10px;
+}
+
+.joinUsBlockSubTitle{
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+.joinUsText{
+    padding-left: 10px;
+    padding-bottom: 2px;
+}
+
+.companyIntroTitle{
+    font-size: 20px;
+    margin: 20px 0 10px 0;
+    color: #30a0d6;
+}
+
+.pgraph{
+    font-size: 15px;
+    padding: 8px;
+}
+
+.professorsIntroBlock{
+    margin-top:20px;
+}
+
+.professorsIntroHeader{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.professorsIntroPhoto{
+    margin-left: -16px;
+    width: 200px;
 }

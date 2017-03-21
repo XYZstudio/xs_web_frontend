@@ -6,7 +6,6 @@ import JoinButtonComponent from './join_button';
 import ThumbnailComponent from './thumbnail';
 import MediaComponent from './media';
 import PartnershipComponent from './partnership';
-import BottomNavbarComponent from './bottom_navbar';
 
 // Styles
 import MainPageStyle from 'style/main.scss';
@@ -25,7 +24,6 @@ export default class MainPage extends React.Component {
         <Row><ThumbnailComponent /></Row>
         <Row><MediaComponent /></Row>
         <Row><PartnershipComponent /></Row>
-        <Row><BottomNavbarComponent /></Row>
       </div>
     );
   };
