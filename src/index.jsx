@@ -17,6 +17,9 @@ import VerifyEmail from 'component/main/verify_email.jsx';
 import NavbarComponent from 'component/main/navbar.jsx';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
 import Agreement from 'component/main/agreement.jsx';
+import TrainingS from 'component/main/trainingS.jsx';
+import Activities from 'component/main/activities.jsx';
+
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
@@ -50,6 +53,8 @@ ReactDOM.render(
       <Route path='/professorsIntro' components={{ navbar: NavbarComponent, body: ProfessorsIntro, footer: BottomNavbarComponent  }} />
       <Route path='/companyIntro' components={{ navbar: NavbarComponent, body: CompanyIntro, footer: BottomNavbarComponent  }} />
       <Route path='/agreement' components={{ navbar: NavbarComponent, body: Agreement , footer: BottomNavbarComponent  }} />
+      <Route path='/trainingS' components={{ navbar: NavbarComponent, body: TrainingS , footer: BottomNavbarComponent  }} />
+      <Route path='/activities' components={{ navbar: NavbarComponent, body: Activities , footer: BottomNavbarComponent  }} />
       <Route
         path='/courses/:courseName'
         getComponents={

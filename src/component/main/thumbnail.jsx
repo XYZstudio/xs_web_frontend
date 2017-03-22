@@ -5,12 +5,17 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Thumbnail from 'react-bootstrap/lib/Thumbnail';
 import Button from 'react-bootstrap/lib/Button';
+import { browserHistory } from 'react-router';
 
 const tempImg = 'https://sandbergwallpaper.com/wp-content/uploads/2014/09/515-61_image2-300x300.jpg';
 
 export default class ThumbnailComponent extends React.Component {
   constructor() {
     super();
+  }
+
+  gotoTrainingS(){
+    browserHistory.push('/trainingS');
   }
 
   render() {
@@ -22,7 +27,7 @@ export default class ThumbnailComponent extends React.Component {
             <h3 className="agreementH2">国内最专业的线上体育管理培训课程</h3>
             <p className="pgraph">国际化的水准，本地化的内容和世界顶级专家的讲解，快速提升你的知识技能。</p>
             <p>
-              <Button bsStyle="default">详细信息</Button>
+              <Button bsStyle="default" onClick={this.gotoTrainingS}>详细信息</Button>
             </p>
           </Thumbnail>
         </Col>
