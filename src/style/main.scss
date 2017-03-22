@@ -237,15 +237,16 @@ html,body{
     padding-bottom: 2px;
 }
 
-.companyIntroTitle{
-    font-size: 20px;
-    margin: 20px 0 10px 0;
-    color: #30a0d6;
-}
-
 .pgraph{
-    font-size: 15px;
-    padding: 8px;
+    margin: 0 0 15px;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    line-height: 2em;
+    color: #525c65;
+    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .professorsIntroBlock{
@@ -261,4 +262,28 @@ html,body{
 .professorsIntroPhoto{
     margin-left: -16px;
     width: 200px;
+}
+
+.agreementH1{
+    color: #2b9ed5;
+    font-size: 28px;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.agreementH2{
+    color: #2b9ed5;
+    font-size: 22px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.bigMarginTop{
+    margin-top: 50px;
 }

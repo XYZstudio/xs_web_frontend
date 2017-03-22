@@ -16,7 +16,7 @@ import NotFoundPage from 'component/main/not_found_page.jsx';
 import VerifyEmail from 'component/main/verify_email.jsx';
 import NavbarComponent from 'component/main/navbar.jsx';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
-
+import Agreement from 'component/main/agreement.jsx';
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
@@ -38,6 +38,7 @@ import DashboardBasicInfoPage from 'component/dashboard/careerProf/dashboard_bas
 import DashboardCourseDetail from 'component/dashboard/dashboard_course_detail.jsx';
 import DashboardPlayVideo from 'component/dashboard/dashboard_play_video.jsx';
 
+
 // Router
 ReactDOM.render(
   <Router history={ browserHistory }>
@@ -48,6 +49,7 @@ ReactDOM.render(
       <Route path='/joinus' components={{ navbar: NavbarComponent, body: JoinUs, footer: BottomNavbarComponent  }} />
       <Route path='/professorsIntro' components={{ navbar: NavbarComponent, body: ProfessorsIntro, footer: BottomNavbarComponent  }} />
       <Route path='/companyIntro' components={{ navbar: NavbarComponent, body: CompanyIntro, footer: BottomNavbarComponent  }} />
+      <Route path='/agreement' components={{ navbar: NavbarComponent, body: Agreement , footer: BottomNavbarComponent  }} />
       <Route
         path='/courses/:courseName'
         getComponents={

@@ -18,6 +18,10 @@ export default class BottomNavbarComponent extends React.Component {
     browserHistory.push('/joinus');
   }
 
+  gotoAgreement(){
+    browserHistory.push('/agreement');
+  }
+
   render() {
     return (
       <div>
@@ -25,10 +29,10 @@ export default class BottomNavbarComponent extends React.Component {
           <Nav>
             <NavItem eventKey={1} onClick={ this.gotoJoinUs }>加入我们</NavItem>
             <NavItem eventKey={2} onClick={ this.gotoContactUs }>联系我们</NavItem>
-            <NavItem eventKey={3} >法律条款</NavItem>
+            <NavItem eventKey={3} onClick={ this.gotoAgreement }>法律条款</NavItem>
           </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Copyright <b>思博锐</b> 2017</NavItem>
+            <NavItem eventKey={1} href="#" style={{marginRight:18}}>Copyright <b>思博锐</b> 2017</NavItem>
           </Nav>
         </Navbar>
       </div>

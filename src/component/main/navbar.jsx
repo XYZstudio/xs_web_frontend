@@ -62,6 +62,10 @@ export default class NavbarComponent extends React.Component {
     browserHistory.push('/course');
   }
 
+  gotoCareer(){
+    browserHistory.push('/joinUs');
+  }
+
   logout() {
     LoginStore.dispatch({ type: 'LOGOUT' });
     this.setState({ user: null });
@@ -118,10 +122,10 @@ export default class NavbarComponent extends React.Component {
               </NavDropdown>
               <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>精品课程</NavItem>
               <NavItem className="navbarElement" eventKey={3} href="#">精彩活动</NavItem>
-              <NavItem className="navbarElement" eventKey={4} href="#">职业中心</NavItem>
+              <NavItem className="navbarElement" eventKey={4} onClick={this.gotoCareer}>职业中心</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={2} href="#">
+              <NavItem eventKey={2} href="#" style={{marginRight:18}}>
                 { this.loginOrUserDropdown() }
               </NavItem>
             </Nav>
