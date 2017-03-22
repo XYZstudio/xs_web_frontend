@@ -1,5 +1,6 @@
 // Modules
 import React from 'react';
+import JoinUs from 'component/main/joinUs.jsx';
 
 export default class DashboardCareerInfoPage extends React.Component {
   constructor() {
@@ -13,7 +14,7 @@ export default class DashboardCareerInfoPage extends React.Component {
 
   render() {
     return (
-      <div>DashboardCareerInfoPage</div>
+      <JoinUs/>
     );
   };
 }

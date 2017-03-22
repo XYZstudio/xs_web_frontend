@@ -485,7 +485,7 @@ export default class Registerform extends React.Component {
         <FormGroup style={agreementStyle}>
           <p>
             点击「注册Sporit」按钮，即代表你同意
-            <a href="" target="_blank">《Sporit协议》</a>
+            <a href="/agreement" target="_blank">《Sporit协议》</a>
           </p>
         </FormGroup>
 
