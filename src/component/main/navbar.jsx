@@ -62,6 +62,10 @@ export default class NavbarComponent extends React.Component {
     browserHistory.push('/course');
   }
 
+  goToActivities() {
+    browserHistory.push('/activities');
+  }
+
   gotoCareer(){
     browserHistory.push('/joinUs');
   }
@@ -120,8 +124,8 @@ export default class NavbarComponent extends React.Component {
                 <MenuItem eventKey={3.1} className="menuNavbarDropdownItem" onClick={this.gotoCompanyInto}>公司故事</MenuItem>
                 <MenuItem eventKey={3.4} className="menuNavbarDropdownItem" onClick={this.gotoProfessorsIntro}>专家介绍</MenuItem>
               </NavDropdown>
-              <NavItem className="navbarElement" eventKey={1} href="#" onClick={ this.goToCourse }>精品课程</NavItem>
-              <NavItem className="navbarElement" eventKey={3} href="#">精彩活动</NavItem>
+              <NavItem className="navbarElement" eventKey={1} onClick={ this.goToCourse }>精品课程</NavItem>
+              <NavItem className="navbarElement" eventKey={3} onClick={ this.goToActivities }>精彩活动</NavItem>
               <NavItem className="navbarElement" eventKey={4} onClick={this.gotoCareer}>职业中心</NavItem>
             </Nav>
             <Nav pullRight>
