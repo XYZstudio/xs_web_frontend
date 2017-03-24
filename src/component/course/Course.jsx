@@ -11,7 +11,6 @@ import MainPageStyle from 'style/main.scss';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
 import { Icon } from 'react-fa';
-import faker from 'faker';
 import courseStyle from 'style/mainPageCourse.scss';
 
 export default class Course extends React.Component {
@@ -51,10 +50,6 @@ export default class Course extends React.Component {
               </Media.Left>
               <Media.Body>
                 <Media.Heading>{ c.name }</Media.Heading>
-                <p>
-                  <Icon name="clock-o" />{ parseInt(faker.random.number() / 1000) }hrs
-                  <Icon name="heart" />{ parseInt(faker.random.number() / 100) }
-                </p>
                 <p>{ c.description }</p>
                 <Button
                   bsStyle="primary"

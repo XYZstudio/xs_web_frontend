@@ -10,7 +10,6 @@ import Media from 'react-bootstrap/lib/Media';
 import NavbarComponent from 'component/main/navbar';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
 import { Icon } from 'react-fa';
-import faker from 'faker';
 import courseStyle from 'style/course.scss';
 
 export default class DashboardCoursesPage extends React.Component {
