@@ -3,10 +3,8 @@ import React from 'react';
 import * as request from 'superagent';
 import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
 import LoginStore from 'store/login';
-import videoImg from 'asset/video.png';
 import courseStyle from 'style/course.scss';
 import { Icon } from 'react-fa';
-import faker from 'faker';
 import { browserHistory } from 'react-router';
 
 export default class DashboardCourseDetail extends React.Component {
@@ -156,13 +154,10 @@ export default class DashboardCourseDetail extends React.Component {
       return (
         <Thumbnail 
           key={ video._id } 
-          src={ videoImg } 
+          src={ `data:png;base64,${ video.image }` } 
           alt="242x200" 
           className="video-container">
           <h4>{ video.name }</h4>
-          <p>
-            <Icon className="video-sub-icon" name="clock-o" />{ parseInt(faker.random.number() / 1000) }min
-          </p>
           <div className="videoThumbnailContent">
             <p>{ video.description }</p>
           </div>
