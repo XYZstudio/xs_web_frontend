@@ -46,14 +46,10 @@ export default class DashboardCoursesPage extends React.Component {
           <Row>
             <Media>
               <Media.Left>
-                <img width={250} height={200} src={ c.image } alt="Image"/>
+                <img width={250} height={200} src={ `data:png;base64,${ c.image }` } alt="Image"/>
               </Media.Left>
               <Media.Body>
                 <Media.Heading>{ c.name }</Media.Heading>
-                <p>
-                  <Icon className="video-sub-icon" name="clock-o" />{ parseInt(faker.random.number() / 1000) }hrs
-                  <Icon className="video-sub-icon" name="heart" />{ parseInt(faker.random.number() / 100) }
-                </p>
                 <p>{ c.description }</p>
               </Media.Body>
             </Media>
