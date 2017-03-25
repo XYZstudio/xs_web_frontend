@@ -12,7 +12,6 @@ import MainPageStyle from 'style/main.scss';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
 import { Icon } from 'react-fa';
-import faker from 'faker';
 import courseStyle from 'style/mainPageCourse.scss';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import ListGroup from 'react-bootstrap/lib/ListGroup';

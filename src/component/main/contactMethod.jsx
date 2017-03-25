@@ -12,7 +12,6 @@ import MainPageStyle from 'style/main.scss';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
 import { Icon } from 'react-fa';
-import faker from 'faker';
 import courseStyle from 'style/mainPageCourse.scss';
 
 export default class ContactMethod extends React.Component {

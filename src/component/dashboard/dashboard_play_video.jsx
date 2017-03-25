@@ -39,7 +39,9 @@ export default class DashboardPlayVideo extends React.Component {
           <video 
             className="videoPlayer" 
             src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.videoName}` }
-            controls autoplay>
+            controls
+            autoPlay
+          >
           </video>
         </Row>
         <Row className="videoDescribtion">
