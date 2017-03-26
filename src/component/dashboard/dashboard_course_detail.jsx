@@ -198,8 +198,8 @@ export default class DashboardCourseDetail extends React.Component {
                   <Col xs={12} md={8} className="textCenter">
                     <video
                       id="preview-video"
-                      className="videoPlayer" 
-                      src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.preview.name}` }
+                      className="videoPlayer"
+                      src={ `http://${config.host}:${config.rest_port}/api/v1/preview/${this.state.preview.name}` }
                       controls
                       autoPlay
                     >
