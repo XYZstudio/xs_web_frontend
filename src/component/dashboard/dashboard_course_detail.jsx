@@ -1,7 +1,7 @@
 import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
-import { Grid, Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
+import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
 import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
@@ -185,17 +185,14 @@ export default class DashboardCourseDetail extends React.Component {
     if (!this.state.preview) { return null; }
 
     return (
-      <Grid>
-        <Col xs={2} md={1}></Col>
-        <Col xs={14} md={10}>
           <div>
             { alert }
             <Row>
               <Jumbotron>
                 <Row className="show-grid">
                   <Col xs={12} md={4}>
-                    <h3>{ this.state.courseName }</h3>
-                    <p>{ this.state.course && this.state.course.description }</p>
+                    <h3 className="agreementH2">{ this.state.courseName }</h3>
+                    <p className="courseDescribtion">{ this.state.course && this.state.course.description }</p>
                     { this.addCourseButton() }
                   </Col>
                   <Col xs={12} md={8} className="textCenter">
@@ -215,9 +212,6 @@ export default class DashboardCourseDetail extends React.Component {
               { this.videoThumbnail() }
             </Row>
           </div>
-        </Col>
-        <Col xs={2} md={1}></Col>
-      </Grid>
     );
   };
 }
