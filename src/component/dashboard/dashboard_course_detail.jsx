@@ -1,12 +1,11 @@
 import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
-import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
+import { Grid, Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
 import LoginStore from 'store/login';
 import courseStyle from 'style/course.scss';
 import { Icon } from 'react-fa';
 import { browserHistory } from 'react-router';
-
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +36,7 @@ export default class DashboardCourseDetail extends React.Component {
       if (err) {
         console.error(err);
       } else {
+        console.log(res.body);
         this.setState({
           course: res.body.course,
           videos: res.body.videos,
