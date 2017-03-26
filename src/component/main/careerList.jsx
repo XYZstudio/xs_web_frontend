@@ -97,36 +97,37 @@ export default class CareerList extends React.Component {
 
   render() {
     console.log(this.props.location.pathname);
-    var companyList = companyInfo.CompanyList.map(c => {
+    var companyList = companyInfo.CompanyList.map((c, idx) => {
         return (
-        <Jumbotron>
-            <Row>
-                <div className="agreementH2">{c.companyTitle}</div>
-            </Row>
-            <Row>
-                <Col xs={4} md={3}>
-                    <img className="professorsIntroPhoto" src={ `data:png;base64,${ c.companyImage }` }></img>
-                </Col>
-                <Col xs={12} md={9}>
-                    <Row>
-                        <ListGroup componentClass="ul">
-                            <li className="pgraph">{c.companyInfo}</li>
-                            <li className="pgraph">{c.companyLocation}</li>
-                        </ListGroup>
-                    </Row>
-                    <Row>
-                        <Button
-                          bsStyle="primary"
-                          className="course-detail-btn"
-                          onClick={ () => { this.goToCareerDetail(c.companyId); } }
-                        >
-                        查看详情
-                        </Button>
-                    </Row>
-                </Col>
-            </Row>
-        </Jumbotron>
-    )});
+	        <Jumbotron key={idx}>
+	            <Row>
+	                <div className="agreementH2">{c.companyTitle}</div>
+	            </Row>
+	            <Row>
+	                <Col xs={4} md={3}>
+	                    <img className="professorsIntroPhoto" src={ `data:png;base64,${ c.companyImage }` }></img>
+	                </Col>
+	                <Col xs={12} md={9}>
+	                    <Row>
+	                        <ListGroup componentClass="ul">
+	                            <li className="pgraph">{c.companyInfo}</li>
+	                            <li className="pgraph">{c.companyLocation}</li>
+	                        </ListGroup>
+	                    </Row>
+	                    <Row>
+	                        <Button
+	                          bsStyle="primary"
+	                          className="course-detail-btn"
+	                          onClick={ () => { this.goToCareerDetail(c.companyId); } }
+	                        >
+	                        查看详情
+	                        </Button>
+	                    </Row>
+	                </Col>
+	            </Row>
+	        </Jumbotron>
+	    )}
+	);
     return (
       <Grid>
         <Col xs={2} md={1}></Col>

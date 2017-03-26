@@ -1,7 +1,6 @@
 import config from 'root/config.json';
 import React from 'react';
-import * as request from 'superagent';
-import LoginStore from 'store/login';
+import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
 import { Col, Row, Button } from 'react-bootstrap';
@@ -11,19 +10,17 @@ export default class DashboardPlayVideo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
       videoName: props.params.videoName,
+      videoDescription: '',
       vedioPath: null
     };
   }
 
-  componentWillMount() {
-    const user = LoginStore.getState();
-    if (user && user.email) {
-      this.setState({ user: user });
-    } else {
-      this.setState({ user: null });
-    }
+  componentDidMount() {
+    VideoStore.subscribe(() => {
+      const description = VideoStore.getState();
+      this.setState({ videoDescription: description });
+    });
   }
 
   render() {
@@ -44,9 +41,9 @@ export default class DashboardPlayVideo extends React.Component {
           >
           </video>
         </Row>
-        <Row className="videoDescribtion">
+        <Row className="videoDescription">
           <h3>相关介绍</h3>
-          <p>相关介绍为帮助你快速实现目标，我们根据你的报名时间为你的每个实战项目设置了截止日期。此时间线的设计标准为每周大约投入 10 小时。请在任何可能的时候回到教室继续学习，即使只是 5 分钟，也能确保不断取得进步。</p>
+          <p>{ this.state.videoDescription }</p>
         </Row>
       </div>
     );

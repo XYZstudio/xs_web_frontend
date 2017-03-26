@@ -695,22 +695,22 @@ export default class CareerDetail extends React.Component {
 
     console.log(positionInfo[this.state.courseName]);
 
-    var openPositionList = positionInfo[this.state.courseName].map(c => {
+    var openPositionList = positionInfo[this.state.courseName].map((c, i) => {
       
-      var responsibilityList = c.responsibility.map(c => {
+      var responsibilityList = c.responsibility.map((c, j) => {
         return (
-          <div className="pgraph">{c}</div>
+          <div key={j} className="pgraph">{c}</div>
         );
       });
 
-      var requirmentList = c.requirment.map(c => {
+      var requirmentList = c.requirment.map((c, k) => {
         return (
-          <div className="pgraph">{c}</div>
+          <div key={k} className="pgraph">{c}</div>
         );
       });
 
       return (
-        <Jumbotron>
+        <Jumbotron key={i}>
           <div className="agreementH1">{c.title}</div>
           {c.location ? (
               <div>

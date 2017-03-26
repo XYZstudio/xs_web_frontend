@@ -1,12 +1,12 @@
 import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
-import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
+import { Grid, Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
 import LoginStore from 'store/login';
+import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { Icon } from 'react-fa';
 import { browserHistory } from 'react-router';
-
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +37,7 @@ export default class DashboardCourseDetail extends React.Component {
       if (err) {
         console.error(err);
       } else {
+        console.log(res.body);
         this.setState({
           course: res.body.course,
           videos: res.body.videos,
@@ -77,14 +78,14 @@ export default class DashboardCourseDetail extends React.Component {
     this.setState({ alertVisible: bool });
   }
 
-  playVideo(videoName) {
+  playVideo(video) {
     request
     .post(`http://${config.host}:${config.rest_port}/api/v1/update_last_activity`)
     .withCredentials()
     .send({
       email: this.state.user.email,
       courseName: this.state.courseName,
-      videoName: videoName,
+      videoName: video.name,
       time: 0
     })
     .end((err, res) => {
@@ -95,9 +96,13 @@ export default class DashboardCourseDetail extends React.Component {
           type: 'LOGIN',
           user: res.body,
         });
+        VideoStore.dispatch({
+          type: 'PLAY',
+          description: video.description,
+        });
       }
     });
-    browserHistory.push(`/dashboard/video/${videoName}`);
+    browserHistory.push(`/dashboard/video/${video.name}`);
   }
 
   addCourseButton() {
@@ -136,7 +141,7 @@ export default class DashboardCourseDetail extends React.Component {
                 <Button 
                   bsStyle="primary" 
                   className="videoThumbnailPlayButton"
-                  onClick={ () => { this.playVideo(video.name) } }>
+                  onClick={ () => { this.playVideo(video) } }>
                   开始学习</Button>
               </div>
             );
