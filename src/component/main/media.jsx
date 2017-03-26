@@ -19,7 +19,7 @@ export default class MediaComponent extends React.Component {
 
         <Media>
          <Media.Left>
-            <img width={500}  src={ mediaImage1 } alt="Image"/>
+            <img width={400}  src={ mediaImage1 } alt="Image"/>
           </Media.Left>
           <Media.Body>
             <Media.Heading className="agreementH2">公司介绍</Media.Heading>

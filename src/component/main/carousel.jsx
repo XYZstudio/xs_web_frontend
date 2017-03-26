@@ -17,22 +17,22 @@ export default class CarouselComponent extends React.Component {
         <Carousel.Item>
           <img src={ slidingImg1 }/>
           <Carousel.Caption>
-            <h3>全球化</h3>
-            <p>国际化赛事的蓬勃发展，本土赛事海外比拼.</p>
+            <h3 className="carouselHeader">全球化</h3>
+            <p className="carouselPgraph">国际化赛事的蓬勃发展，本土赛事海外比拼.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img src={ slidingImg2 }/>
           <Carousel.Caption>
-            <h3>数据分析</h3>
-            <p>体育商业分析、运动技战术分析.</p>
+            <h3 className="carouselHeader">数据分析</h3>
+            <p className="carouselPgraph">体育商业分析、运动技战术分析.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img src={ slidingImg3 }/>
           <Carousel.Caption>
-            <h3>数字化</h3>
-            <p>数字媒体、社交媒体与可视化技术.</p>
+            <h3 className="carouselHeader">数字化</h3>
+            <p className="carouselPgraph">数字媒体、社交媒体与可视化技术.</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
