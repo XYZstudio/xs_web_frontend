@@ -14,7 +14,7 @@ import * as request from 'superagent';
 import { Icon } from 'react-fa';
 import courseStyle from 'style/mainPageCourse.scss';
 import activity1Img from 'style/asset/activity1Img.png';
-import activity2Img from 'style/asset/activity2Img.png';
+import activity2Img from 'style/asset/activity2Img.jpg';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 

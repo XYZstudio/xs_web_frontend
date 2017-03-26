@@ -15,6 +15,7 @@ import Select from 'react-select';
 import moment from 'moment';
 import 'react-select/dist/react-select.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import Calendar from 'react-input-calendar';
 
 export default class Registerform extends React.Component {
   constructor(props) {
@@ -414,18 +415,17 @@ export default class Registerform extends React.Component {
             <Col md={2} componentClass={ControlLabel} className="inputRowLabel">
               <div className="mandatoryStar">*</div>性别
             </Col>
-            <Col md={4}>
+            <Col md={10}>
               <FormControl placeholder={ this.state.gender } onChange={this.handleGenderChange}/>
             </Col>
+        </Row>
+
+        <Row>
             <Col md={2} componentClass={ControlLabel} className="inputRowLabel">
               <div className="mandatoryStar">*</div>出生年月
             </Col>
-            <Col md={4} >
-              <DatePicker
-                md={12}
-                className="form-control"
-                selected={this.state.inputDate}
-                onChange={this.handleInputDateChange} />
+            <Col>
+              <Calendar format='DD/MM/YYYY' date='4-12-2014' />
             </Col>
         </Row>
 

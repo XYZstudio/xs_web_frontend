@@ -13,7 +13,7 @@ import { browserHistory } from 'react-router';
 import * as request from 'superagent';
 import { Icon } from 'react-fa';
 import courseStyle from 'style/mainPageCourse.scss';
-import activity2Img from 'style/asset/activity2Img.png';
+import activity2Img from 'style/asset/activity2Img.jpg';
 import QRCCodeImage from 'style/asset/qrcode.jpg';
 
 export default class ShanghaiActivities extends React.Component {

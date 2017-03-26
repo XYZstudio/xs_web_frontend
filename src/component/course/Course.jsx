@@ -47,7 +47,7 @@ export default class Course extends React.Component {
           <Row>
             <Media>
               <Media.Left>
-                <img width={250} height={200} src={ `data:png;base64,${ c.image }` } alt="Image"/>
+                <img className="courseImage" width={250} height={200} src={ `data:png;base64,${ c.image }` } alt="Image"/>
               </Media.Left>
               <Media.Body>
                 <Media.Heading className="agreementH2">{ c.name }</Media.Heading>

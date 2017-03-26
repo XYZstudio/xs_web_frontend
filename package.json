@@ -33,6 +33,7 @@
     "react-fa": "^4.1.2",
     "react-icons": "^2.2.3",
     "react-infinite-calendar": "^2.1.5",
+    "react-input-calendar": "^0.3.14",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
     "react-select": "^1.0.0-rc.3",
@@ -47,6 +48,7 @@
     "webpack-dev-server": "^1.15.1"
   },
   "devDependencies": {
+    "babelify": "^7.3.0",
     "faker": "^3.1.0",
     "isomorphic-style-loader": "^1.1.0"
   }

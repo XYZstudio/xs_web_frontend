@@ -172,7 +172,7 @@ export default class DashboardCourseDetail extends React.Component {
     if (this.state.alertVisible) {
       alert =  (
         <Alert bsStyle="info" onDismiss={ () => { this.handleAlert(false); } }>
-          <h4>您已成功添加该课程！</h4>
+          <h4>您已成功添加该课程！您可以在免费试用期内免费学习本课程。</h4>
         </Alert>
       );
     }
@@ -180,33 +180,39 @@ export default class DashboardCourseDetail extends React.Component {
     if (!this.state.preview) { return null; }
 
     return (
-      <div>
-        { alert }
-        <Row>
-          <Jumbotron>
-            <Row className="show-grid">
-              <Col xs={12} md={4}>
-                <h3>{ this.state.courseName }</h3>
-                <p>{ this.state.course && this.state.course.description }</p>
-                { this.addCourseButton() }
-              </Col>
-              <Col xs={12} md={8} className="textCenter">
-                <video
-                  id="preview-video"
-                  className="videoPlayer" 
-                  src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.preview.name}` }
-                  controls
-                  autoPlay
-                >
-                </video>
-              </Col>
+      <Grid>
+        <Col xs={2} md={1}></Col>
+        <Col xs={14} md={10}>
+          <div>
+            { alert }
+            <Row>
+              <Jumbotron>
+                <Row className="show-grid">
+                  <Col xs={12} md={4}>
+                    <h3>{ this.state.courseName }</h3>
+                    <p>{ this.state.course && this.state.course.description }</p>
+                    { this.addCourseButton() }
+                  </Col>
+                  <Col xs={12} md={8} className="textCenter">
+                    <video
+                      id="preview-video"
+                      className="videoPlayer" 
+                      src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.preview.name}` }
+                      controls
+                      autoPlay
+                    >
+                    </video>
+                  </Col>
+                </Row>
+              </Jumbotron>
             </Row>
-          </Jumbotron>
-        </Row>
-        <Row>
-          { this.videoThumbnail() }
-        </Row>
-      </div>
+            <Row>
+              { this.videoThumbnail() }
+            </Row>
+          </div>
+        </Col>
+        <Col xs={2} md={1}></Col>
+      </Grid>
     );
   };
 }

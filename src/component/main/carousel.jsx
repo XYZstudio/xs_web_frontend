@@ -2,9 +2,9 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/lib/Carousel';
 import CarouselStyle from 'style/carousel.scss';
-import slidingImg1 from 'style/asset/sliding1.png';
-import slidingImg2 from 'style/asset/sliding2.png';
-import slidingImg3 from 'style/asset/sliding3.png';
+import slidingImg1 from 'style/asset/sliding1.jpg';
+import slidingImg2 from 'style/asset/sliding2.jpg';
+import slidingImg3 from 'style/asset/sliding3.jpg';
 
 export default class CarouselComponent extends React.Component {
   constructor() {
