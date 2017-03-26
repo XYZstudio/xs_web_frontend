@@ -76,7 +76,7 @@ export default class ProfessorsIntro extends React.Component {
                         <Col xs={12} md={9}>
                             <ListGroup componentClass="ul">
                                 <li className="pgraph">哥伦比亚大学体育管理硕士项目教授</li>
-                                <li className="pgraph">Pilson Communitaion 公司（PCI）主席</li>
+                                <li className="pgraph">Pilson Communication 公司（PCI）主席</li>
                                 <li className="pgraph">国际奥委会授予奥林匹克勋章获得者</li>
                                 <li className="pgraph">前CBS体育频道主席</li>
                             </ListGroup>
