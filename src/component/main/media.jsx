@@ -33,7 +33,7 @@ export default class MediaComponent extends React.Component {
         <Media>
           <Media.Body>
             <Media.Heading className="agreementH2">课程介绍</Media.Heading>
-            <p className="pgraph">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p className="pgraph">跟随海内外体育管理精英和学者，学习领先企业与组织的最佳实践和前沿知识。来自全世界各地的老师们和思博锐为您共同搭建体育管理的课堂。传授与分享他们在体育管理教学和实践领域的深刻与独到的知识和见解。雄心勃勃但切实可行的2017全年学习规划，通过3阶段课程矩阵，步步进阶，循序渐进地学习多门课程：国际体育组织管理、体育场馆，体育营销，体育媒体，体育数字技术，体育商业分析，电子竞技，等等，并在学习中体会当今体育的三大趋势， 数字化、全球化和数据分析，在体育管理中的运用。</p>
           </Media.Body>
           <Media.Right>
             <img width={500}  src={ mediaImage2 } alt="Image"/>

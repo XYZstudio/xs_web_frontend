@@ -71,7 +71,7 @@ class Sidebar extends Component {
             </li>
 
             <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerOppor'); }} >
+              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerList'); }} >
                 <FaGlobe className="dashboardSideBarIcon"/> &nbsp;职业中心
               </a>
             </li>
