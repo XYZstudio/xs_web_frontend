@@ -9,6 +9,8 @@ import MainPage from 'component/main/main_page.jsx';
 import Course from 'component/course/Course.jsx';
 import ContactMethod from 'component/main/contactMethod.jsx';
 import JoinUs from 'component/main/joinUs.jsx';
+import CareerList from 'component/main/careerList.jsx';
+import CareerDetail from 'component/main/careerDetail.jsx';
 import ProfessorsIntro from 'component/main/professorsIntro.jsx';
 import CompanyIntro from 'component/main/companyIntro.jsx';
 import NotFoundPage from 'component/main/not_found_page.jsx';
@@ -50,6 +52,15 @@ ReactDOM.render(
       <Route path='/course' components={{ navbar: NavbarComponent, body: Course, footer: BottomNavbarComponent  }} />
       <Route path='/contactus' components={{ navbar: NavbarComponent, body: ContactMethod, footer: BottomNavbarComponent  }} />
       <Route path='/joinus' components={{ navbar: NavbarComponent, body: JoinUs, footer: BottomNavbarComponent  }} />
+      <Route path='/careerList' components={{ navbar: NavbarComponent, body: CareerList, footer: BottomNavbarComponent  }} />
+      <Route
+        path='/careerList/:companyId'
+        getComponents={
+          (nextState, cb) => {
+            cb(null, { navbar: NavbarComponent, body: CareerDetail, footer: BottomNavbarComponent  });
+          } 
+        }
+      />
       <Route path='/professorsIntro' components={{ navbar: NavbarComponent, body: ProfessorsIntro, footer: BottomNavbarComponent  }} />
       <Route path='/companyIntro' components={{ navbar: NavbarComponent, body: CompanyIntro, footer: BottomNavbarComponent  }} />
       <Route path='/agreement' components={{ navbar: NavbarComponent, body: Agreement , footer: BottomNavbarComponent  }} />
@@ -94,6 +105,8 @@ ReactDOM.render(
           } 
         }
       />
+      <Route path='/dashboard/careerList' component={ CareerList } />
+      <Route path='/dashboard/careerList/:companyId' component={ CareerDetail } />
       <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
       <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
       <Route path='/dashboard/chart' component={ DashboardChartPage } />

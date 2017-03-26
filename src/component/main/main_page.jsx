@@ -23,7 +23,7 @@ export default class MainPage extends React.Component {
         <Row><JoinButtonComponent /></Row>
         <Row><ThumbnailComponent /></Row>
         <Row><MediaComponent /></Row>
-        <Row><PartnershipComponent /></Row>
+        {/*<Row><PartnershipComponent /></Row>*/}
       </div>
     );
   };

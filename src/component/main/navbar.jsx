@@ -67,7 +67,7 @@ export default class NavbarComponent extends React.Component {
   }
 
   gotoCareer(){
-    browserHistory.push('/joinUs');
+    browserHistory.push('/careerList');
   }
 
   logout() {
