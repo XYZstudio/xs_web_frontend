@@ -1,6 +1,7 @@
-// Modules
+import config from 'root/config.json';
 import React from 'react';
 import { browserHistory } from 'react-router';
+import * as request from 'superagent';
 import Nav from 'react-bootstrap/lib/Nav';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import NavItem from 'react-bootstrap/lib/NavItem';
@@ -71,8 +72,17 @@ export default class NavbarComponent extends React.Component {
   }
 
   logout() {
-    LoginStore.dispatch({ type: 'LOGOUT' });
-    this.setState({ user: null });
+    request
+    .get(`http://${config.host}:${config.rest_port}/api/v1/logout_user`)
+    .withCredentials()
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        LoginStore.dispatch({ type: 'LOGOUT' });
+        this.setState({ user: null }); 
+      }
+    });
   }
   
   gotoCompanyInto(){

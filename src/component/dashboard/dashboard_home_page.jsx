@@ -81,7 +81,6 @@ export default class DashboardHomePage extends React.Component {
             <div><img className="coursePanelIcon" src={ courseIcon }/></div>
             <div>
               <h3 className="dashboardContentHeaderInPanel">{ c.courseName }</h3>
-              <p>Course Description { i }</p>
             </div>
             <div>
               <a className="panelButton" href="" onClick={ () => { this.goToDetail(c.courseName) } }>查看课程</a>
