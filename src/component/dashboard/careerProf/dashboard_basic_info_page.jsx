@@ -281,7 +281,7 @@ export default class DashboardBasicInfoPage extends React.Component {
                 性别
               </Col>
               <Col md={4}>
-                <FormControl placeholder={ this.state.lastName } onChange={this.handleGenderChange}/>
+                <FormControl placeholder={ this.state.gender } onChange={this.handleGenderChange}/>
               </Col>
               <Col md={2} componentClass={ControlLabel} className="inputRowLabel">
                 出生年月

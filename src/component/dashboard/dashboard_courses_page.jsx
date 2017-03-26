@@ -11,6 +11,7 @@ import NavbarComponent from 'component/main/navbar';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
 import { Icon } from 'react-fa';
 import courseStyle from 'style/course.scss';
+import Grid from 'react-bootstrap/lib/Grid';
 
 export default class DashboardCoursesPage extends React.Component {
   constructor() {
@@ -48,8 +49,8 @@ export default class DashboardCoursesPage extends React.Component {
                 <img width={250} height={200} src={ `data:png;base64,${ c.image }` } alt="Image"/>
               </Media.Left>
               <Media.Body>
-                <Media.Heading>{ c.name }</Media.Heading>
-                <p>{ c.description }</p>
+                <Media.Heading className="agreementH2">{ c.name }</Media.Heading>
+                <p className="pgraph">{ c.description }</p>
               </Media.Body>
             </Media>
           </Row>
@@ -67,9 +68,13 @@ export default class DashboardCoursesPage extends React.Component {
     });
 
     return (
-      <div className="dashboardContentMargin">
-        { courses }
-      </div>
+      <Grid>
+        <Col xs={2} md={1}></Col>
+        <Col xs={14} md={10}>
+          <Row>{ courses }</Row>
+        </Col>
+        <Col xs={2} md={1}></Col>
+      </Grid>
     );
   }
 }
