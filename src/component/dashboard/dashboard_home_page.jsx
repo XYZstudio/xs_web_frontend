@@ -50,7 +50,7 @@ export default class DashboardHomePage extends React.Component {
             </span>
           </h1>
           <a className="panelButton" href="" onClick={ () => { this.goToDetail(lastActivity.courseName) } }>继续学习</a>
-          <p>You are on { lastActivity.videoName }</p>
+          <p>您现在正在学习: { lastActivity.videoName }</p>
         </div>
       );
     } else {

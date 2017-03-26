@@ -33,6 +33,7 @@ export default class ProfessorsIntro extends React.Component {
             <div className="professorsIntroBlock">
                 <Jumbotron>
                     <Row>
+                        <div className="agreementH1">Professor Vince Gennaro</div>
                         <div className="agreementH2">纪文森导师</div>
                     </Row>
                     <Row>
@@ -43,8 +44,23 @@ export default class ProfessorsIntro extends React.Component {
                             <ListGroup componentClass="ul">
                                 <li className="pgraph">哥伦比亚大学体育管理硕士项目主任</li>
                                 <li className="pgraph">美国棒球协会会长(SABR)</li>
+                                <li className="pgraph">数字背后：棒球式风格 的特约嘉宾</li>        
+                                <li className="pgraph">《钻石美元》: 棒球经济学 的作者</li>     
+                                <li className="pgraph">SiriusXM广播节目的主持人</li>      
+                                <li className="pgraph">职业运动队顾问</li>
                             </ListGroup>
                         </Col>
+                    </Row>
+                    <Row>       
+                        <div className="pgraph">      
+                            纪文森导师的篮球分析学创新学术成果已经是华尔街日报、纽约时报和美国有线新闻网的主题文章，内容包括运动员评估、新尺度的发展，和以美元来衡量球员价值。     
+                        </div>        
+                        <div className="pgraph">      
+                            文森经常出现在美国职棒大联盟网的演播室节目上，比如实时美国职棒大联盟和俱乐部的机密，他对棒球技术具有独到的视野与见解。他还经常以体育赛事媒体特邀评论员的身份出现在YES网络、CNBC美国全国广播公司财经频道、彭博财经、纽约市全区域无线广播，以及许多其他广播电台。       
+                        </div>        
+                        <div className="pgraph">      
+                            他有丰富的企业经营管理经验，他曾经管理价值十亿美元的瓶装可乐部门和世界领先的零食品牌Doritos立体脆，并拥有一家连锁体育用品加盟商电。27岁时他就成功融资买下了女子职业篮球联赛的专营权，并担任了董事长和总经理，这就是现在的女子篮球联盟(WNBA)的前身。     
+                        </div>        
                     </Row>
                 </Jumbotron>
 

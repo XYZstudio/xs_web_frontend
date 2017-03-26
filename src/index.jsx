@@ -20,6 +20,8 @@ import BottomNavbarComponent from 'component/main/bottom_navbar';
 import Agreement from 'component/main/agreement.jsx';
 import TrainingS from 'component/main/trainingS.jsx';
 import Activities from 'component/main/activities.jsx';
+import BeijingActivities from 'component/main/beijingActivities.jsx';
+import ShanghaiActivities from 'component/main/shanghaiActivities.jsx';
 
 // Password
 import FindMyPassword from 'component/password/find_password.jsx';
@@ -66,6 +68,8 @@ ReactDOM.render(
       <Route path='/agreement' components={{ navbar: NavbarComponent, body: Agreement , footer: BottomNavbarComponent  }} />
       <Route path='/trainingS' components={{ navbar: NavbarComponent, body: TrainingS , footer: BottomNavbarComponent  }} />
       <Route path='/activities' components={{ navbar: NavbarComponent, body: Activities , footer: BottomNavbarComponent  }} />
+      <Route path='/activities/beijing' components={{ navbar: NavbarComponent, body: BeijingActivities , footer: BottomNavbarComponent  }} />
+      <Route path='/activities/shanghai' components={{ navbar: NavbarComponent, body: ShanghaiActivities , footer: BottomNavbarComponent  }} />
       <Route
         path='/courses/:courseName'
         getComponents={
