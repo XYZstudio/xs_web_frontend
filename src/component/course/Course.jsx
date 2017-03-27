@@ -10,7 +10,6 @@ import BottomNavbarComponent from 'component/main/bottom_navbar';
 import MainPageStyle from 'style/main.scss';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
-import { Icon } from 'react-fa';
 import courseStyle from 'style/mainPageCourse.scss';
 import Grid from 'react-bootstrap/lib/Grid';
 

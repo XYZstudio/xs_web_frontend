@@ -1,8 +1,6 @@
 // Modules
 import React from 'react';
-
 import Loginform from './login_form';
-
 import Button from 'react-bootstrap/lib/Button';
 import ButtonToolbar from 'react-bootstrap/lib/Button';
 import Modal from 'react-bootstrap/lib/Modal';
@@ -39,7 +37,6 @@ export default class JoinButtonComponent extends React.Component {
               <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
             <Modal.Body>
               <LoginRegisterTabs closeModalWindow={this.close}/>
-              {/*<Loginform close={this.close} />*/}
             </Modal.Body>
           </Modal>
         </div>
