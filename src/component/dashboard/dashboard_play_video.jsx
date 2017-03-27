@@ -3,7 +3,9 @@ import React from 'react';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
-import { Col, Row, Button } from 'react-bootstrap';
+import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
+import Button from 'react-bootstrap/lib/Button';
 import FaAngleLeft from 'react-icons/lib/fa/angle-left';
 
 export default class DashboardPlayVideo extends React.Component {
