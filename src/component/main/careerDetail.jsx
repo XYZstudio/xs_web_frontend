@@ -1,11 +1,7 @@
-import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
-import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
-import LoginStore from 'store/login';
-import courseStyle from 'style/course.scss';
-import { Icon } from 'react-fa';
-import { browserHistory } from 'react-router';
+import Col from 'react-bootstrap/lib/Col';
+import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import Grid from 'react-bootstrap/lib/Grid';
 
 const positionInfo = {
