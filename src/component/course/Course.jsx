@@ -13,10 +13,13 @@ import * as request from 'superagent';
 import courseStyle from 'style/mainPageCourse.scss';
 import Grid from 'react-bootstrap/lib/Grid';
 
+var Loading = require('react-loading');
+
 export default class Course extends React.Component {
   constructor() {
     super();
     this.state = {
+      showLoading: true,
       courses: []
     };
   }
@@ -29,7 +32,10 @@ export default class Course extends React.Component {
         console.error(err);
       } else {
         console.log(res.body);
-        this.setState({ courses: res.body });
+        this.setState({ 
+          courses: res.body,
+          showLoading: false
+        });
       }
     });
   }
@@ -69,7 +75,7 @@ export default class Course extends React.Component {
       <Grid>
         <Col xs={2} md={1}></Col>
         <Col xs={14} md={10}>
-          <Row>{ courses }</Row>
+          {this.state.showLoading ? <div className="textCenter"><div className="loadingIcon"><Loading type='balls' color='#e3e3e3' /></div></div> : <Row>{ courses }</Row>}
         </Col>
         <Col xs={2} md={1}></Col>
       </Grid>

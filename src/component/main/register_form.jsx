@@ -447,7 +447,7 @@ export default class Registerform extends React.Component {
               <div className="mandatoryStar">*</div>最高学历
             </Col>
             <Col md={10}>
-              <Select 
+              <Select
                 options={degreeOptions}
                 value={this.state.highestDegree}
                 onChange={this.handleHighestDegreeChange}/>
