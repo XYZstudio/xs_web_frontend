@@ -2,7 +2,6 @@
 import React from 'react';
 import Row from 'react-bootstrap/lib/Row';
 import Carousel from 'react-bootstrap/lib/Carousel';
-import PartnershipStyle from 'style/partnership.scss';
 
 import temp1Img from 'style/asset/parterner_1.png';
 import temp2Img from 'style/asset/parterner_2.png';

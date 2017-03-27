@@ -12,7 +12,6 @@ import QRCCodeImage from 'style/asset/qrcode.jpg';
 import { browserHistory } from 'react-router';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
-import moment from 'moment';
 import 'react-select/dist/react-select.css';
 import 'react-datepicker/dist/react-datepicker.css';
 

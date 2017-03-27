@@ -5,7 +5,7 @@ import CarouselComponent from './carousel';
 import JoinButtonComponent from './join_button';
 import ThumbnailComponent from './thumbnail';
 import MediaComponent from './media';
-import PartnershipComponent from './partnership';
+//import PartnershipComponent from './partnership';
 
 // Styles
 import MainPageStyle from 'style/main.scss';
