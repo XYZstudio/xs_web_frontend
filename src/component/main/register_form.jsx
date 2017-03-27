@@ -175,7 +175,7 @@ export default class Registerform extends React.Component {
     console.log(requestJson);
     console.log('***************************');
     request
-    .post(`http://${config.host}:${config.rest_port}/api/v1/update_user_basic_info_by_id`)
+    .post(`http://${config.host}:${config.rest_port}/api/v1/create_user_basic_info_by_id`)
     .send(requestJson)
     .withCredentials()
     .end((err, res) => {
