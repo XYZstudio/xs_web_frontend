@@ -27,8 +27,8 @@ export default class ThumbnailComponent extends React.Component {
         <Row>
         <Col xs={6} md={4}>
           <Thumbnail src={ tn1Image } alt="242x200" style={{ margin: 40, border: 0 }}>
-            <h3 className="agreementH2">国内最专业的线上体育管理培训课程</h3>
-            <p className="pgraph">国际化的水准，本地化的内容和世界顶级专家的讲解，快速提升你的知识技能。</p>
+            <h3 className="agreementH2">最专业的线上体育管理课程</h3>
+            <p className="pgraph">国际化的水准，本地化的内容和世界顶级专家的讲解，快速提升你的知识技能。模块化的课程设计，为你建立系统化的知识结构。</p>
             <p>
              {/* <Button bsStyle="default" onClick={this.gotoTrainingS}>详细信息</Button>*/}
             </p>
@@ -36,7 +36,7 @@ export default class ThumbnailComponent extends React.Component {
         </Col>
         <Col xs={6} md={4}>
           <Thumbnail src={ tn2Image } alt="242x200" style={{ margin: 40, border: 0 }}>
-            <h3 className="agreementH2">与业内大咖小咖，优质企业沟通交流的平台</h3>
+            <h3 className="agreementH2">与优质企业沟通交流的平台</h3>
             <p className="pgraph">丰富的线下活动，与潜在的雇主面对面交流，优先知晓新职位，定期职位推介，为你的职业发展做好准备。</p>
             <p>
               {/* <Button bsStyle="default">详细信息</Button>*/}
