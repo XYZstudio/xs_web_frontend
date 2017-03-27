@@ -422,11 +422,13 @@ export default class Registerform extends React.Component {
             <Col md={4} >
               <DatePicker
                 md={12}
-                showYearDropdown 
+                showYearDropdown
+                dropdownMode="select"
                 scrollableYearDropdown
                 className="form-control"
                 selected={this.state.inputDate}
-                onChange={this.handleInputDateChange} />
+                onChange={this.handleInputDateChange}
+              />
             </Col>
         </Row>
 

@@ -39,10 +39,10 @@ export default class CareerList extends React.Component {
             <div className="agreementH2">{c.companyTitle}</div>
           </Row>
           <Row>
-            <Col xs={4} md={3}>
+            <Col xs={5} md={4}>
               <img className="professorsIntroPhoto" src={ `data:png;base64,${ c.companyImage }` }></img>
             </Col>
-            <Col xs={12} md={9}>
+            <Col xs={11} md={8}>
               <Row>
                 <ListGroup componentClass="ul">
                   <li className="pgraph">{c.companyInfo}</li>
