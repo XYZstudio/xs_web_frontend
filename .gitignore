@@ -1,2 +1,6 @@
 node_modules
 bundle.js
+.DS_store
+./public/build/*
+public/.DS_Store
+public/build/*
