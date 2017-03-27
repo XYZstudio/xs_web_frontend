@@ -1,11 +1,15 @@
 import config from 'root/config.json';
 import React from 'react';
 import * as request from 'superagent';
-import { Col, Row, Jumbotron, Button, Thumbnail, Alert } from 'react-bootstrap';
+import Col from 'react-bootstrap/lib/Col';
+import Row from 'react-bootstrap/lib/Row';
+import Jumbotron from 'react-bootstrap/lib/Jumbotron';
+import Button from 'react-bootstrap/lib/Button';
+import Thumbnail from 'react-bootstrap/lib/Thumbnail';
+import Alert from 'react-bootstrap/lib/Alert';
 import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
-import { Icon } from 'react-fa';
 import { browserHistory } from 'react-router';
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {

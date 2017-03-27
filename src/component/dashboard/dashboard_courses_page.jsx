@@ -9,7 +9,6 @@ import Well from 'react-bootstrap/lib/Well';
 import Media from 'react-bootstrap/lib/Media';
 import NavbarComponent from 'component/main/navbar';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
-import { Icon } from 'react-fa';
 import courseStyle from 'style/course.scss';
 import Grid from 'react-bootstrap/lib/Grid';
 

@@ -1,15 +1,12 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import {
-  Nav,
-  NavItem,
-  NavDropdown,
-  MenuItem,
-  ProgressBar,
-} from 'react-bootstrap';
-import Navbar, {Brand} from 'react-bootstrap/lib/Navbar';
-
-const logo = require('style/asset/logo.png');
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem';
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
+import ProgressBar from 'react-bootstrap/lib/ProgressBar';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import Brand from 'react-bootstrap/lib/NavbarBrand';
 
 function DashboardHeader() {
   return (

@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import {
-  MenuItem,
-  DropdownButton,
-  Panel, PageHeader, ListGroup, ListGroupItem, Button,
-} from 'react-bootstrap';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
+import DropdownButton from 'react-bootstrap/lib/DropdownButton';
+import Panel from 'react-bootstrap/lib/Panel';
+import PageHeader from 'react-bootstrap/lib/PageHeader';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
+import Button from 'react-bootstrap/lib/Button';
 import courseIcon from 'style/asset/courseIcon.png';
 import LoginStore from 'store/login';
 
