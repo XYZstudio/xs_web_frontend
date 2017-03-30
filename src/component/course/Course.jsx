@@ -10,7 +10,7 @@ import BottomNavbarComponent from 'component/main/bottom_navbar';
 import MainPageStyle from 'style/main.scss';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
-import courseStyle from 'style/mainPageCourse.scss';
+import 'style/course.scss';
 import Grid from 'react-bootstrap/lib/Grid';
 
 export default class Course extends React.Component {
@@ -42,7 +42,7 @@ export default class Course extends React.Component {
     var courses = this.state.courses;
     courses = courses.map(c => {
       return (
-        <Well key={ c._id } className="main-page-course">
+        <Well key={ c._id } className="course-cell-wrap">
           <Row>
             <Media>
               <Media.Left>
@@ -53,7 +53,7 @@ export default class Course extends React.Component {
                 <p className="pgraph">{ c.description }</p>
                 <Button
                   bsStyle="primary"
-                  className="main-page-course-detail-btn"
+                  className="course-detail-btn"
                   onClick={ () => { this.goToDetail(c.name); } }
                 >
                   查看课程

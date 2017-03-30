@@ -13,6 +13,7 @@ import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
+
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -168,7 +169,7 @@ export default class DashboardCourseDetail extends React.Component {
               <li>2. 付款完毕后，请将微信支付凭证中的交易单号记下。</li>
               <li>3. 请将交易单号填入以下输入框以完成支付。</li>
               <li><b>交易单号：</b><input type="text" /></li>
-              <li>4. 点击‘确认’，就可以尽情享受思博锐为你精心准备的课程：{ this.state.courseName }啦！</li>
+              <li>4. 点击‘确认’，就可以尽情享受思博锐为你精心准备的课程：<b>{ this.state.courseName }</b> 啦！</li>
             </ul>
           </Col>
           <Col xs={5} md={5}>

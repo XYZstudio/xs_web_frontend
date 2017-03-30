@@ -9,7 +9,7 @@ import Well from 'react-bootstrap/lib/Well';
 import Media from 'react-bootstrap/lib/Media';
 import NavbarComponent from 'component/main/navbar';
 import BottomNavbarComponent from 'component/main/bottom_navbar';
-import courseStyle from 'style/course.scss';
+import 'style/course.scss';
 import Grid from 'react-bootstrap/lib/Grid';
 
 export default class DashboardCoursesPage extends React.Component {
@@ -41,7 +41,7 @@ export default class DashboardCoursesPage extends React.Component {
     var courses = this.state.courses;
     courses = courses.map(c => {
       return (
-        <Well key={ c._id } className="dashboardCourseCellWrap">
+        <Well key={ c._id } className="course-cell-wrap">
           <Row>
             <Media>
               <Media.Left>

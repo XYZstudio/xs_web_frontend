@@ -162,12 +162,9 @@ html,body{
 }
 
 .navbarElement{
-    margin:5px 0px; 
-    padding-right: 10px;
-}
-
-.menuNavbarDropdownItem{
-    padding-left:10px;
+    .dropdown-menu{
+        width: 124px !important;
+    }
 }
 
 .systemMessageIcon{
@@ -247,21 +244,6 @@ html,body{
     line-height: 2em;
     color: #525c65;
     font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-.professorsIntroBlock{
-    margin-top:20px;
-}
-
-.professorsIntroHeader{
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-.professorsIntroPhoto{
-    margin-left: -16px;
-    width: 200px;
 }
 
 .agreementH1{
