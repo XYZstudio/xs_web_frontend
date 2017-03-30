@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/lib/Row';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import Button from 'react-bootstrap/lib/Button';
 import Thumbnail from 'react-bootstrap/lib/Thumbnail';
+import Modal from 'react-bootstrap/lib/Modal';
+import Image from 'react-bootstrap/lib/Image';
 import Alert from 'react-bootstrap/lib/Alert';
 import LoginStore from 'store/login';
 import VideoStore from 'store/video';
@@ -21,7 +23,9 @@ export default class DashboardCourseDetail extends React.Component {
       videos: [],
       preview: null,
       open: false,
-      alertVisible: false
+      alertVisible: false,
+      openOrderModal: false,
+      qrCode: null,
     };
   }
 
@@ -57,24 +61,37 @@ export default class DashboardCourseDetail extends React.Component {
 
   addCourse(courseName) {
     if (this.state.user) {
+      this.setState({ openOrderModal: true });
       request
-      .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
+      .post(`http://${config.host}:${config.rest_port}/api/v1/wechat/order`)
       .withCredentials()
-      .send({
-        email: this.state.user.email,
-        courseNames: [courseName]
-      })
+      .send({ product_id: courseName })
       .end((err, res) => {
         if (err) {
           console.error(err);
         } else {
-          LoginStore.dispatch({
-            type: 'LOGIN',
-            user: res.body,
-          });
-          this.handleAlert(true);
+          console.log(res);
+          this.setState({ qrCode: res.text });
+          // request
+          // .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
+          // .withCredentials()
+          // .send({
+          //   email: this.state.user.email,
+          //   courseNames: [courseName]
+          // })
+          // .end((err, res) => {
+          //   if (err) {
+          //     console.error(err);
+          //   } else {
+          //     LoginStore.dispatch({
+          //       type: 'LOGIN',
+          //       user: res.body,
+          //     });
+          //     this.handleAlert(true);
+          //   }
+          // });
         }
-      });
+      })
     }
   }
 
@@ -132,6 +149,41 @@ export default class DashboardCourseDetail extends React.Component {
     }
   }
 
+  orderModal() {
+    return (
+      <Modal
+        show={ this.state.openOrderModal }
+        onHide={ () => { this.setState({ openOrderModal: false }); } }
+        container={ this }
+        aria-labelledby="modal-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="modal-title">购买课程：{ this.state.courseName }</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ height: 250 }}>
+          <Col xs={7} md={7}>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              请按照以下步骤来购买此课程：
+              <li>1. 请扫描以下二维码。</li>
+              <li>2. 付款完毕后，请将微信支付凭证中的交易单号记下。</li>
+              <li>3. 请将交易单号填入以下输入框以完成支付。</li>
+              <li><b>交易单号：</b><input type="text" /></li>
+              <li>4. 点击‘确认’，就可以尽情享受思博锐为你精心准备的课程：{ this.state.courseName }啦！</li>
+            </ul>
+          </Col>
+          <Col xs={5} md={5}>
+            <Row style={{ textAlign: 'center' }}><Image src={ `data:png;base64,${ this.state.qrCode }` } /></Row>
+            <Row style={{ textAlign: 'center' }}><b>价格：{ this.state.course.fee / 100 || 0 } 元</b></Row>
+          </Col>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={ () => { this.setState({ openOrderModal: false }); } } bsStyle="primary">确认</Button>
+          <Button onClick={ () => { this.setState({ openOrderModal: false }); } }>取消</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
   playButton(video) {
     var user = this.state.user;
     if (user && user.email) {
@@ -145,8 +197,10 @@ export default class DashboardCourseDetail extends React.Component {
                 <Button 
                   bsStyle="primary" 
                   className="videoThumbnailPlayButton"
-                  onClick={ () => { this.playVideo(video) } }>
-                  开始学习</Button>
+                  onClick={ () => { this.playVideo(video) } }
+                >
+                  开始学习
+                </Button>
               </div>
             );
           }
@@ -194,6 +248,7 @@ export default class DashboardCourseDetail extends React.Component {
             <Row>
               <Jumbotron>
                 <Row className="show-grid">
+                  { this.orderModal() }
                   <Col xs={12} md={4}>
                     <h3 className="agreementH2">{ this.state.courseName }</h3>
                     <p className="courseDescribtion">{ this.state.course && this.state.course.description }</p>
