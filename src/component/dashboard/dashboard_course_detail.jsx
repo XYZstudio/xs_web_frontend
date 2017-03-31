@@ -66,7 +66,10 @@ export default class DashboardCourseDetail extends React.Component {
       request
       .post(`http://${config.host}:${config.rest_port}/api/v1/wechat/order`)
       .withCredentials()
-      .send({ product_id: courseName })
+      .send({
+        email: this.state.user.email,
+        product_id: courseName
+      })
       .end((err, res) => {
         if (err) {
           console.error(err);
