@@ -30,7 +30,6 @@ import VerifySuccess from 'component/password/verify_success.jsx';
 import Dashboard from 'component/dashboard/Dashboard.jsx';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
 import DashboardCoursesPage from 'component/dashboard/dashboard_courses_page.jsx';
-import DashboardLecturesPage from 'component/dashboard/dashboard_lecture_page.jsx';
 import DashboardCareerOpporPage from 'component/dashboard/dashboard_careerOppor_page.jsx';
 import DashboardCareerInfoPage from 'component/dashboard/dashboard_careerInfo_page.jsx';
 import DashboardChartPage from 'component/dashboard/dashboard_chart_page.jsx';
@@ -109,7 +108,6 @@ ReactDOM.render(
       />
       <Route path='/dashboard/careerList' component={ CareerList } />
       <Route path='/dashboard/careerList/:companyId' component={ CareerDetail } />
-      <Route path='/dashboard/lectures' component={ DashboardLecturesPage } />
       <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
       <Route path='/dashboard/chart' component={ DashboardChartPage } />
       <Route path='/dashboard/setting' component={ DashboardSettingPage } />

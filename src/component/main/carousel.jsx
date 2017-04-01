@@ -1,7 +1,7 @@
 // Modules
 import React from 'react';
 import Carousel from 'react-bootstrap/lib/Carousel';
-import CarouselStyle from 'style/carousel.scss';
+import 'style/carousel.scss';
 import slidingImg1 from 'style/asset/sliding1.jpg';
 import slidingImg2 from 'style/asset/sliding2.jpg';
 import slidingImg3 from 'style/asset/sliding3.jpg';
