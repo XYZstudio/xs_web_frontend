@@ -64,6 +64,10 @@ export default class DashboardCourseDetail extends React.Component {
     });
   }
 
+  closeOrderModal() {
+    this.setState({ openOrderModal: false, qrCode: null, paymentMessage: null });
+  }
+
   addCourse(courseName) {
     if (this.state.user) {
       this.setState({ openOrderModal: true });
@@ -108,7 +112,7 @@ export default class DashboardCourseDetail extends React.Component {
             type: 'LOGIN',
             user: res.body,
           });
-          this.setState({ openOrderModal: false, qrCode: null });
+          this.closeOrderModal();
         }
       }
     });
@@ -172,7 +176,7 @@ export default class DashboardCourseDetail extends React.Component {
     return (
       <Modal
         show={ this.state.openOrderModal }
-        onHide={ () => { this.setState({ openOrderModal: false, qrCode: null }); } }
+        onHide={ () => { this.closeOrderModal(); } }
         container={ this }
         aria-labelledby="modal-title"
       >
@@ -208,7 +212,7 @@ export default class DashboardCourseDetail extends React.Component {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={ () => { this.confirmTransaction(); } } bsStyle="primary">确认</Button>
-          <Button onClick={ () => { this.setState({ openOrderModal: false, qrCode: null }); } }>取消</Button>
+          <Button onClick={ () => { this.closeOrderModal(); } }>取消</Button>
         </Modal.Footer>
       </Modal>
     );
