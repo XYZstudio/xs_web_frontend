@@ -21,14 +21,6 @@
     margin-top: 6px;
 }
 
-.dashboardCourseCellWrap{
-    margin: 15px 20px;
-    height: 336px;
-    float: left;
-    margin: 10px;
-    border-radius: 0px;
-}
-
 .dashboardContentHeader{
     font-size: 12px;
     letter-spacing: 1px;
@@ -66,9 +58,6 @@
 
 #dashboardLogoDiv {
     padding-left: 5px;
-    background: white;
-    padding-bottom: 10px;
-    border: solid 2px #f8f8f8;
 }
 
 .dashboardSideBarIcon{
@@ -83,16 +72,32 @@
 
 .sidebar{
     height: 100%;
-}
-
-.nav > li > ul > li > a {
-    display: block;
-    padding: 10px 0px;
-}
-
-.nav>li>ul>li>a:hover {
-    text-decoration: none;
-    background-color: #eee;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .sidebar-nav{
+        padding: 0px;
+        li{
+            cursor: pointer;
+        }
+        li>a:focus, li>a:hover {
+            text-decoration: none;
+            background-color: #f5f5f5;
+            border-right: 10px #2b9ed5 solid;
+        }
+        li>ul{
+            padding-left: 10px;
+        }
+        li>ul>li>a{
+            display: block;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 60px;
+        }
+        li>ul>li>a:hover{
+            text-decoration: none;
+            background-color: #eee;
+        }
+    }
 }
 
 .dashboardContentChineseHead{

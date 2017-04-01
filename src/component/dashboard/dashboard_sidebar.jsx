@@ -125,13 +125,6 @@ class Sidebar extends Component {
                 </li>
               </ul>
             </li>
-
-            {/*<li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/setting'); }} >
-                <FaCog className="dashboardSideBarIcon"/> &nbsp;设置
-              </a>
-            </li>*/}
-
             <li>
               <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/'); }} >
                 <FaSignOut className="dashboardSideBarIcon"/> &nbsp;返回主页

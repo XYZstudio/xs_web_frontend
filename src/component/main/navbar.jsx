@@ -121,7 +121,7 @@ export default class NavbarComponent extends React.Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop collapseOnSelect style={{ marginBottom: 0 }} className="whiteBackground">
+        <Navbar fixedTop collapseOnSelect style={{ marginBottom: 0, height: 60 }} className="whiteBackground">
           <Navbar.Header>
             <Navbar.Brand>
               <a href="/"><img className="sporitLogo" src={ LogoImage }/></a>

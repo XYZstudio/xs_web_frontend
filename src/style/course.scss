@@ -21,3 +21,30 @@ video::-webkit-media-controls-enclosure {
 video::-webkit-media-controls-panel {
     width: calc(100% + 30px); /* Adjust as needed */
 }
+
+.course-detail-btn {
+  position: absolute;
+  right: 15px !important;
+  bottom: 15px !important;
+}
+
+.course-cell-wrap{
+    margin: 15px 20px;
+    height: 350px;
+    padding: 27px;
+    float: left;
+    margin: 15px;
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0px;
+    border: none;
+    border-left: 15px #2b9ed5 solid;
+    &:hover{
+        transform: scale(1.01, 1.01);
+        -ms-transform: scale(1.01, 1.01);
+        -webkit-transform: scale(1.01, 1.01);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+}

@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/lib/Button';
 import { browserHistory } from 'react-router';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
+import 'style/profession.scss';
 
 export default class CareerList extends React.Component {
   constructor() {
