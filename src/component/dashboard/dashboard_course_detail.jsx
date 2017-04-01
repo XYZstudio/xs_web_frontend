@@ -13,6 +13,7 @@ import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
+import { Icon } from 'react-fa';
 
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
@@ -27,7 +28,10 @@ export default class DashboardCourseDetail extends React.Component {
       alertVisible: false,
       openOrderModal: false,
       qrCode: null,
+      paymentMessage: null,
     };
+
+    this.handleTransactionId = this.handleTransactionId.bind(this);
   }
 
   componentWillMount() {
@@ -74,29 +78,40 @@ export default class DashboardCourseDetail extends React.Component {
         if (err) {
           console.error(err);
         } else {
-          console.log(res);
           this.setState({ qrCode: res.text });
-          // request
-          // .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
-          // .withCredentials()
-          // .send({
-          //   email: this.state.user.email,
-          //   courseNames: [courseName]
-          // })
-          // .end((err, res) => {
-          //   if (err) {
-          //     console.error(err);
-          //   } else {
-          //     LoginStore.dispatch({
-          //       type: 'LOGIN',
-          //       user: res.body,
-          //     });
-          //     this.handleAlert(true);
-          //   }
-          // });
         }
       })
     }
+  }
+
+  handleTransactionId(event) {
+    this.setState({ transaction_id: event.target.value });
+  }
+
+  confirmTransaction() {
+    request
+    .post(`http://${config.host}:${config.rest_port}/api/v1/add_course_to_user`)
+    .withCredentials()
+    .send({
+      email: this.state.user.email,
+      transaction_id: this.state.transaction_id
+    })
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        if (res.body.error) {
+          this.setState({ paymentMessage: res.body.message });
+        } else {
+          this.handleAlert(true);
+          LoginStore.dispatch({
+            type: 'LOGIN',
+            user: res.body,
+          });
+          this.setState({ openOrderModal: false, qrCode: null });
+        }
+      }
+    });
   }
 
   handleAlert(bool) {
@@ -157,7 +172,7 @@ export default class DashboardCourseDetail extends React.Component {
     return (
       <Modal
         show={ this.state.openOrderModal }
-        onHide={ () => { this.setState({ openOrderModal: false }); } }
+        onHide={ () => { this.setState({ openOrderModal: false, qrCode: null }); } }
         container={ this }
         aria-labelledby="modal-title"
       >
@@ -171,18 +186,29 @@ export default class DashboardCourseDetail extends React.Component {
               <li>1. 请扫描以下二维码。</li>
               <li>2. 付款完毕后，请将微信支付凭证中的交易单号记下。</li>
               <li>3. 请将交易单号填入以下输入框以完成支付。</li>
-              <li><b>交易单号：</b><input type="text" /></li>
+              <li><b>交易单号：</b><input type="text" onChange={ this.handleTransactionId } /></li>
+              <li style={{ color: 'red', font: 'bold' }}>{ this.state.paymentMessage }</li>
               <li>4. 点击‘确认’，就可以尽情享受思博锐为你精心准备的课程：<b>{ this.state.courseName }</b> 啦！</li>
             </ul>
           </Col>
-          <Col xs={5} md={5}>
-            <Row style={{ textAlign: 'center' }}><Image src={ `data:png;base64,${ this.state.qrCode }` } /></Row>
-            <Row style={{ textAlign: 'center' }}><b>价格：{ this.state.course.fee / 100 || 0 } 元</b></Row>
-          </Col>
+          {
+            this.state.qrCode ?
+            <Col xs={5} md={5}>
+              <Row style={{ textAlign: 'center' }}><Image src={ `data:png;base64,${ this.state.qrCode }` } /></Row>
+              <Row style={{ textAlign: 'center' }}><b>价格：{ this.state.course.fee / 100 || 0 } 元</b></Row>
+            </Col>
+            :
+            <Col xs={5} md={5}>
+              <Row style={{ textAlign: 'center' }}>
+                <Icon spin name="circle-o-notch" style={{ fontSize: 30, color: '#2b9ed5', marginTop: 50 }}></Icon>
+              </Row>
+              <Row style={{ textAlign: 'center', marginTop: 15 }}><b style={{ color: '#205471' }}>生成二维码中...</b></Row>
+            </Col>
+          }
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={ () => { this.setState({ openOrderModal: false }); } } bsStyle="primary">确认</Button>
-          <Button onClick={ () => { this.setState({ openOrderModal: false }); } }>取消</Button>
+          <Button onClick={ () => { this.confirmTransaction(); } } bsStyle="primary">确认</Button>
+          <Button onClick={ () => { this.setState({ openOrderModal: false, qrCode: null }); } }>取消</Button>
         </Modal.Footer>
       </Modal>
     );
