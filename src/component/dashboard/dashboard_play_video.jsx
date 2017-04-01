@@ -14,8 +14,10 @@ export default class DashboardPlayVideo extends React.Component {
     this.state = {
       videoName: props.params.videoName,
       videoDescription: '',
-      vedioPath: null
+      vedioPath: null,
+      error: null,
     };
+    this.handleError = this.handleError.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +25,13 @@ export default class DashboardPlayVideo extends React.Component {
       const description = VideoStore.getState();
       this.setState({ videoDescription: description });
     });
+  }
+
+  handleError(event) {
+    let error = event.target.error.code;
+    if (error) {
+      this.setState({ error: error });
+    }
   }
 
   render() {
@@ -35,9 +44,23 @@ export default class DashboardPlayVideo extends React.Component {
           <h3>{ this.state.videoName }</h3>
         </Row>
         <Row className="textCenter">
+          {
+            this.state.error ?
+            <div style={{ position: 'relative', top: 400, opacity: 0.6 }}>
+              <h4>无法播放该视频，可能由于以下原因：</h4>
+              <ul style={{ listStyle: 'none' }}>
+                <li>你尚未购买该视频</li>
+                <li>视频播放错误</li>
+                <li>网络不稳定</li>
+              </ul>
+            </div>
+            :
+            ''
+          }
           <video 
             className="videoPlayer" 
             src={ `http://${config.host}:${config.rest_port}/api/v1/display/${this.state.videoName}` }
+            onError={ this.handleError }
             controls
             autoPlay
           >
