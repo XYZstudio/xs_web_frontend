@@ -269,7 +269,7 @@ export default class DashboardCourseDetail extends React.Component {
     if (this.state.alertVisible) {
       alert =  (
         <Alert bsStyle="info" onDismiss={ () => { this.handleAlert(false); } }>
-          <h4>您已成功添加该课程！您可以在免费试用期内免费学习本课程。</h4>
+          <h4>您已成功添加该课程！</h4>
         </Alert>
       );
     }
