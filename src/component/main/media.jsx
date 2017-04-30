@@ -22,8 +22,8 @@ export default class MediaComponent extends React.Component {
             <img width={400}  src={ mediaImage1 } alt="Image"/>
           </Media.Left>
           <Media.Body>
-            <Media.Heading className="agreementH2">公司介绍</Media.Heading>
-            <p className="pgraph">思博锐——集培训，求职，交流为一体，是全国第一个由国际班底组成的体育类教育机构。通过在线平台，让你随时随地都能在第一时间接受哥伦比亚大学以及行业内权威导师的授课指点。除此之外，思博锐整合独家体育类就业机遇，为会员打开职场瓶颈。在线下，思博锐定期开展赴美考察交流，让您与职业联盟高管、赛事运销高手面对面零距离接触。让思博锐助您一臂之力，成为蓬勃发展的中国体育产业最渴求的人才！
+            <Media.Heading className="agreementH2">公司简介</Media.Heading>
+            <p className="pgraph">北京思博锐体育文化交流有限公司——集培训，求职，交流为一体，是全国第一个由国际班底组成的体育类教育机构。通过在线平台，让你随时随地都能在第一时间接受哥伦比亚大学以及行业内权威导师的授课指点。除此之外，思博锐整合独家体育类就业机遇，为会员打开职场瓶颈。在线下，思博锐定期开展赴美考察交流，让您与职业联盟高管、赛事运销高手面对面零距离接触。让思博锐助您一臂之力，成为蓬勃发展的中国体育产业最渴求的人才！
 </p>
           </Media.Body>
         </Media>
