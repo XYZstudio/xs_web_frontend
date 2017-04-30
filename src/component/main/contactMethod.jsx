@@ -17,6 +17,8 @@ export default class ContactMethod extends React.Component {
             <div className="agreementH1 bigMarginTop">联系我们</div>
           </Row>
           <Row>
+            <div className="pgraph">公司地址：北京市海淀区北清路68号院24号楼D座4层233</div>
+            <div className="pgraph">公司电话：010-85770090</div>
             <div className="pgraph">官方邮箱: info@sporit.cn</div>
             <div className="pgraph">问题反馈: even.zhang@sporit.cn</div>
             <div className="pgraph">产品咨询: jane.wang@sporit.cn</div>
