@@ -40,11 +40,4 @@ video::-webkit-media-controls-panel {
     border-radius: 0px;
     border: none;
     border-left: 15px #2b9ed5 solid;
-    &:hover{
-        transform: scale(1.01, 1.01);
-        -ms-transform: scale(1.01, 1.01);
-        -webkit-transform: scale(1.01, 1.01);
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
-    }
 }

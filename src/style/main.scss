@@ -78,8 +78,7 @@ html,body{
     position: relative;
     top: -13px;
     left: 9px;
-    margin: 5px;
-    width: 106px;
+    width: 135px;
 }
 
 #loginSporitLogo{
@@ -162,6 +161,9 @@ html,body{
 }
 
 .navbarElement{
+    height: 100%;
+    padding: 5px;
+    font-size: 18px;
     .dropdown-menu{
         width: 124px !important;
     }
@@ -272,6 +274,7 @@ html,body{
 
 .hoverChangeColor:hover{
     color: #d52b2b;
+    cursor: pointer;
 }
 
 .activityPicture{
