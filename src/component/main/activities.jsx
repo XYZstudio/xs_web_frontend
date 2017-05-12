@@ -33,7 +33,7 @@ export default class Activities extends React.Component {
                   </Row>
                   <Row>
                       <Col xs={4} md={5}>
-                          <img className="activityPicture" src={activity1Img} style={{height: 280}} />
+                          <img className="activityPicture" src={activity1Img} style={{height: 280, cursor: 'pointer'}} onClick={ () => { this.goToDetail('beijing'); } } />
                       </Col>
                       <Col xs={12} md={7}>
                           <Row>
@@ -60,7 +60,7 @@ export default class Activities extends React.Component {
                   </Row>
                   <Row>
                       <Col xs={4} md={5}>
-                          <img className="activityPicture" src={activity2Img} style={{height: 280}} />
+                          <img className="activityPicture" src={activity2Img} style={{height: 280, cursor: 'pointer'}} onClick={ () => { this.goToDetail('shanghai'); } } />
                       </Col>
                       <Col xs={12} md={7}>
                           <Row>
