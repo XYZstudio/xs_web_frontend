@@ -94,19 +94,21 @@ export default class NavbarComponent extends React.Component {
   }
   loginOrUserDropdown() {
     if (this.state.user) {
+      let userName = this.state.user.name.length > 12 ? this.state.user.name.slice(0, 9) + '...' : this.state.user.name;
       return (
-        <NavDropdown eventKey={1} title={`你好，${this.state.user.name}`} id="basic-nav-dropdown" className="navbarElement">
-          <MenuItem eventKey={1.1}>
+        <div>
+          <span>
             {
               this.state.user.icon ?
               <Image className="navbar-avatar" src={ `data:${ this.state.user.icon_type };base64,${ this.state.user.icon }` } /> :
               <Image className="navbar-avatar" src={ defaultAvatar } />
             }
-            { this.state.user.name }
-          </MenuItem>
-          <MenuItem eventKey={1.2} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
-          <MenuItem eventKey={1.3} onClick={ this.logout }>退出</MenuItem>
-        </NavDropdown>
+          </span>
+          <NavDropdown eventKey={1} title={`${userName}`} id="basic-nav-dropdown" className="navbarElement" style={{ cursor: 'default' }}>
+            <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
+            <MenuItem eventKey={1.2} onClick={ this.logout }>退出</MenuItem>
+          </NavDropdown>
+        </div>
       );
     } else {
       return (
@@ -131,15 +133,15 @@ export default class NavbarComponent extends React.Component {
           <Navbar.Collapse>
             <Nav className="navbarNav" style={{ height: 59 }}>
               <NavDropdown eventKey={3} title="关于思博锐" id="basic-nav-dropdown" className="navbarElement">
-                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem" onClick={this.gotoCompanyInto}>公司故事</MenuItem>
-                <MenuItem eventKey={3.4} className="menuNavbarDropdownItem" onClick={this.gotoProfessorsIntro}>专家介绍</MenuItem>
+                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem" onClick={ this.gotoCompanyInto }>公司故事</MenuItem>
+                <MenuItem eventKey={3.4} className="menuNavbarDropdownItem" onClick={ this.gotoProfessorsIntro }>专家介绍</MenuItem>
               </NavDropdown>
               <NavItem className="navbarElement" eventKey={1} onClick={ this.goToCourse }>精品课程</NavItem>
               <NavItem className="navbarElement" eventKey={3} onClick={ this.goToActivities }>精彩活动</NavItem>
-              <NavItem className="navbarElement" eventKey={4} onClick={this.gotoCareer}>职业中心</NavItem>
+              <NavItem className="navbarElement" eventKey={4} onClick={ this.gotoCareer }>职业中心</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={2} href="#" style={{marginRight:18}}>
+              <NavItem eventKey={2} href="#" style={{ marginRight:18, width: 200 }}>
                 { this.loginOrUserDropdown() }
               </NavItem>
             </Nav>
