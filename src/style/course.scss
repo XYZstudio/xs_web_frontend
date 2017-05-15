@@ -40,4 +40,10 @@ video::-webkit-media-controls-panel {
     border-radius: 0px;
     border: none;
     border-left: 15px #2b9ed5 solid;
+    .agreementH2{
+      &:hover{
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
 }

@@ -54,7 +54,7 @@ export default class DashboardCoursesPage extends React.Component {
               />
               </Media.Left>
               <Media.Body>
-                <Media.Heading className="agreementH2">{ c.name }</Media.Heading>
+                <Media.Heading className="agreementH2" onClick={ () => { this.goToDetail(c.name); } }>{ c.name }</Media.Heading>
                 <p className="pgraph">{ c.description }</p>
               </Media.Body>
             </Media>
