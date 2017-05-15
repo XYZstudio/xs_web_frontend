@@ -16,6 +16,7 @@ export default class JoinUs extends React.Component {
         <div className="professorsIntroBlock">
             <Jumbotron>
                 <div className="agreementH1">平台运营实习生</div>
+                &nbsp;
                 <div className="agreementH2">工作内容：</div>
                 <div className="pgraph">-协助管理公司公众账号（有微信公众号运营经验者优先）</div>
                 <div className="pgraph">-文字内容审核及排版</div>
@@ -36,6 +37,7 @@ export default class JoinUs extends React.Component {
               </Jumbotron>
               <Jumbotron>
                     <div className="agreementH1">课程监制组实习生</div>
+                    &nbsp;
                     <div className="agreementH2">工作内容：</div>
                     <div className="pgraph">-协助视频拍摄制作</div>
                     <div className="pgraph">-参与摄制后期制作</div>

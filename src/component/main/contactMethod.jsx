@@ -15,6 +15,7 @@ export default class ContactMethod extends React.Component {
         <Col xs={16} md={11}>
           <Row>
             <div className="agreementH1 bigMarginTop">联系我们</div>
+            &nbsp;
           </Row>
           <Row>
             <div className="pgraph">公司地址：北京市海淀区北清路68号院24号楼D座4层233</div>
