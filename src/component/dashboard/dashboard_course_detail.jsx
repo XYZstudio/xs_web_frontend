@@ -5,7 +5,8 @@ import Col from 'react-bootstrap/lib/Col';
 import Row from 'react-bootstrap/lib/Row';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import Button from 'react-bootstrap/lib/Button';
-import Thumbnail from 'react-bootstrap/lib/Thumbnail';
+import Well from 'react-bootstrap/lib/Well';
+import Media from 'react-bootstrap/lib/Media';
 import Modal from 'react-bootstrap/lib/Modal';
 import Image from 'react-bootstrap/lib/Image';
 import Alert from 'react-bootstrap/lib/Alert';
@@ -249,17 +250,26 @@ export default class DashboardCourseDetail extends React.Component {
   videoThumbnail() {
     return this.state.videos.map(video => {
       return (
-        <Thumbnail 
+        <Well
           key={ video._id } 
-          src={ `data:png;base64,${ video.image }` } 
           alt="242x200" 
-          className="video-container">
-          <h4>{ video.name }</h4>
-          <div className="videoThumbnailContent">
-            <p>{ video.description }</p>
-          </div>
-          { this.playButton(video) }
-        </Thumbnail>
+          className="course-cell-wrap"
+        >
+          <Media.Left>
+            <img
+              className="courseImage"
+              width={380} height={280} style={{ cursor: 'pointer' }}
+              src={ `data:png;base64,${ video.image }` }
+              alt="Image"
+              onClick={ () => { this.playVideo(video) } }
+            />
+          </Media.Left>
+          <Media.Body>
+            <Media.Heading className="agreementH2" onClick={ () => { this.playVideo(video) } }>{ video.name }</Media.Heading>
+            <p className="pgraph">{ video.description }</p>
+            { this.playButton(video) }
+          </Media.Body>
+        </Well>
       );
     })
   }
@@ -277,34 +287,34 @@ export default class DashboardCourseDetail extends React.Component {
     if (!this.state.preview) { return null; }
 
     return (
-          <div>
-            { alert }
-            <Row>
-              <Jumbotron>
-                <Row className="show-grid">
-                  { this.orderModal() }
-                  <Col xs={12} md={4}>
-                    <h3 className="agreementH2">{ this.state.courseName }</h3>
-                    <p className="courseDescribtion">{ this.state.course && this.state.course.description }</p>
-                    { this.addCourseButton() }
-                  </Col>
-                  <Col xs={12} md={8} className="textCenter">
-                    <video
-                      id="preview-video"
-                      className="videoPlayer"
-                      src={ `http://${config.host}:${config.rest_port}/api/v1/preview/${this.state.preview.name}` }
-                      controls
-                      autoPlay
-                    >
-                    </video>
-                  </Col>
-                </Row>
-              </Jumbotron>
+      <div>
+        { alert }
+        <Row>
+          <Jumbotron>
+            <Row className="show-grid">
+              { this.orderModal() }
+              <Col xs={12} md={4}>
+                <h3 className="agreementH2">{ this.state.courseName }</h3>
+                <p className="courseDescribtion">{ this.state.course && this.state.course.description }</p>
+                { this.addCourseButton() }
+              </Col>
+              <Col xs={12} md={8} className="textCenter">
+                <video
+                  id="preview-video"
+                  className="videoPlayer"
+                  src={ `http://${config.host}:${config.rest_port}/api/v1/preview/${this.state.preview.name}` }
+                  controls
+                  autoPlay
+                >
+                </video>
+              </Col>
             </Row>
-            <Row>
-              { this.videoThumbnail() }
-            </Row>
-          </div>
+          </Jumbotron>
+        </Row>
+        <Row>
+          { this.videoThumbnail() }
+        </Row>
+      </div>
     );
   };
 }

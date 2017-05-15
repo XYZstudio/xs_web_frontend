@@ -21,7 +21,6 @@ export default class Registerform extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.submitRegister = this.submitRegister.bind(this);
-    this.toggle2dCode = this.toggle2dCode.bind(this);
     this.show2dCode = this.show2dCode.bind(this);
     this.showErrorMesg = this.showErrorMesg.bind(this);
 
@@ -188,14 +187,6 @@ export default class Registerform extends React.Component {
 
   show2dCode() {
     this.setState({ show2dCode: {} });
-  }
-
-  toggle2dCode(){
-    if (this.state.show2dCode.display == 'none') {
-      this.setState({ show2dCode: { display: '' } });
-    } else {
-      this.setState({ show2dCode: { display: 'none' } });
-    }
   }
 
   showErrorMesg(errMes) {
@@ -491,9 +482,8 @@ export default class Registerform extends React.Component {
             <a href="/agreement" target="_blank">《Sporit协议》</a>
           </p>
         </FormGroup>
-
-        <Button className="centerBlockEle loginRegisterFormButton" onClick={this.toggle2dCode} block>关注Sporit公众号</Button>
-        <Row style={this.state.show2dCode}>
+        
+        <Row>
           <img
             src={ QRCCodeImage }
             style={{ display: 'block',margin: 'auto' }}

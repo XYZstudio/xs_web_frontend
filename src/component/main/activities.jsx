@@ -9,7 +9,6 @@ import { browserHistory } from 'react-router';
 import { Icon } from 'react-fa';
 import activity1Img from 'style/asset/activity1Img.png';
 import activity2Img from 'style/asset/activity2Img.jpg';
-import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import ListGroup from 'react-bootstrap/lib/ListGroup';
 
 export default class Activities extends React.Component {
@@ -26,7 +25,7 @@ export default class Activities extends React.Component {
       <Grid>
         <Col xs={2} md={1}></Col>
         <Col xs={14} md={10}>
-                <Jumbotron className="professorsIntroBlock">
+                <Well className="course-cell-wrap" style={{height: 400}}>
                   <Row>
                       <div className="agreementH1 hoverChangeColor activityHeader" onClick={ () => { this.goToDetail('beijing'); } }>
                         中美体育管理发展与人才培养论坛【北京】
@@ -34,7 +33,7 @@ export default class Activities extends React.Component {
                   </Row>
                   <Row>
                       <Col xs={4} md={5}>
-                          <img className="activityPicture" src={activity1Img}/>
+                          <img className="activityPicture" src={activity1Img} style={{height: 280, cursor: 'pointer'}} onClick={ () => { this.goToDetail('beijing'); } } />
                       </Col>
                       <Col xs={12} md={7}>
                           <Row>
@@ -51,9 +50,9 @@ export default class Activities extends React.Component {
                           </Row>
                       </Col>
                   </Row>
-                </Jumbotron>
+                </Well>
 
-                <Jumbotron>
+                <Well className="course-cell-wrap" style={{height: 400}}>
                   <Row>
                       <div className="agreementH1 hoverChangeColor activityHeader" onClick={ () => { this.goToDetail('shanghai'); } }>
                         体育产业管理与人才培养研讨会【上海】
@@ -61,7 +60,7 @@ export default class Activities extends React.Component {
                   </Row>
                   <Row>
                       <Col xs={4} md={5}>
-                          <img className="activityPicture" src={activity2Img}/>
+                          <img className="activityPicture" src={activity2Img} style={{height: 280, cursor: 'pointer'}} onClick={ () => { this.goToDetail('shanghai'); } } />
                       </Col>
                       <Col xs={12} md={7}>
                           <Row>
@@ -78,7 +77,7 @@ export default class Activities extends React.Component {
                           </Row>
                       </Col>
                   </Row>
-                </Jumbotron>
+                </Well>
         </Col>
         <Col xs={2} md={1}></Col>
       </Grid>

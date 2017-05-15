@@ -45,10 +45,16 @@ export default class DashboardCoursesPage extends React.Component {
           <Row>
             <Media>
               <Media.Left>
-                <img className="courseImage" width={250} height={200} src={ `data:png;base64,${ c.image }` } alt="Image"/>
+                <img
+                className="courseImage"
+                width={250} height={200} style={{ cursor: 'pointer' }}
+                src={ `data:png;base64,${ c.image }` }
+                alt="Image"
+                onClick={ () => { this.goToDetail(c.name); } }
+              />
               </Media.Left>
               <Media.Body>
-                <Media.Heading className="agreementH2">{ c.name }</Media.Heading>
+                <Media.Heading className="agreementH2" onClick={ () => { this.goToDetail(c.name); } }>{ c.name }</Media.Heading>
                 <p className="pgraph">{ c.description }</p>
               </Media.Body>
             </Media>

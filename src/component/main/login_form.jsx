@@ -1,4 +1,5 @@
 import React from 'react';
+import Row from 'react-bootstrap/lib/Row';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
@@ -6,10 +7,7 @@ import * as request from 'superagent';
 import config from '../../../config.json';
 import { browserHistory } from 'react-router';
 import LoginStore from 'store/login';
-
-import qqIcon from 'style/asset/qqI.png';
-import wechatIcon from 'style/asset/wechatI.png';
-import weiboIcon from 'style/asset/weiboI.png';
+import QRCCodeImage from 'style/asset/qrcode.jpg';
 
 export default class Loginform extends React.Component {
   constructor(props) {
@@ -104,7 +102,6 @@ export default class Loginform extends React.Component {
     }
     return (
       <form>
-
         <FormGroup
           controlId='formBasicText'
           style={firstFormGroupStyle}
@@ -131,22 +128,14 @@ export default class Loginform extends React.Component {
 
         <Button className="centerBlockEle loginRegisterFormButton" bsStyle="success" onClick={this.submitLogin} block>登录Sporit</Button>
         <p style={this.state.showErrorMesg}>用户名或密码错误</p>
-        <FormGroup>
-          <div style={ thirdpartyLoginDiv }>
-            <span style={ thirdpartyLoginSpan }>社交帐号登录</span>
-            <div>
-              <a title="微信登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ qqIcon }/></i>
-              </a>
-              <a title="微博登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ wechatIcon }/></i>
-              </a>
-              <a title="QQ 登录" href="#" style={ thirdpartyLoginIcon }>
-                <i><img style={iconImageStyle} src={ weiboIcon }/></i>
-              </a>
-            </div>
-          </div>
-        </FormGroup>
+
+        <Row>
+          <img
+            src={ QRCCodeImage }
+            style={{ display: 'block',margin: 'auto' }}
+          />
+          <div className="textCenter">扫描二维码关注Sporit微信公众号</div>
+        </Row>
       </form>
     );
   }
