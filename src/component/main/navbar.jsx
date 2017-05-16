@@ -92,11 +92,12 @@ export default class NavbarComponent extends React.Component {
   gotoProfessorsIntro(){
     browserHistory.push('/professorsIntro');
   }
+
   loginOrUserDropdown() {
-    if (this.state.user) {
+    if (this.state.user && this.state.user.name) {
       let userName = this.state.user.name.length > 12 ? this.state.user.name.slice(0, 9) + '...' : this.state.user.name;
       return (
-        <div>
+        <NavItem eventKey={2} href="#" style={{ marginRight:18, width: 200 }}>
           <span>
             {
               this.state.user.icon ?
@@ -108,14 +109,14 @@ export default class NavbarComponent extends React.Component {
             <MenuItem eventKey={1.1} onClick={ () => {browserHistory.push('/dashboard')} }>我的教室</MenuItem>
             <MenuItem eventKey={1.2} onClick={ this.logout }>退出</MenuItem>
           </NavDropdown>
-        </div>
+        </NavItem>
       );
     } else {
       return (
-        <div>
+        <NavItem eventKey={2} href="#" style={{ marginRight:18, width: 290 }}>
           <Button className="loginRegisterButton registerButton" bsSize="small" onClick={this.openRegister}>注册</Button>
           <Button className="loginRegisterButton loginButton" bsSize="small" onClick={this.openLogin}>登录</Button>
-        </div>
+        </NavItem>
       );
     }
   }
@@ -141,9 +142,7 @@ export default class NavbarComponent extends React.Component {
               <NavItem className="navbarElement" eventKey={4} onClick={ this.gotoCareer }>职业中心</NavItem>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={2} href="#" style={{ marginRight:18, width: 200 }}>
-                { this.loginOrUserDropdown() }
-              </NavItem>
+              { this.loginOrUserDropdown() }
             </Nav>
           </Navbar.Collapse>
         </Navbar>
