@@ -28,6 +28,7 @@ import VerifySuccess from 'component/password/verify_success.jsx';
 
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
+import DashboardSidebar from 'component/dashboard/dashboard_sidebar';
 import DashboardHomePage from 'component/dashboard/dashboard_home_page.jsx';
 import DashboardCoursesPage from 'component/dashboard/dashboard_courses_page.jsx';
 import DashboardCareerOpporPage from 'component/dashboard/dashboard_careerOppor_page.jsx';
@@ -88,38 +89,38 @@ ReactDOM.render(
     </Route>
 
     <Route path='/dashboard' component={ Dashboard } >
-      <IndexRoute component={ DashboardHomePage } />
-      <Route path='/dashboard/courses' component={ DashboardCoursesPage } />
+      <IndexRoute components={{ side: DashboardSidebar, body: DashboardHomePage }} />
+      <Route path='/dashboard/courses' components={{ side: DashboardSidebar, body: DashboardCoursesPage }} />
       <Route
         path='/dashboard/courses/:courseName'
-        getComponent={
+        getComponents={
           (nextState, cb) => {
-            cb(null, DashboardCourseDetail);
+            cb(null, { side: DashboardSidebar, body: DashboardCourseDetail });
           } 
         }
       />
       <Route
         path='/dashboard/video/:videoName'
-        getComponent={
+        getComponents={
           (nextState, cb) => {
-            cb(null, DashboardPlayVideo);
+            cb(null, { side: DashboardSidebar, body: DashboardPlayVideo });
           } 
         }
       />
-      <Route path='/dashboard/careerList' component={ CareerList } />
-      <Route path='/dashboard/careerList/:companyId' component={ CareerDetail } />
-      <Route path='/dashboard/careerOppor' component={ DashboardCareerOpporPage } />
-      <Route path='/dashboard/chart' component={ DashboardChartPage } />
-      <Route path='/dashboard/setting' component={ DashboardSettingPage } />
-      <Route path='/dashboard/careerInfo/Resume' component={ DashboardResumePage } />
-      <Route path='/dashboard/careerInfo/Education' component={ DashboardEducationPage } />
-      <Route path='/dashboard/careerInfo/Experience' component={ DashboardExperiencePage } />
-      <Route path='/dashboard/careerInfo/ContactInfo' component={ DashboardContactInfoPage } />
-      <Route path='/dashboard/careerInfo/Summary' component={ DashboardSummaryPage } />
-      <Route path='/dashboard/careerInfo/BasicInfo' component={ DashboardBasicInfoPage } />
+      <Route path='/dashboard/careerList' components={{ side: DashboardSidebar, body: CareerList }} />
+      <Route path='/dashboard/careerList/:companyId' components={{ side: DashboardSidebar, body: CareerDetail }} />
+      <Route path='/dashboard/careerOppor' components={{ side: DashboardSidebar, body: DashboardCareerOpporPage }} />
+      <Route path='/dashboard/chart' components={{ side: DashboardSidebar, body: DashboardChartPage }} />
+      <Route path='/dashboard/setting' components={{ side: DashboardSidebar, body: DashboardSettingPage }} />
+      <Route path='/dashboard/careerInfo/Resume' components={{ side: DashboardSidebar, body: DashboardResumePage }} />
+      <Route path='/dashboard/careerInfo/Education' components={{ side: DashboardSidebar, body: DashboardEducationPage }} />
+      <Route path='/dashboard/careerInfo/Experience' components={{ side: DashboardSidebar, body: DashboardExperiencePage }} />
+      <Route path='/dashboard/careerInfo/ContactInfo' components={{ side: DashboardSidebar, body: DashboardContactInfoPage }} />
+      <Route path='/dashboard/careerInfo/Summary' components={{ side: DashboardSidebar, body: DashboardSummaryPage }} />
+      <Route path='/dashboard/careerInfo/BasicInfo' components={{ side: DashboardSidebar, body: DashboardBasicInfoPage }} />
     </Route>
       
   	{/* This match-all route below must be defined as the last one.*/}
-    <Route path="*" component={ NotFoundPage }/>
+    <Route path="*" component={ NotFoundPage } />
   </Router>,
 document.getElementById('app'));

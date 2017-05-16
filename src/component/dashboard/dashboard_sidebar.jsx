@@ -1,5 +1,7 @@
+import config from 'root/config.json';
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
+import * as request from 'superagent';
 import LogoImage from 'style/asset/logo.png';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
 import FaBook from 'react-icons/lib/fa/book';
@@ -16,8 +18,9 @@ class Sidebar extends Component {
 
   constructor(props) {
     super(props);
-    this.toggleCareerInfo = this.toggleCareerInfo.bind(this);
     this.state = {
+      videoName: props.params.videoName,
+      course: null,
       collapseCreerInfo: {
         display: 'none'
       },
@@ -28,6 +31,42 @@ class Sidebar extends Component {
         display: 'none'
       }
     };
+    this.toggleCareerInfo = this.toggleCareerInfo.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.state.videoName) {
+      request
+      .get(`http://${config.host}:${config.rest_port}/api/v1/get_course_by_video_name/${this.state.videoName}`)
+      .withCredentials()
+      .end((err, res) => {
+        if (err) {
+          console.error(err);
+        } else {
+          this.setState({ course: res.body });
+        }
+      });
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.params.videoName) {
+      request
+      .get(`http://${config.host}:${config.rest_port}/api/v1/get_course_by_video_name/${nextProps.params.videoName}`)
+      .withCredentials()
+      .end((err, res) => {
+        if (err) {
+          console.error(err);
+        } else {
+          this.setState({ course: res.body, videoName: nextProps.params.videoName });
+        }
+      });
+    } else {
+      this.setState({
+        videoName: null,
+        course: null
+      });
+    }
   }
 
   toggleCareerInfo(){
@@ -51,91 +90,122 @@ class Sidebar extends Component {
   }
 
   render() {
-    return (
-      <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
-        <div className="textCenter" id="dashboardLogoDiv">
-          <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
+    if (this.state.course) {
+      return (
+        <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
+          <div className="textCenter" id="dashboardLogoDiv">
+            <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
+          </div>
+          <div className="sidebar-nav navbar-collapse collapse">
+            <ul className="nav in" id="side-menu">
+              {
+                this.state.course.video.map((c, idx) => {
+                  if (idx === 0) {
+                    return (
+                      <li key={0}>
+                        <img src={ `data:png;base64,${ this.state.course.image }` } height="180" width="272" />
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={idx} style={{ paddingLeft: 10 }}>
+                      <a href="" onClick={() => { browserHistory.push(`/dashboard/video/${c.videoName}`); }} >
+                        { c.videoName }
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
         </div>
-        <div className="sidebar-nav navbar-collapse collapse">
-          <ul className="nav in" id="side-menu">
-            <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard'); }} >
-                <FaHome className="dashboardSideBarIcon"/> &nbsp;我的课程
-              </a>
-            </li>
+      );
+    } else {
+      return (
+        <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
+          <div className="textCenter" id="dashboardLogoDiv">
+            <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
+          </div>
+          <div className="sidebar-nav navbar-collapse collapse">
+            <ul className="nav in" id="side-menu">
+              <li>
+                <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard'); }} >
+                  <FaHome className="dashboardSideBarIcon"/> &nbsp;我的课程
+                </a>
+              </li>
 
-            <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/courses'); }} >
-                <FaBook className="dashboardSideBarIcon"/> &nbsp;所有课程
-              </a>
-            </li>
+              <li>
+                <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/courses'); }} >
+                  <FaBook className="dashboardSideBarIcon"/> &nbsp;所有课程
+                </a>
+              </li>
 
-            <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerList'); }} >
-                <FaGlobe className="dashboardSideBarIcon"/> &nbsp;职业中心
-              </a>
-            </li>
+              <li>
+                <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerList'); }} >
+                  <FaGlobe className="dashboardSideBarIcon"/> &nbsp;职业中心
+                </a>
+              </li>
 
-            <li>
-              <a onClick={ this.toggleCareerInfo } >
-                <FaAlignLeft className="dashboardSideBarIcon"/> &nbsp;职业资料
-                <FaAngleLeft className="collapseExpandArrow" style={ this.state.leftArrow }/>
-                <FaAngleDown className="collapseExpandArrow" style={ this.state.downArrow }/>
-              </a>
-              <ul style={ this.state.collapseCreerInfo }>
-                <li>
-                  <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Summary'); }} >
-                    &nbsp;个人简介
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/ContactInfo');}} >
-                    &nbsp;联系方式
-                  </a>
-                </li>
-                <li>
-                  <a 
-                    href="" 
-                    onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Experience');}} >
-                    &nbsp;工作经历
-                  </a>
-                </li>
-                <li>
-                  <a 
-                    href="" 
-                    onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Education');}} >
-                    &nbsp;教育背景
-                  </a>
-                </li>
-                <li>
-                  <a 
-                    href="" 
-                    onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Resume');}} >
-                    &nbsp;简历上传
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/BasicInfo');}} >
-                    &nbsp;注册信息
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/'); }} >
-                <FaSignOut className="dashboardSideBarIcon"/> &nbsp;返回主页
-              </a>
-            </li>
-          </ul>
+              <li>
+                <a onClick={ this.toggleCareerInfo } >
+                  <FaAlignLeft className="dashboardSideBarIcon"/> &nbsp;职业资料
+                  <FaAngleLeft className="collapseExpandArrow" style={ this.state.leftArrow }/>
+                  <FaAngleDown className="collapseExpandArrow" style={ this.state.downArrow }/>
+                </a>
+                <ul style={ this.state.collapseCreerInfo }>
+                  <li>
+                    <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Summary'); }} >
+                      &nbsp;个人简介
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href=""
+                      onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/ContactInfo');}} >
+                      &nbsp;联系方式
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="" 
+                      onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Experience');}} >
+                      &nbsp;工作经历
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="" 
+                      onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Education');}} >
+                      &nbsp;教育背景
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="" 
+                      onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/Resume');}} >
+                      &nbsp;简历上传
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href=""
+                      onClick={(e) => { e.preventDefault(); browserHistory.push('/dashboard/careerInfo/BasicInfo');}} >
+                      &nbsp;注册信息
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push('/'); }} >
+                  <FaSignOut className="dashboardSideBarIcon"/> &nbsp;返回主页
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
-
 
 export default Sidebar;

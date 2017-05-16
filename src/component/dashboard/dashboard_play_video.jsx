@@ -1,5 +1,6 @@
 import config from 'root/config.json';
 import React from 'react';
+import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
@@ -38,7 +39,7 @@ export default class DashboardPlayVideo extends React.Component {
     return (
       <div>
         <Row>
-          <Button onClick={ browserHistory.goBack }><FaAngleLeft />返回目录</Button>
+          <Button onClick={ () => { browserHistory.push('/dashboard/courses'); } }><FaAngleLeft />返回目录</Button>
         </Row>
         <Row className="textCenter">
           <h3>{ this.state.videoName }</h3>
