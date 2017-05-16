@@ -18,6 +18,7 @@ export default class Loginform extends React.Component {
     this.show2dCode = this.show2dCode.bind(this);
     this.showErrorMesg = this.showErrorMesg.bind(this);
     this.goToResetPwd = this.goToResetPwd.bind(this);
+    this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
     this.state = {
       email: '',
       password: '',
@@ -59,6 +60,12 @@ export default class Loginform extends React.Component {
         this.props.closeModalWindow();
       }
     });
+  }
+
+  handleEnterKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.submitLogin();
+    }
   }
 
   show2dCode() {
@@ -111,6 +118,7 @@ export default class Loginform extends React.Component {
             value={this.state.email}
             placeholder='手机号或邮箱'
             onChange={this.handleEmailChange}
+            onKeyDown={this.handleEnterKeyPress}
           />
           <FormControl.Feedback />
         </FormGroup>
@@ -121,12 +129,20 @@ export default class Loginform extends React.Component {
             value={this.state.password}
             placeholder='密码'
             onChange={this.handlePasswordChange}
+            onKeyDown={this.handleEnterKeyPress}
           />
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup><a href="#" onClick={ this.goToResetPwd }>忘记密码？</a></FormGroup>
 
-        <Button className="centerBlockEle loginRegisterFormButton" bsStyle="success" onClick={this.submitLogin} block>登录Sporit</Button>
+        <Button
+          className="centerBlockEle loginRegisterFormButton"
+          bsStyle="success"
+          onClick={this.submitLogin}
+          block
+        >
+          登录Sporit
+        </Button>
         <p style={this.state.showErrorMesg}>用户名或密码错误</p>
 
         <Row>
