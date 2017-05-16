@@ -10,11 +10,13 @@ import Media from 'react-bootstrap/lib/Media';
 import Modal from 'react-bootstrap/lib/Modal';
 import Image from 'react-bootstrap/lib/Image';
 import Alert from 'react-bootstrap/lib/Alert';
+import LoginRegisterTabs from '../main/login_register_tabs';
 import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
 import { Icon } from 'react-fa';
+import LogoImage from 'style/asset/logo.png';
 
 export default class DashboardCourseDetail extends React.Component {
   constructor(props) {
@@ -30,9 +32,14 @@ export default class DashboardCourseDetail extends React.Component {
       openOrderModal: false,
       qrCode: null,
       paymentMessage: null,
+      showModal: false,
+      loginTab: true
     };
 
     this.handleTransactionId = this.handleTransactionId.bind(this);
+    this.openRegister = this.openRegister.bind(this);
+    this.openLogin = this.openLogin.bind(this);
+    this.close = this.close.bind(this);
   }
 
   componentWillMount() {
@@ -63,6 +70,18 @@ export default class DashboardCourseDetail extends React.Component {
     LoginStore.subscribe(() => {
       this.setState({ user: LoginStore.getState() });
     });
+  }
+
+  openLogin() {
+    this.setState({ showModal: true , loginTab: true });
+  }
+
+  openRegister() {
+    this.setState({ showModal: true, loginTab: false });
+  }
+
+  close() {
+    this.setState({ showModal: false }); 
   }
 
   closeOrderModal() {
@@ -168,7 +187,7 @@ export default class DashboardCourseDetail extends React.Component {
       );
     } else {
       return (
-        <Button bsStyle="primary" disabled>加入课程（请先登录）</Button>
+        <Button bsStyle="primary" onClick={ this.openLogin }>加入课程</Button>
       );
     }
   }
@@ -314,6 +333,15 @@ export default class DashboardCourseDetail extends React.Component {
         <Row>
           { this.videoThumbnail() }
         </Row>
+        <Modal show={this.state.showModal} onHide={this.close}>
+            <div className="textCenter">
+              <a href="#"><img id="loginSporitLogo" src={ LogoImage }/></a>
+            </div>
+            <button type="button" className="modalCloseButton" onClick={this.close}>×</button>
+          <Modal.Body>
+            <LoginRegisterTabs closeModalWindow={this.close} showLoginTab={this.state.loginTab}/>
+          </Modal.Body>
+        </Modal>
       </div>
     );
   };
