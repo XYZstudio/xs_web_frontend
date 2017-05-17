@@ -1,5 +1,6 @@
 import config from 'root/config.json';
 import React from 'react';
+import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import courseStyle from 'style/course.scss';
 import { browserHistory } from 'react-router';
@@ -22,8 +23,11 @@ export default class DashboardPlayVideo extends React.Component {
 
   componentDidMount() {
     VideoStore.subscribe(() => {
-      const description = VideoStore.getState();
-      this.setState({ videoDescription: description });
+      const video = VideoStore.getState();
+      this.setState({
+        videoName: video.videoName,
+        videoDescription: video.description
+      });
     });
   }
 
@@ -37,9 +41,6 @@ export default class DashboardPlayVideo extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Button onClick={ browserHistory.goBack }><FaAngleLeft />返回目录</Button>
-        </Row>
         <Row className="textCenter">
           <h3>{ this.state.videoName }</h3>
         </Row>
