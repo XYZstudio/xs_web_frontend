@@ -5,7 +5,6 @@ import * as request from 'superagent';
 import Row from 'react-bootstrap/lib/Row';
 import Button from 'react-bootstrap/lib/Button';
 import VideoStore from 'store/video';
-import LogoImage from 'style/asset/logo.png';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
 import FaBook from 'react-icons/lib/fa/book';
 import FaHome from 'react-icons/lib/fa/home';
@@ -120,9 +119,6 @@ class Sidebar extends Component {
     if (this.state.course) {
       return (
         <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
-          <div className="textCenter" id="dashboardLogoDiv">
-            <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
-          </div>
           <div className="sidebar-nav navbar-collapse collapse">
             <ul className="nav in" id="side-menu">
               {
@@ -155,9 +151,6 @@ class Sidebar extends Component {
     } else {
       return (
         <div className="navbar-default sidebar" style={{ marginLeft: '-20px' }} role="navigation">
-          <div className="textCenter" id="dashboardLogoDiv">
-            <a href="/"><img id="loginSporitLogo" src={ LogoImage }/></a>
-          </div>
           <div className="sidebar-nav navbar-collapse collapse">
             <ul className="nav in" id="side-menu">
               <li>
