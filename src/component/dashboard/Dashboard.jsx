@@ -16,10 +16,10 @@ export default class Dashboard extends React.Component {
     return (
       <div className="container">
         <div id="dashboardSidebarContainer">
-          <Sidebar/>
+          { this.props.side }
         </div>
         <div id="dashboardContentContainer">
-          { this.props.children }
+          { this.props.body }
         </div>
       </div>
     );

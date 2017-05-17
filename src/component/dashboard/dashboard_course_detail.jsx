@@ -163,6 +163,7 @@ export default class DashboardCourseDetail extends React.Component {
         VideoStore.dispatch({
           type: 'PLAY',
           description: video.description,
+          videoName: video.name
         });
       }
     });
