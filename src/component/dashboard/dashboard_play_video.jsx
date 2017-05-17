@@ -23,8 +23,11 @@ export default class DashboardPlayVideo extends React.Component {
 
   componentDidMount() {
     VideoStore.subscribe(() => {
-      const description = VideoStore.getState();
-      this.setState({ videoDescription: description });
+      const video = VideoStore.getState();
+      this.setState({
+        videoName: video.videoName,
+        videoDescription: video.description
+      });
     });
   }
 
@@ -38,9 +41,6 @@ export default class DashboardPlayVideo extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Button onClick={ () => { browserHistory.push('/dashboard/courses'); } }><FaAngleLeft />返回目录</Button>
-        </Row>
         <Row className="textCenter">
           <h3>{ this.state.videoName }</h3>
         </Row>

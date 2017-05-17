@@ -2,6 +2,9 @@ import config from 'root/config.json';
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import * as request from 'superagent';
+import Row from 'react-bootstrap/lib/Row';
+import Button from 'react-bootstrap/lib/Button';
+import VideoStore from 'store/video';
 import LogoImage from 'style/asset/logo.png';
 import FaSignOut from 'react-icons/lib/fa/sign-out';
 import FaBook from 'react-icons/lib/fa/book';
@@ -19,7 +22,6 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoName: props.params.videoName,
       course: null,
       collapseCreerInfo: {
         display: 'none'
@@ -32,41 +34,66 @@ class Sidebar extends Component {
       }
     };
     this.toggleCareerInfo = this.toggleCareerInfo.bind(this);
+    this.handleGoBackToMenu = this.handleGoBackToMenu.bind(this);
   }
 
   componentDidMount() {
-    if (this.state.videoName) {
-      request
-      .get(`http://${config.host}:${config.rest_port}/api/v1/get_course_by_video_name/${this.state.videoName}`)
-      .withCredentials()
-      .end((err, res) => {
-        if (err) {
-          console.error(err);
-        } else {
-          this.setState({ course: res.body });
-        }
-      });
+    VideoStore.subscribe(() => {
+      let video = VideoStore.getState();
+      this.getCourseByVideoName(video.videoName);
+    });
+
+    if (this.props.params.videoName) {
+      this.getVideoInfo(this.props.params.videoName);
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.params.videoName) {
-      request
-      .get(`http://${config.host}:${config.rest_port}/api/v1/get_course_by_video_name/${nextProps.params.videoName}`)
-      .withCredentials()
-      .end((err, res) => {
-        if (err) {
-          console.error(err);
-        } else {
-          this.setState({ course: res.body, videoName: nextProps.params.videoName });
-        }
-      });
-    } else {
-      this.setState({
+  getCourseByVideoName(videoName) {
+    request
+    .get(`http://${config.host}:${config.rest_port}/api/v1/get_course_by_video_name/${videoName}`)
+    .withCredentials()
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        this.setState({ course: res.body });
+      }
+    });
+  }
+
+  getVideoInfo(videoName) {
+    request
+    .get(`http://${config.host}:${config.rest_port}/api/v1/get_video/${videoName}`)
+    .withCredentials()
+    .end((err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        this.setState({ videoName: videoName }, () => {
+          VideoStore.dispatch({
+            type: 'PLAY',
+            videoName: videoName,
+            description: res.body.description
+          });
+        }); 
+      }
+    });
+  }
+
+  handleClickTabs(videoName) {
+    this.getVideoInfo(videoName);
+  }
+
+  handleGoBackToMenu(e) {
+    e.preventDefault();
+    this.setState({ videoName: null, course: null }, () => {
+      VideoStore.dispatch({
+        type: 'PLAY',
         videoName: null,
-        course: null
+        description: ''
       });
-    }
+      browserHistory.push('/dashboard/courses');
+    });
   }
 
   toggleCareerInfo(){
@@ -109,13 +136,18 @@ class Sidebar extends Component {
                   }
                   return (
                     <li key={idx} style={{ paddingLeft: 10 }}>
-                      <a href="" onClick={() => { browserHistory.push(`/dashboard/video/${c.videoName}`); }} >
+                      <a href="" onClick={(e) => { e.preventDefault(); browserHistory.push(`/dashboard/video/${c.videoName}`); this.handleClickTabs(c.videoName); }}>
                         { c.videoName }
                       </a>
                     </li>
                   );
                 })
               }
+              <li style={{ paddingLeft: 10 }}>
+                <a href="" onClick={ (e) => { this.handleGoBackToMenu(e); } }>
+                  返回目录
+                </a>
+              </li>
             </ul>
           </div>
         </div>
