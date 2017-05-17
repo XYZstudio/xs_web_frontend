@@ -1,11 +1,7 @@
 // Modules
 import React from 'react';
-import DashboardHeader from './dashboard_header';
-import Sidebar from './dashboard_sidebar';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import dashboardStyle from 'style/dashboard.scss';
+import NavbarComponent from 'component/main/navbar.jsx';
+import 'style/dashboard.scss';
 
 export default class Dashboard extends React.Component {
   constructor() {
@@ -15,6 +11,7 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <div className="container">
+        <NavbarComponent />
         <div id="dashboardSidebarContainer">
           { this.props.side }
         </div>

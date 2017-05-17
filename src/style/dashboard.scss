@@ -1,11 +1,13 @@
 #dashboardSidebarContainer{
-    height:100%;
-    width:15%;
-    float:left;
+    margin-top: 60px;
+    height: calc(100% - 60px);
+    width: 15%;
+    float: left;
 }
 
 #dashboardContentContainer{
-    height: 100%;
+    margin-top: 60px;
+    height: calc(100% - 60px);
     width: 85%;
     float: left;
     padding: 50px;

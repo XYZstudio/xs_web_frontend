@@ -80,7 +80,8 @@ export default class NavbarComponent extends React.Component {
         console.error(err);
       } else {
         LoginStore.dispatch({ type: 'LOGOUT' });
-        this.setState({ user: null }); 
+        this.setState({ user: null });
+        browserHistory.push('/');
       }
     });
   }
