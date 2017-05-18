@@ -135,7 +135,7 @@ export default class NavbarComponent extends React.Component {
           <Navbar.Collapse>
             <Nav className="navbarNav" style={{ height: 59 }}>
               <NavDropdown eventKey={3} title="关于思博锐" id="basic-nav-dropdown" className="navbarElement">
-                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem" onClick={ this.gotoCompanyInto }>公司故事</MenuItem>
+                <MenuItem eventKey={3.1} className="menuNavbarDropdownItem" onClick={ this.gotoCompanyInto }>公司简介</MenuItem>
                 <MenuItem eventKey={3.4} className="menuNavbarDropdownItem" onClick={ this.gotoProfessorsIntro }>专家介绍</MenuItem>
               </NavDropdown>
               <NavItem className="navbarElement" eventKey={1} onClick={ this.goToCourse }>精品课程</NavItem>
