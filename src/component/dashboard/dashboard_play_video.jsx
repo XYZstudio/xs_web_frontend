@@ -1,6 +1,5 @@
 import config from 'root/config.json';
 import React from 'react';
-import LoginStore from 'store/login';
 import VideoStore from 'store/video';
 import { browserHistory } from 'react-router';
 import Col from 'react-bootstrap/lib/Col';
@@ -21,7 +20,6 @@ export default class DashboardPlayVideo extends React.Component {
       error: null,
       showModal: false,
       loginTab: true,
-      user: null,
     };
     this.handleError = this.handleError.bind(this);
     this.openLogin = this.openLogin.bind(this);
@@ -34,12 +32,9 @@ export default class DashboardPlayVideo extends React.Component {
       const video = VideoStore.getState();
       this.setState({
         videoName: video.videoName,
-        videoDescription: video.description
+        videoDescription: video.description,
+        error: null,
       });
-    });
-
-    LoginStore.subscribe(() => {
-      this.setState({ user: LoginStore.getState() });
     });
   }
 
@@ -81,17 +76,11 @@ export default class DashboardPlayVideo extends React.Component {
               this.state.error ?
               <div className="videoWarning">
                 <h4>无法播放该视频，可能由于以下原因：</h4>
-                {
-                  this.state.user ?
-                  <ul>
-                    <li>你尚未购买该视频</li>
-                    <li>网络不稳定</li>
-                  </ul>
-                  :
-                  <ul>
-                    <li>你尚未<a href="#" onClick={ this.openLogin }>登陆</a></li>
-                  </ul>
-                }
+                <ul>
+                  <li>你尚未<a href="#" onClick={ this.openLogin }>登陆</a></li>
+                  <li>你尚未购买该视频</li>
+                  <li>网络不稳定</li>
+                </ul>
               </div>
               : ''
             }
