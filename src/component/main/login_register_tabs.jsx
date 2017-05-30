@@ -8,6 +8,7 @@ export default class LoginRegisterTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      needReload: props.needReload ? true : false,
     };
   }
 
@@ -19,10 +20,10 @@ export default class LoginRegisterTabs extends React.Component {
     return (
         <Tabs defaultActiveKey={ activeTabKey } id="uncontrolled-tab-example">
           <Tab eventKey={1} title="登录">
-            <Loginform closeModalWindow={this.props.closeModalWindow}/>
+            <Loginform needReload={ this.state.needReload } closeModalWindow={ this.props.closeModalWindow }/>
           </Tab>
           <Tab eventKey={2} title="注册"> 
-            <Registerform closeModalWindow={this.props.closeModalWindow}/>
+            <Registerform needReload={ this.state.needReload } closeModalWindow={ this.props.closeModalWindow }/>
           </Tab>
         </Tabs>
     );
