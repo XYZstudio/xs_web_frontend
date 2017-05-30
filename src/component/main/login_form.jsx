@@ -28,7 +28,8 @@ export default class Loginform extends React.Component {
         color: 'red',
         paddingTop: '5px',
         paddingLeft: '10px'
-      }
+      },
+      needReload: props.needReload ? true : false,
     };
   }
 
@@ -58,6 +59,7 @@ export default class Loginform extends React.Component {
           user: res.body,
         });
         this.props.closeModalWindow();
+        if (this.state.needReload) { window.location.reload(); }
       }
     });
   }

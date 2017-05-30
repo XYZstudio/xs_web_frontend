@@ -58,7 +58,8 @@ export default class Registerform extends React.Component {
       birthYear : '',
       birthMonth : '',
       birthDate : '',
-      highestDegree : ''
+      highestDegree : '',
+      needReload: props.needReload ? true : false,
     };
   }
 
@@ -92,6 +93,7 @@ export default class Registerform extends React.Component {
         this.updateBasicInfo(res);
         this.props.closeModalWindow();
         browserHistory.push('/verifyEmail');
+        if (this.state.needReload) { window.location.reload(); }
       }
     });
   }
