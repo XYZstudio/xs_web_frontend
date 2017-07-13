@@ -25,6 +25,7 @@ import ShanghaiActivities from 'component/main/shanghaiActivities.jsx';
 // Password
 import FindMyPassword from 'component/password/find_password.jsx';
 import VerifySuccess from 'component/password/verify_success.jsx';
+import AutoLogin from 'component/password/auto_login.jsx';
 
 // Dashboard Components
 import Dashboard from 'component/dashboard/Dashboard.jsx';
@@ -50,6 +51,7 @@ ReactDOM.render(
   <Router history={ browserHistory }>
     <Route path='/' component={ App }>
       <IndexRoute components={{ navbar: NavbarComponent, body: MainPage, footer: BottomNavbarComponent }} />
+      <Route path='/selflogin/:username/:password' components={{ navbar: NavbarComponent, body: AutoLogin, footer: BottomNavbarComponent  }} />
       <Route path='/course' components={{ navbar: NavbarComponent, body: Course, footer: BottomNavbarComponent  }} />
       <Route path='/contactus' components={{ navbar: NavbarComponent, body: ContactMethod, footer: BottomNavbarComponent  }} />
       <Route path='/joinus' components={{ navbar: NavbarComponent, body: JoinUs, footer: BottomNavbarComponent  }} />

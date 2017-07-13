@@ -1,6 +1,10 @@
+npm-debug.log
 node_modules
 bundle.js
-.DS_store
 ./public/build/*
-public/.DS_Store
 public/build/*
+.DS_store
+public/.DS_Store
+src/.DS_Store
+src/style/.DS_Store
+src/style/asset/.DS_Store
